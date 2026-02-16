@@ -96,6 +96,21 @@ git commit -m "feat: added new IEEE bibliography format"
 git push origin main
 ```
 
+## ⚡️ Workflow & Synchronization
+Because this repository uses a `symbolic link`, there is no need to manually copy files or run synchronization scripts between your Git folder and the system.
+
+Instant Updates: When you edit a `.sty` or `.bib` file in this repository, LaTeX sees the changes immediately upon the next compilation.
+
+No `texhash` required: Unlike the system-wide root, the user TeX tree (~/Library/texmf) is scanned dynamically by MacTeX. You generally do not need to run database update commands. I personally use TexLive.
+
+### Troubleshooting New Files
+
+In very rare cases, if you add a new file and LaTeX reports `File not found`, you can force a database refresh:
+
+```bash
+texhash ~/Library/texmf
+```
+
 ## 📝 License
 
 Distributed under the MIT License. See `LICENSE` for more information.
