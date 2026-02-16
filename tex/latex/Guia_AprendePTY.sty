@@ -1,0 +1,818 @@
+\ProvidesPackage{Guia_AprendePTY}
+%%%%%%%%% ERIC LUCERO G. - TESIS MACRO  %%%%%%%%%%%%
+%% @author:  Eric Lucero                                    %%
+%% @contact: ericlucero501@@gmail.com                       %%
+%% @revised:    16 / January / 2017                         %%
+%%                                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{standalone}  % Incluir archivo .tex ignorando preambulo
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{mathexam}%%
+%\usepackage[spanish,USenglish]{babel} % espanol, ingles
+\usepackage[spanish]{babel} % espanol, ingles
+%\usepackage[spanish]{babel}
+\usepackage{multicol}
+\usepackage{color}
+% \usepackage[cmyk]{xcolor}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{tabu}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\usepackage{chemfig}
+\usepackage[version=4]{mhchem}
+\usepackage{chemformula}
+\usepackage{elements}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+%\usepackage[explicit]{titlesec}   % Modifica espacio alrededor de seccion/subsecti..
+\graphicspath{
+  {/Users/ericlucero/Dropbox/00-academic/CursosGMP/Guias/Logos/}
+  {/Users/ericlucero/Dropbox/00-academic/CursosGMP/Guias/Logos/g2/}
+  {/Users/ericlucero/Dropbox/00-academic/CursosGMP/Guias/Logos/g3/}
+  {/Users/ericlucero/Dropbox/00-academic/CursosGMP/Guias/Material/}
+  }
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{epsfig}
+\usepackage{framed}
+\usepackage{textcomp}
+\usepackage{lipsum}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{sectsty}
+%\chapterfont{\color{green!70!blue}\bfseries}  % sets colour of chapters
+%\sectionfont{\color{green!70!blue}\bfseries}  % sets colour of sections
+
+\usepackage[makeroom]{cancel}       % ******************* cancelar eq
+%\usepackage[framed,numbered,autolinebreaks]{mcode}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+
+
+\usepackage{bm}
+\usepackage{siunitx}   % Sistema internacional
+\usepackage{gensymb}
+
+% *************************  TiKz  *************************
+% *************************  TiKz  *************************
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{shapes,chains,mindmap,trees,backgrounds,shapes.geometric, arrows,arrows.meta, calc,shadows,plotmarks,plotmarks,intersections, patterns, snakes}
+	% \pgfplotsset{compat=newest, ticks=none}
+  \pgfplotsset{compat=1.5.1}
+% *************************  TiKz  *************************
+% *************************  TiKz  *************************
+%\usepackage{pgfplots}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,chains,mindmap,trees,backgrounds,shapes.geometric, arrows}
+	
+%\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+%\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+%\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+%\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+%\tikzstyle{arrow} = [thick,->,>=stealth]
+% *************************  TiKz  *************************
+% *************************  TiKz  *************************
+%\tikzset{level 1 concept/.append style={font=\sf, sibling angle=90,level distance = 45mm}}
+%\tikzset{level 2 concept/.append style={font=\sf, sibling angle=60,level distance = 25mm}}
+%\tikzset{level 3 concept/.append style={font=\sf, sibling angle=65,level distance = 20mm}}
+%\tikzset{every node/.append style={scale=0.8}}  
+
+
+% -------------------------   margenes de acuerdo a Propuesta SENACYT:  -------------------------
+\usepackage[top=1.25cm, bottom=3.6cm, left=3.0cm, right=2.4cm, bindingoffset=0.5cm]{geometry}
+%% -------------------------   margenes de acuerdo a UTP:  -------------------------
+%\usepackage[top=1.0in, bottom=1.0in, right=1.0in, left=1.5in]{geometry}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[pagewise]{lineno}    % Numeross en Lineas 
+\modulolinenumbers[1]
+\renewcommand\thelinenumber{\footnotesize\color{red}\arabic{linenumber}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{array}
+\usepackage{makecell}% http://ctan.org/pkg/makecell
+\usepackage{booktabs}
+\usepackage[usenames,dvipsnames]{pstricks}
+% Palette
+\definecolor{gmpRed}{RGB}{239, 0, 27}  % #ef001b - ROJO
+\definecolor{gmpPurple}{RGB}{185, 0, 137} % #b90089 - MORADO
+\definecolor{gmpGray}{RGB}{72, 71, 74}% #48474a - GRIS
+\definecolor{gmpYellow}{RGB}{246, 175, 0}% #7adb3d - AMARILLO
+\definecolor{gmpGreen}{RGB}{122, 219, 61}% #7adb3d - VERDE
+\definecolor{gmpBlue}{RGB}{58, 136, 217}% #3a88d9 - AZUL
+\definecolor{gmpBlue}{RGB}{58, 136, 217}% #3a88d9 - ALT
+
+\definecolor{darkblue}{RGB}{47,68,117}
+\definecolor{lightblue}{cmyk}{0.8392,0.6157,0,0}
+\definecolor{azulejemplo}{cmyk}{0.90,0.60,0,0}
+\definecolor{azulejercicio}{cmyk}{0,0.60,0.9,0}
+\definecolor{frameejemplo}{cmyk}{0.95,0.60,0,0}
+\definecolor{backejemplo}{cmyk}{0.20,0.10,0,0}
+\definecolor{verdechapter}{cmyk}{1.0,0,0.5,0.3}
+\definecolor{lightgray}{gray}{0.95}
+\definecolor{moradoUTP}{RGB}{69,27,105}
+\definecolor{rosadito}{RGB}{255,85,85}
+\definecolor{celestito}{RGB}{55,167,213}
+\definecolor{moradito}{RGB}{255,131,255}
+\definecolor{naranjita}{RGB}{255,131,35}
+%\usepackage{hyperref}
+%\hypersetup{
+%    colorlinks=true,        % false: boxed links; true: colored links
+%    linkcolor=lightblue,     % color of internal links			     % USA EL COLOR DEFINIDO {moradoUTP}{RGB}{69,27,105}
+%    citecolor=green,        % color of links to bibliography
+%    filecolor=magenta,      % color of file links
+%    urlcolor=blue           % color of external links
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tocloft}
+\renewcommand\cftsecleader{\cftdotfill{\cftdotsep}}      % PUNTOS EN EL INDICE
+
+% \usepackage[toc]{multitoc}
+% \renewcommand*{\multicolumntoc}{2}
+% \setlength{\columnseprule}{0.5pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\titlespacing\section{0pt}{8pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%\titlespacing\subsection{0pt}{8pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+%\titlespacing\subsubsection{0pt}{8pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz,lipsum}
+\tcbuselibrary{skins,breakable}
+\newcounter{explicacion}
+\newcounter{ejemplo}
+\newcounter{ejercicio}
+\newcounter{problemas}
+
+
+%%%%%%%%%%%%%%%%%               HEADER 			%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%% 				HEADER 			%%%%%%%%%%%%%%%%%
+
+%%\fancypagestyle{plainmate}{%
+%%\rhead{\vspace{-20pt}\includegraphics[width=6cm]{Logo1}\vspace{-40pt}}
+%%%Titulo del Diario%%%%%%%%%%%%%%%%%
+%%%\chead{\textsc{\colorea{red}{CenterHead}}}
+%%%\lhead{\textsc{\colorea{red}{LeftHead}}}
+%%\lhead{\textsc{Matemáticas}}
+%%\rfoot{\textsc{\thepage}}
+%%\cfoot{\textsc{Guía 1: Química - Biología - Matemáticas - Física}}
+%%%\cfoot{\textit{Modificado: \today}}
+%%%\lfoot{\textsc{\colorea{red}{LeftFoot}}}
+%%}
+%%
+%%\fancypagestyle{titulo}{%
+%%\rhead{\vspace{-20pt}\includegraphics[width=6cm]{Logo1}\vspace{-40pt}}
+%%%Titulo del Diario%%%%%%%%%%%%%%%%%
+%%%\chead{\textsc{\colorea{red}{CenterHead}}}
+%%%\lhead{\textsc{\colorea{red}{LeftHead}}}
+%%%\lhead{\textsc{\rightmark}}
+%%\rfoot{}
+%%\cfoot{\textsc{Guía 1: Química - Biología - Matemáticas - Física}}
+%%%\cfoot{\textit{Modificado: \today}}
+%%\lfoot{}}
+%%
+%%%%%%%%%%%%% HEADER / FOOTER %%%%%%%%%%%
+%%\rhead{\vspace{-20pt}\includegraphics[width=6cm]{Logo1}\vspace{-40pt}}
+%%%Titulo del Diario%%%%%%%%%%%%%%%%%
+%%%\chead{\textsc{\colorea{red}{CenterHead}}}
+%%%\lhead{\textsc{\colorea{red}{LeftHead}}}
+%%\rfoot{\textsc{\thepage}}
+%%\cfoot{\textsc{Guía 1: Química - Biología - Matemáticas - Física}}
+%%%\cfoot{\textit{Modificado: \today}}
+%%%\lfoot{\textsc{\colorea{red}{LeftFoot}}}
+
+
+%%%%%%%%%%%% %%%%% %%%%% %%%%% %%%%% HEADER / FOOTER %%%%% %%%%% %%%%% %%%%% %%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \rhead{\vspace{-20pt}\includegraphics[width=6cm]{Logo1}\vspace{-40pt}}
+\rhead{\vspace{-20pt}\includegraphics[width=6cm]{aprendePTY}\vspace{-40pt}}
+%%%Titulo del Diario%%%%%%%%%%%%%%%%%
+%%\chead{\textsc{\colorea{red}{CenterHead}}}
+%%\lhead{\textsc{\colorea{red}{LeftHead}}}
+%%\rfoot{\textsc{\thepage}}
+\lhead{}
+\rfoot{\fontfamily{pag}\selectfont\textsc{\thepage}}
+% \cfoot{\textsc{Guía 1: Química - Biología - \textbf{Matemáticas} - Física}}
+%\lfoot{\textsc{\colorea{red}{LeftFoot}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fancypagestyle{matematicas1}{%
+\rhead{\vspace{-1em}\includegraphics[width=3.2cm]{aprendePTY}\vspace{-1em}}
+\lhead{\grotesk Módulo \thechapter \hspace{0.5em} - \fontfamily{pag}\selectfont \textsc{Matemáticas}}
+\rfoot{\fontfamily{pag}\selectfont\textsc{\thepage}}
+\cfoot{\fontfamily{pag}\selectfont \textsc{Guía 1: Química - Biología - \textbf{\underline{Matemáticas}} - Física}}
+}
+
+\fancypagestyle{fisica1}{%
+\rhead{\vspace{-1em}\includegraphics[width=3.2cm]{aprendePTY}\vspace{-1em}}
+\lhead{\grotesk Módulo \thechapter \hspace{0.5em} - \fontfamily{pag}\selectfont \textsc{Física} }
+\rfoot{\fontfamily{pag}\selectfont\textsc{\thepage}}
+\cfoot{\fontfamily{pag}\selectfont  \textsc{Guía 1: Química - Biología - Matemáticas - \textbf{\underline{Física}}}}
+}
+
+\fancypagestyle{quimica1}{%
+\rhead{\vspace{-1em}\includegraphics[width=3.2cm]{aprendePTY}\vspace{-1em}}
+\lhead{\grotesk Módulo \thechapter \hspace{0.5em} - \fontfamily{pag}\selectfont \bfseries \textsc{Química}}
+\rfoot{\fontfamily{pag}\selectfont \textsc{\thepage}}
+\cfoot{\fontfamily{pag}\selectfont \textsc{Guía 1: \underline{\grotesk Química} - Biología - Matemáticas - Física}}
+}
+
+\fancypagestyle{biologia1}{%
+\rhead{\vspace{-1em}\includegraphics[width=3.2cm]{aprendePTY}\vspace{-1em}}
+\lhead{\grotesk Módulo \thechapter \hspace{0.5em} - \fontfamily{pag}\selectfont \textsc{Biología}}
+\rfoot{\fontfamily{pag}\selectfont \textsc{\thepage}}
+\cfoot{\fontfamily{pag}\selectfont \textsc{Guía 1: Química - \underline{\grotesk Biología} - Matemáticas - Física}}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%   PAGESTYLE GUIA 2  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fancypagestyle{matematicas2}{%
+\rhead{\vspace{-1em}\includegraphics[width=3.2cm]{aprendePTY}\vspace{-1em}}
+\lhead{\grotesk Módulo \thechapter \hspace{0.5em} - \fontfamily{pag}\selectfont \textsc{Matemáticas}}
+\rfoot{\fontfamily{pag}\selectfont\textsc{\thepage}}
+\cfoot{\fontfamily{pag}\selectfont \textsc{Guía 2: Química - Biología - \textbf{\underline{Matemáticas}} - Física}}
+}
+
+\fancypagestyle{fisica2}{%
+\rhead{\vspace{-1em}\includegraphics[width=3.2cm]{aprendePTY}\vspace{-1em}}
+\lhead{\grotesk Módulo \thechapter \hspace{0.5em} - \fontfamily{pag}\selectfont \textsc{Física} }
+\rfoot{\fontfamily{pag}\selectfont\textsc{\thepage}}
+\cfoot{\fontfamily{pag}\selectfont  \textsc{Guía 2: Química - Biología - Matemáticas - \textbf{\underline{Física}}}}
+}
+
+\fancypagestyle{quimica2}{%
+\rhead{\vspace{-1em}\includegraphics[width=3.2cm]{aprendePTY}\vspace{-1em}}
+\lhead{\grotesk Módulo \thechapter \hspace{0.5em} - \fontfamily{pag}\selectfont \bfseries \textsc{Química}}
+\rfoot{\fontfamily{pag}\selectfont \textsc{\thepage}}
+\cfoot{\fontfamily{pag}\selectfont \textsc{Guía 2: \underline{\grotesk Química} - Biología - Matemáticas - Física}}
+}
+
+\fancypagestyle{biologia2}{%
+\rhead{\vspace{-1em}\includegraphics[width=3.2cm]{aprendePTY}\vspace{-1em}}
+\lhead{\grotesk Módulo \thechapter \hspace{0.5em }- \fontfamily{pag}\selectfont \textsc{Biología}}
+\rfoot{\fontfamily{pag}\selectfont \textsc{\thepage}}
+\cfoot{\fontfamily{pag}\selectfont \textsc{Guía 2: Química - \underline{\grotesk Biología} - Matemáticas - Física}}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%            ESPACIADO DE MARGEN Y ENTRELINEAS     %%%%%%%%%%%%%%
+\pagestyle{fancy}
+\setlength\parskip{0.1in} 
+\setlength\headheight{56pt} %% just to make warning go away. Adjust the value after looking into the warning.
+
+%%%%%%%%%%            ESPACIADO DE MARGEN Y ENTRELINEAS     %%%%%%%%%%%%%%
+\setlength{\parindent}{0pt}              % No sangría
+\setlength{\parskip}{0em}				% Espacio entre parrafos
+\renewcommand{\baselinestretch}{1.2}    % Espacio entre lineas
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%% NEW COMMANDS %%%%%%%%%%%%%%
+\newcommand{\logoEPS}{%
+  \noindent % University Logo
+  \begin{wrapfigure}{r}{0.1\textwidth}
+    \vspace{-38pt}
+    \begin{center}
+      \includegraphics[width=0.1\textwidth]{logo_utp_3.eps}
+    \end{center}
+    \vspace{-100pt}
+  \end{wrapfigure}
+}
+
+\newcommand{\logoPNG}{%
+  \noindent % University Logo
+  \begin{wrapfigure}{r}{0.1\textwidth}
+    \vspace{-38pt}
+    \begin{center}
+      \includegraphics[width=0.15\textwidth]{logo_utp_3_72.png}
+    \end{center}
+    \vspace{-100pt}
+  \end{wrapfigure}
+}
+\newcommand{\logoPNGheader}{%
+  \noindent % University Logo
+  \begin{wrapfigure}{r}{0.4\textwidth}
+%    \vspace{-38pt}
+    \begin{center}
+      \includegraphics[width=0.15\textwidth]{logo_utp_3_72.png}
+    \end{center}
+ %   \vspace{-100pt}
+  \end{wrapfigure}
+}
+
+%%%%%%%%%%%%EQUATION%%%%%%%%%%%%%%%%%%%%%
+\numberwithin{equation}{section}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\title{Apuntes de: \textcolor{red}{ \textit{Optimización I}} \hrule}
+%\author{Clases del profesor:\\ Dr. Juan José Víquez \\{\small (+506-8361-819) - viquezejin@gmail.com}}
+%\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ------------------ ------------------ ------------------  
+% ------------------  LOGO Y UBUCACION -------------------------  
+% ------------------ ------------------ ------------------ 
+%\def\LOGO{%
+%\begin{picture}(0,0)\unitlength=1cm
+%\put (-2,-4) {\includegraphics[width=4cm]{logo_utp_1.eps}}
+%\end{picture}
+%}
+%\newlength{\drop}
+%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%  BIBLIOGRAPHY  %%%%%%%%%%%%%%%
+%%\usepackage{cite}
+%\usepackage[backend=bibtex, citestyle=numeric, sorting=none]{biblatex}
+%\bibliography{tesisbibliografia}
+%%%%%%%%%%%% NEW COMMANDS %%%%%%%%%%%%%%
+%\newcommand{\logoEPS}{%
+%  \noindent % University Logo
+%  \begin{wrapfigure}{r}{0.1\textwidth}
+%    \vspace{-38pt}
+%    \begin{center}
+%      \includegraphics[width=0.1\textwidth]{logo_utp_3.eps}
+%    \end{center}
+%    \vspace{-100pt}
+%  \end{wrapfigure}
+%}
+%
+%\newcommand{\logoPNG}{%
+%  \noindent % University Logo
+%  \begin{wrapfigure}{r}{0.1\textwidth}
+%    \vspace{-38pt}
+%    \begin{center}
+%      \includegraphics[width=0.15\textwidth]{logo_utp_3_72.png}
+%    \end{center}
+%    \vspace{-100pt}
+%  \end{wrapfigure}
+%}
+
+%%%%%%%%%%%% ASTRONOMY %%%%%%%%%%%%%%%%
+\newcommand{\Msun}{M_\odot}
+\newcommand{\Lsun}{L_\odot}
+\newcommand{\Rsun}{R_\odot}
+\newcommand{\Mearth}{M_\oplus}
+\newcommand{\Learth}{L_\oplus}
+\newcommand{\Rearth}{R_\oplus}
+%%%%%%%%%%% MATHEMATICS %%%%%%%%%%%%%%%
+\newcommand{\grad}{\nabla}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\eqnarr}{\begin{eqnarray}}
+\newcommand{\eqnend}{\end{eqnarray}}
+\newcommand{\deriv}[2]{\frac{d #1}{d #2}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\fradial}[2]{\phi \left( \norm{x_{#1} - x_{#2}}\right) }     
+\newcommand{\fradialcent}[2]{\phi \left( \norm{x_{#1}^c - x_{#2}^c}\right) }
+\newcommand{\fradialh}[2]{\phi \left( \norm{x_{#1} - x_{#2}^c}\right)}     
+\newcommand{\fradialhx}[2]{\phi_x \left( \norm{x_{#1}^c - x_{#2}^c}\right)}  
+\newcommand{\fradialx}[2]{\phi_x \left( \norm{{#1} - {#2}}\right)}  
+%%%%%%%%%%% MATHEMATICS %%%%%%%%%%%%%%%
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corolary}{Corolario}[theorem]
+\newtheorem{definition}[theorem]{Definición}
+\newtheorem{prop}[theorem]{Proposición}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{propi}[theorem]{Propiedad}
+
+\newcommand{\abso}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\hil}[1]{\langle #1 \rangle}
+\newcommand{\parcial}[2]{\frac{\partial #1}{\partial #2} }
+\newcommand{\deri}[2]{\frac{d #1}{d #2} }
+\newcommand{\derid}[2]{\frac{d^{2} #1}{d #2^{2}} }
+\newcommand{\derit}[2]{\frac{d^{3} #1}{d #2^{3}} }
+\newcommand{\deric}[2]{\frac{d^{4} #1}{d #2^{4}} }
+\renewcommand{\sin}{\sen} 
+\renewcommand{\sinh}{\senh} 
+
+\newcommand{\raya}{$\rule{2cm}{0.12mm}$}
+\renewcommand{\vector}[1]{\vec{\bm{#1}}}
+\newcommand{\ihat}{\boldsymbol{\hat{\imath}}}
+\newcommand{\jhat}{\boldsymbol{\hat{\jmath}}}
+\newcommand{\xhat}{\boldsymbol{\hat{x}}}
+\newcommand{\yhat}{\boldsymbol{\hat{y}}}
+\newcommand{\khat}{\boldsymbol{\hat{k}}}
+\newcommand{\colorea}[2]{{\color{#1} #2 }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%% NEW ENVIRONMENTS %%%%%%%%%%%%
+%\newenvironment{bullets}{
+%\begin{itemize}
+%  \setlength{\itemsep}{1pt}
+%  \setlength{\parskip}{0pt}
+%  \setlength{\parsep}{0pt}
+%}{\end{itemize}}
+%
+%\newenvironment{numlist}{
+%\begin{enumerate}
+%  \setlength{\itemsep}{1pt}
+%  \setlength{\parskip}{0pt} \setlength{\parsep}{0pt} }{\end{enumerate}}
+%\newenvironment{code}{
+%\begin{quote}\begin{framed}
+%}{\end{framed}\end{quote}}
+%% \lstset{language=Matlab}
+%
+%
+%\lstnewenvironment{matlab}[1][]  
+%{  
+% \lstset{#1,language=Matlab}  
+%}  
+%{  
+%}  
+
+%  ---------------------------------- SELECCIONAR RESPUESTA  ----------------------------------
+\newenvironment{opciones}
+  {
+\begin{multicols}{2}
+\begin{enumerate}[label=(\arabic*)]
+}{
+\end{enumerate}
+\end{multicols}
+  }
+
+  \newenvironment{opcionesfour}
+  {
+\begin{multicols}{4}
+\begin{enumerate}[label=(\Alph*)]
+}{
+\end{enumerate}
+\end{multicols}
+  }  
+  
+\newenvironment{opcionesNum}
+  {
+\begin{multicols}{2}
+\begin{enumerate}[label=(\arabic*)]
+}{
+\end{enumerate}
+\end{multicols}
+  }
+%  ---------------------------------- SELECCIONAR RESPUESTA  ----------------------------------
+
+
+%  ---------------------------------- TITULO  ----------------------------------
+%  ---------------------------------- TITULO  ----------------------------------
+\newenvironment{tituloprincipal}{
+\begin{titlepage}
+    \drop=0.1\textheight
+    \centering
+%    \vspace*{\baselineskip}
+%{\color{moradoUTP}    
+%    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+%    \rule{\textwidth}{0.4pt}\\[\baselineskip]}
+%%    {\LARGE CONUNDRUMS\\ AND \\[0.3\baselineskip] PUZZLES}\\[0.2\baselineskip]
+%    {\LARGE APUNTES DE \\ {\color{moradoUTP}OPTIMIZACIÓN II}\\[0.3\baselineskip]}%\\[0.2\baselineskip]
+%{\color{moradoUTP}
+%    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+%    \rule{\textwidth}{1.6pt}\\[\baselineskip]}
+    \scshape
+    UNIVERSIDAD TECNOLÓGICA DE PANAMÁ \\ FACULTAD DE CIENCIAS Y TECNOLOGÍA\\
+    Maestría Científica en Ingeniería Matemática\\ \par
+    \vspace*{2\baselineskip}
+    Nombre del proyecto\\%[\baselineskip]
+    {\large     Modelado y simulación de Celdas Solares Orgánicas\par}
+ %   \vspace*{2\baselineskip}
+    Presentado por:\\%[\baselineskip]
+    {\large ERIC LUCERO G.\par}    
+%    \vspace*{2\baselineskip}
+    Asesor:\\%[\baselineskip]
+    Idulfo Arrocha Ph.D.\\
+    \vspace*{2\baselineskip}
+    \vfill
+Trabajo de graduación presentado en la Universidad Tecnológica de Panamá como requisito para optar por el título de Maestría Científica en Ingeniería Matemática
+\\[\baselineskip] \par    
+Panamá, República de Panamá\\2016 \par 
+ %   \LOGO
+    }{\end{titlepage}}
+%  ---------------------------------- TITULO  ----------------------------------
+%  ---------------------------------- TITULO  ----------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{sectsty}
+%\sectionfont{\color{green!70!blue}\bfseries}  % sets colour of sections
+%\chapterfont{\color{green!70!blue}\bfseries}  % sets colour of chapters
+\setcounter{secnumdepth}{0} % sections are level 1
+
+
+\addto\captionsspanish{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {}%
+}
+\setcounter{secnumdepth}{0} % sections are level 1
+
+
+\addto\captionsspanish{% Replace "english" with the language you use
+  \renewcommand{\contentsname}%
+    {}%
+}
+\usepackage{titlesec}
+\makeatletter
+
+\titleformat{\chapter}[frame]
+  {\normalfont\Large\bfseries}{\colorea{gmpGreen}{ \fontfamily{ugq}\selectfont\filright\enspace \@chapapp~\thechapter\enspace}  }
+  {8pt}{\Large\bfseries\filcenter\color{gmpBlue} \fontfamily{ugq}\selectfont}
+\titlespacing*{\chapter}
+  {0pt}{0pt}{20pt}
+  \titlespacing{\section}{0.5em}{0.5em}{0.5em}
+
+  \titleformat{\section}[hang]
+  {\large \color{gmpBlue}\fontfamily{ugq}\selectfont}
+  {\thesection}
+  {3em}{}
+  \titleformat{\subsection}[hang]
+  {\color{gmpPurple}\fontfamily{ugq}\selectfont}
+  {\thesubsection}
+  {2em}{}
+  \titleformat{\subsubsection}[hang]
+  {\fontfamily{ugq}\selectfont}
+  {\thesubsection}
+  {2em}{}
+
+  % \titleformat{〈command 〉}[〈shape〉]{〈format〉}{〈label 〉}{〈sep〉}{〈before-code〉}[〈after-code〉]
+\makeatother
+
+\addto\captionsenglish{\renewcommand{\chaptername}{\textbf{Módulo}}}
+\addto\captionsspanish{\renewcommand{\chaptername}{\textbf{Módulo}}}
+
+
+\setlength{\cftbeforepartskip}{12pt}
+\setlength{\cftbeforechapskip}{12pt}
+\setlength{\cftbeforesecskip}{5pt}
+\setlength{\cftbeforesubsecskip}{4pt}
+% TOC configuration
+\renewcommand\cftdotsep{1}
+\renewcommand\cftpartfont{\fontfamily{pag}\selectfont\color{gmpGreen}}
+\renewcommand\cftpartpagefont{\fontfamily{pag}\selectfont\color{gmpGreen}}
+% TOF configuration
+\renewcommand\cftchapfont{\bfseries\fontfamily{pag}\selectfont\color{gmpBlue}}
+\renewcommand\cftchappagefont{\grotesk\color{gmpBlue}}
+\renewcommand\cftsecfont{\fontfamily{pag}\selectfont}
+\renewcommand\cftsecpagefont{\fontfamily{pag}\selectfont}
+\renewcommand\cftsubsecfont{\fontfamily{pag}\selectfont}
+\renewcommand\cftsubsecpagefont{\fontfamily{pag}\selectfont}
+\renewcommand{\cftfigindent}{0pt}
+\renewcommand{\cfttabindent}{0pt}
+\renewcommand{\cftfigfont}{\fontfamily{pag}\selectfont}
+\renewcommand{\cfttabfont}{\fontfamily{pag}\selectfont}
+\renewcommand{\cftloftitlefont}{\hfill\Large\itshape \fontfamily{pag}\selectfont \color{gmpPurple}}
+\renewcommand{\cftlottitlefont}{\hfill\Large\itshape \fontfamily{pag}\selectfont \color{gmpGreen}}
+% \renewcommand{\cfttocfont}{}
+%  --- QUIMICA  --- QUIMICA  --- QUIMICA  --- QUIMICA  --- QUIMICA
+
+
+%%%%%%%%%%%%%%%% EXPLICACIONES  %%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%% 
+\colorlet{colexam}{red!75!white}
+\newtcolorbox[use counter=explicacion]{explicacion}{%
+empty,title={Explicación \thetcbcounter},attach boxed title to top left,boxed title style={empty,size=minimal,toprule=2pt,top=4pt,overlay={\draw[colexam,line width=2pt]([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);}},coltitle=colexam,fonttitle=\Large\bfseries,before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=0pt,right=3mm,top=4pt,breakable,pad at break*=0mm,vfill before first,overlay unbroken={\draw[colexam,line width=1pt]
+([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+--([xshift=-0.5pt]frame.south east)--(frame.south west); },
+overlay first={\draw[colexam,line width=1pt]
+([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+--([xshift=-0.5pt]frame.south east); },
+overlay middle={\draw[colexam,line width=1pt] ([xshift=-0.5pt]frame.north east)
+--([xshift=-0.5pt]frame.south east); },
+overlay last={\draw[colexam,line width=1pt] ([xshift=-0.5pt]frame.north east)
+--([xshift=-0.5pt]frame.south east)--(frame.south west);},%
+}
+
+\newtcbox{\alerta}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,arc=1pt,boxsep=1pt,before upper={\vphantom{dlg}},
+  colframe=green!50!black,coltext=green!45!black,colback=green!12!white,overlay={\begin{tcbclipinterior}\fill[green!75!blue!50!white] (frame.south west)
+    rectangle node[text=white,font=\bfseries\Huge] {!} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+   
+
+% FISICA    FISICA    FISICA    FISICA    FISICA    FISICA        
+% \newtcolorbox{mybox}[2][]{colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries,colbacktitle=red!85!black,title=#2,#1}
+% \newtcolorbox{instrucciones}[2][]{colframe=red!75!black,colback=red!10!yellow!20,coltitle=white!65,title={#2},fonttitle=\bfseries,#1}
+% \newtcolorbox[use counter=ejemplo]{ejemplo}[1][]{colframe=frameejemplo,colback=backejemplo,coltitle=white!65,title={Ejemplo \thetcbcounter},fonttitle=\bfseries}
+
+
+% %%%%%%%%%%%%%%%% EXPLICACIONES  %%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%%  %%%%%%%%%%%%%%%% 
+% \colorlet{colexam}{red!75!white}
+% \newtcolorbox[use counter=explicacion]{explicacion}{%
+% empty,title={Explicación \thetcbcounter},attach boxed title to top left,boxed title style={empty,size=minimal,toprule=2pt,top=4pt,overlay={\draw[colexam,line width=2pt]([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);}},coltitle=colexam,fonttitle=\Large\bfseries,before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=0pt,right=3mm,top=4pt,breakable,pad at break*=0mm,vfill before first,overlay unbroken={\draw[colexam,line width=1pt]
+% ([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+% --([xshift=-0.5pt]frame.south east)--(frame.south west); },
+% overlay first={\draw[colexam,line width=1pt]
+% ([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+% --([xshift=-0.5pt]frame.south east); },
+% overlay middle={\draw[colexam,line width=1pt] ([xshift=-0.5pt]frame.north east)
+% --([xshift=-0.5pt]frame.south east); },
+% overlay last={\draw[colexam,line width=1pt] ([xshift=-0.5pt]frame.north east)
+% --([xshift=-0.5pt]frame.south east)--(frame.south west);},%
+% }
+
+% \newtcbox{\alerta}{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,arc=1pt,boxsep=1pt,before upper={\vphantom{dlg}},
+%   colframe=green!50!black,coltext=green!45!black,colback=green!12!white,overlay={\begin{tcbclipinterior}\fill[green!75!blue!50!white] (frame.south west)
+%     rectangle node[text=white,font=\bfseries\Huge] {!} ([xshift=4mm]frame.north west);\end{tcbclipinterior}}}
+    
+% \newtcolorbox[]{alertas}[1][]{enhanced,nobeforeafter,tcbox raise base,boxrule=0.4pt,arc=12pt,boxsep=2pt,top=4pt,left=1cm,colframe=green!50!black,coltext=green!45!black,colback=green!12!white,overlay={\begin{tcbclipinterior}\fill[green!75!blue!50!white] (frame.south west) rectangle node[text=white,font=\bfseries\Huge] {!} ([xshift=8mm]frame.north west);\end{tcbclipinterior}}}
+\tikzstyle{nodeYellow}=[rounded corners=4pt,draw,align=center,fill=gmpYellow!55, text=black, inner sep=2mm, draw=none]
+\tikzstyle{nodePurple}=[rounded corners=4pt,draw,align=center,fill=gmpPurple!4, text=gmpPurple, inner sep=2mm, draw=none]
+\tikzstyle{nodeGreen}=[rounded corners=4pt,draw,align=center,fill=gmpGreen!4, text=gmpGreen, inner sep=2mm, draw=none]
+\tikzstyle{nodeBlue}=[rounded corners=4pt,draw,align=center,fill=gmpBlue!4, text=gmpBlue, inner sep=2mm, draw=none]
+\tikzstyle{nodeRed}=[rounded corners=4pt,draw,align=center,fill=gmpRed!4, text=gmpRed, inner sep=2mm, draw=none]
+% 
+% 
+\tikzstyle{roundBlue}=[fill=gmpBlue!10, text width=3cm, inner sep=4mm,align=center,text=gmpBlue, rounded corners=4mm] 
+\tikzstyle{roundPurple}=[fill=gmpPurple!10, text width=3cm, inner sep=4mm,align=center,text=gmpPurple, rounded corners=4mm] 
+% 
+\tikzstyle{redCapsule}=[rounded corners=8pt,align=center,fill=gmpRed!4, inner sep=1mm, draw=none]
+\tikzstyle{yellowCapsule}=[rounded corners=8pt,align=center,fill=gmpYellow!4, inner sep=1mm, draw=none]
+\tikzstyle{blueCapsule}=[rounded corners=8pt,align=center,fill=gmpYellow!4, inner sep=1mm, draw=none]
+
+\tikzstyle{nodeBlueNoSep}=[rounded corners=4pt,draw,align=center,fill=gmpBlue!5, text=gmpBlue, draw=none]
+
+\tikzstyle{nodoYellow}=[rounded corners=6pt,draw,align=center,fill=gmpYellow!60, text=gmpPurple, inner sep=4mm, draw=none]
+\tikzstyle{nodoRed}=[rounded corners=6pt,draw,align=center,fill=gmpRed!10, text=gmpRed, inner sep=4mm, draw=none]
+\tikzstyle{nodoBlue}=[rounded corners=6pt,draw,align=center,fill=gmpBlue!7, text=gmpBlue, inner sep=4mm, draw=none]
+\tikzstyle{nodoPurple}=[rounded corners=6pt,draw,align=center,fill=gmpPurple!7, text=gmpPurple, inner sep=4mm, draw=none]
+\tikzstyle{nodoGreen}=[rounded corners=6pt,draw,align=center,fill=gmpGreen!10, text=gmpGreen, inner sep=4mm, draw=none]
+\tikzstyle{nodoYellowSmall}=[rounded corners=6pt,draw,align=center,fill=gmpYellow!30, text=gmpPurple, inner sep=2mm,draw=none, text width=4.45cm]
+\tikzstyle{nodoBlueSmall}=[rounded corners=6pt,draw,align=center,fill=gmpBlue!7, text=gmpBlue, inner sep=2mm, draw=none, text width=4.45cm]
+\tikzstyle{nodoGreenSmall}=[rounded corners=6pt,draw,align=center,fill=gmpGreen!60, text=black, inner sep=2mm, draw=none, text width=4.45cm]
+\tikzstyle{nodoOrange}=[rounded corners=6pt,right,draw,align=center,fill=orange!60]
+\tikzstyle{nodoBig}=[rounded corners=6pt,draw,align=center,fill=gmpYellow!60, text=gmpPurple, inner sep=4mm,font=\footnotesize\fontfamily{ugq}\selectfont, draw=none]
+\tikzstyle{nodoNoBig}=[rounded corners=6pt,draw,align=center,fill=gmpYellow!60, text=gmpPurple, inner sep=4mm, text width=2cm, draw=none]
+\tikzstyle{support} = [pattern = north west lines]
+\tikzstyle{littleNodeGreen} = [rounded corners=4pt,draw=none,align=center,fill=gmpGreen!75]
+\tikzstyle{littleNodeYellow} = [rounded corners=4pt,draw=none,align=center,fill=gmpYellow!50]
+\tikzstyle{littleCircleRed} = [draw=none, fill=gmpRed!60]
+\tikzstyle{labeledTxt} = [rotate=0, text width=5.5cm, fill=gmpPurple!30, text=black,font=\footnotesize\fontfamily{ugq}\selectfont, inner sep=3mm,rounded corners=0.2cm, draw=none]
+\tikzstyle{nodoA} = [
+  inner sep = 3mm, align=center, text width=3cm, text=gmpPurple, 
+]
+\tikzstyle{labelOrder} = [
+  fill=gmpBlue!33,
+  drop shadow,
+  text=gmpBlue,
+  text width=5.25cm, 
+  align = center, 
+  inner sep = 3mm,
+  font=\footnotesize\fontfamily{ugq}\selectfont
+  ]
+  
+
+  \tikzstyle{labelNumber} = [
+  fill=gmpGreen!33,
+  drop shadow,
+  text=gmpGreen,
+  text width=0.5cm, 
+  align = center, 
+  inner sep = 3mm,
+  font=\footnotesize\fontfamily{ugq}\selectfont
+  ]
+\tikzstyle{state}=[
+    circle,
+    minimum size =1.25cm
+    draw=black,
+    thick,
+    fill=OliveGreen,
+    text=white
+]
+
+% FONTS
+\newcommand{\grotesk}{\fontfamily{ugq}\selectfont}
+\usepackage{circuitikz}
+
+% \newcommand{\ssubsection}[1]{%
+%   \subsection[#1]{\raggedright\Large\itshape #1}}
+
+
+\newtcolorbox[]{resume}[1]{%
+empty,title={RESUMEN DEL CAPÍTULO #1},
+attach boxed title to top center,
+% boxed title style={
+%   empty,size=minimal,
+%   toprule=2pt,top=14pt,
+%   overlay={\draw[gmpRed,line width=41pt]
+%   ([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);}
+%   },
+coltitle=gmpPurple,
+fonttitle=\Large\grotesk,
+% before=\par\medskip\noindent,
+% parbox=false,
+% boxsep=6pt,left=0pt,right=3mm,top=4pt,
+% breakable,pad at break*=0mm,
+% vfill before first,
+overlay unbroken={
+  \draw[gmpGreen,line width=3pt]
+([yshift=-3pt]title.north east)--([xshift=-0.5pt,yshift=-3pt]title.north-|frame.east)
+--([xshift=-1.5pt]frame.south east)--(frame.south west); 
+},
+% overlay first={\draw[red,line width=6pt]
+% ([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-3pt]title.north-|frame.east)
+% --([xshift=-0.5pt]frame.south east); 
+% },
+% overlay middle={\draw[blue,line width=5pt] ([xshift=-0.5pt]frame.north east)
+% --([xshift=-0.5pt]frame.south east); 
+% },
+% overlay last={\draw[red,line width=9pt] ([xshift=-0.5pt]frame.north east)
+% --([xshift=-0.5pt]frame.south east)--(frame.south west);
+% }
+}
+\usepackage[thinlines]{easytable}
+
+\newtcolorbox{mybox}[2][]{colback=gmpRed!10!white,colframe=gmpRed,fonttitle=\fontfamily{ugq}\selectfont,colbacktitle=gmpRed!85!black,title=#2,#1}
+\newtcolorbox{instrucciones}[2][]{colframe=red!75!black,colback=red!10!yellow!20,coltitle=white!65,title={#2},fonttitle=\bfseries,#1}
+\newtcolorbox[use counter=ejemplo]{ejemplo}[2][]{
+  toptitle=2mm,
+  colframe=gmpBlue,
+  colback=gmpBlue!10,
+  coltitle=white,
+  title={ \fontfamily{ugq}\selectfont Ejemplo \thetcbcounter \;\;  #2},
+  fonttitle=\bfseries,
+  #1
+  }
+
+\newtcolorbox[use counter=problemas]{prob}[2][]{
+  colframe=gmpBlue,
+  colback=gmpBlue!10,
+  coltitle=white,
+  title={ \fontfamily{ugq}\selectfont Problema \thetcbcounter \;\;  #2},
+  fonttitle=\bfseries,
+  #1
+  }
+
+\newtcolorbox[use counter=ejercicio]{ejercicio}[2][]{
+  toptitle=2mm,
+  boxsep=2mm,
+  breakable,
+  colframe=gmpRed,
+  colback=gmpRed!4,
+  coltitle=white,
+  title={ \fontfamily{ugq}\selectfont Problema \thetcbcounter \;\;  #2},
+  fonttitle=\bfseries,
+  #1
+  }
+
+\newtcolorbox{mydef}[2][]{
+    toptitle=2mm,
+    boxsep=2mm,
+    colbacktitle=gmpGreen,
+    colframe=gmpGreen,
+    colback=gmpGreen!8,
+    coltitle=white,
+    breakable,% 
+    % width=12cm,
+    title={\fontfamily{ugq}\selectfont #2},
+    fonttitle=\bfseries,#1
+}
+    
+ \newtcolorbox{myboxi}[2][]{
+      toptitle=3mm,
+      boxsep=2mm,
+      colbacktitle=gmpPurple,
+      colframe=gmpPurple,
+      colback=gmpYellow!5,
+      coltitle=white,
+      % width=12cm,
+      title={\large \fontfamily{ugq}\selectfont #2},
+      fonttitle=\bfseries,#1
+} 
+\newtcolorbox[]{alertas}[1][]{
+  enhanced,
+  nobeforeafter,
+  tcbox raise base,
+  boxrule=1.5pt,
+  arc=12pt,
+  boxsep=1.5mm,
+  top=4pt,
+  left=1cm,
+  fontupper=\fontfamily{ugq}\selectfont \small,
+  colframe=gmpGreen,
+  coltext=gmpPurple,
+  colback=gmpGreen!10,
+  overlay={
+    \begin{tcbclipinterior}
+      \fill[gmpGreen] (frame.south west) rectangle node[text=white,font=\bfseries\Huge] {!} ([xshift=8mm]frame.north west);
+    \end{tcbclipinterior}}
+  }
+  \newtcolorbox[]{longalertas}[1][]{
+    enhanced,
+    nobeforeafter,
+    tcbox raise base,
+    boxrule=1.4pt,
+    arc=12pt,
+    boxsep=2pt,
+    top=4pt,
+    left=1cm,
+    % fontupper=\fontfamily{ugq}\selectfont \small,
+    colframe=gmpGreen,
+    coltext=gmpPurple,
+    colback=gmpGreen!7,
+    overlay={
+      \begin{tcbclipinterior}
+        \fill[gmpGreen] (frame.south west) rectangle node[text=white,font=\bfseries\Huge] {\grotesk !} ([xshift=8mm]frame.north west);
+      \end{tcbclipinterior}}
+    }

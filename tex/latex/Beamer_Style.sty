@@ -1,0 +1,174 @@
+% ================================
+%         Eric Lucero Beamer UPM
+% ================================
+% @author: Eric Lucero
+% @location: /Users/my_name/Library/Texmf/
+% @contact: ericlucerogonzalez@gmail.com
+% @revised: Oct / 2024
+%
+% Descripción: Este archivo define los estilos y configuraciones específicas para 
+%              presentaciones en LaTeX utilizando el paquete Beamer. Aquí se encuentran 
+%              los comandos personalizados, configuraciones de fuentes, colores y 
+%              otras macros diseñadas para ser reutilizables.
+%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Beamer_style}[October_2024]
+% ================================
+%     4. ESTILO Y FORMATO
+% ================================
+\logo{
+    \vspace{1.9\paperheight}
+    \includegraphics[width=0.23\textwidth]{UPM_Logo.png}
+}
+
+\useinnertheme{circles} % Estilo de los elementos internos en forma de círculos
+\useoutertheme{shadow} % Agrega sombra a los elementos externos
+\usefonttheme{structurebold} % Usa un tema de fuente en negrita para la estructura
+
+\setbeamertemplate{headline}{} % Elimina la cabecera del tema
+\setbeamertemplate{navigation symbols}{} % Elimina los símbolos de navegación
+\setbeamertemplate{caption}[numbered] % Numerar las leyendas
+\setbeamerfont{footnote}{size=\tiny} % Tamaño de la fuente de las notas al pie
+
+\setbeamercolor{footnote mark}{fg=colorA} % Color de las marcas de nota al pie
+\setbeamercolor{frametitle}{bg=white,fg=colorA} % Color de fondo y texto del título del marco
+\setbeamercolor{framesubtitle}{bg=white,fg=colorB}
+\setbeamercolor{title}{bg=colorA,fg=white}
+\setbeamercolor{alerted text}{fg=colorD}
+% % ===================================
+\usefonttheme[onlymath,bibliography]{serif}  % Usa fuentes serif solo en el modo matemático para Beamer.
+%% Beamer Footer
+\setbeamercolor{author in head/foot}{bg=white,fg=colorA} % Color del autor en la cabecera/pie
+\setbeamercolor{title in head/foot}{bg=colorB,fg=white} % Color del título en la cabecera/pie
+
+\setbeamercolor{subsection in head/foot}{bg=colorA!50,fg=white} % Color de las subsecciones en la cabecera/pie
+\setbeamercolor{date in head/foot}{bg=white,fg=colorC} % Color de la fecha en la cabecera/pie
+
+% % ===================================
+%% Beamer Bibliography
+\setbeamercolor{bibliography entry title}{fg=colorA}
+\setbeamercolor{bibliography entry author}{fg=colorA}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=colorC}
+\colorlet{titleleft}{colorA!30} % Color de la parte izquierda del título
+\colorlet{titlemiddle}{colorA!70} % Color del medio del título
+\colorlet{titleright}{colorA} % Color de la parte derecha del título
+\makeatletter
+\setbeamertemplate{frametitle} % Define el estilo del título del marco
+{%
+    \nointerlineskip% % Elimina el espacio entre líneas
+    \vskip-2pt% % Ajusta el espacio vertical antes del título
+    \hbox{\leavevmode
+        \advance\beamer@leftmargin by -12bp% % Reduce el margen izquierdo
+        \advance\beamer@rightmargin by -12bp% % Reduce el margen derecho
+        \beamer@tempdim=\textwidth% % Almacena el ancho del texto
+        \advance\beamer@tempdim by \beamer@leftmargin% % Ajusta el ancho total
+        \advance\beamer@tempdim by \beamer@rightmargin% % Ajusta el ancho total
+        \hskip-\Gm@lmargin\hbox{%
+            \setbox\beamer@tempbox=\hbox{\begin{minipage}[b]{0.9\paperwidth}% % Crea un cuadro temporal para el título
+                    \vbox{}\vskip-.75ex% % Ajusta el espacio vertical dentro del cuadro
+                    \leftskip0.3cm% % Define un espacio a la izquierda
+                    \rightskip1.3cm plus1fil\leavevmode % Define un espacio a la derecha
+                    \insertframetitle% % Inserta el título del marco
+                    \ifx\insertframesubtitle\@empty%
+                        \strut\par% % Si no hay subtítulo, añade un salto de párrafo
+                    \else
+                        \par{\usebeamerfont*{framesubtitle}{\usebeamercolor[fg]{framesubtitle}\insertframesubtitle}\strut\par}% % Inserta el subtítulo si existe
+
+                    \fi%
+                    \nointerlineskip
+                    \vbox{}\vskip3.75ex%% % Espacio adicional para el diseño
+                \end{minipage}}%
+            \beamer@tempdim=\ht\beamer@tempbox% % Almacena la altura del cuadro temporal
+            \advance\beamer@tempdim by 6pt% % Ajusta la altura
+            \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\beamer@tempdim} % Crea un cuadro para el degradado
+                \usebeamercolor{frametitle right} % Aplica el color del título
+                \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}} % Define la forma rectangular
+                \pgfusepath{clip} % Aplica el recorte
+                % \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}} % Aplica el degradado
+            \end{pgfpicture}
+            \hskip-\paperwidth% % Ajusta la posición horizontal
+            \box\beamer@tempbox% % Inserta el cuadro temporal
+        }%
+        \hskip-\Gm@rmargin% % Ajusta el margen derecho
+    }%
+    \nointerlineskip
+    \vskip-0.2pt% % Ajusta el espacio vertical
+    \vskip-2pt% % Ajusta el espacio vertical después del título
+}
+\makeatother
+
+\makeatletter
+\newcommand\titlegraphicii[1]{\def\inserttitlegraphicii{#1}}
+\titlegraphicii{}
+
+\setbeamertemplate{title page}
+{
+    \vbox{}
+    {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\hfill\inserttitlegraphicii\par}
+    \begin{centering}
+        \begin{beamercolorbox}[sep=8pt,center]{institute}
+            %   \usebeamerfont{institute}\insertinstitute
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[sep=8pt,center]{title}
+            \usebeamerfont{title}\inserttitle\par%
+            \ifx\insertsubtitle\@empty%
+            \else%
+                \vskip0.25em%
+                {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+            \fi%     
+        \end{beamercolorbox}%
+        \vskip1em\par
+        \begin{beamercolorbox}[sep=8pt,center]{date}
+            \usebeamerfont{date}\insertdate
+        \end{beamercolorbox}%\vskip0.5em
+        \begin{beamercolorbox}[sep=8pt,center]{author}
+            \usebeamerfont{author}\insertauthor
+        \end{beamercolorbox}
+    \end{centering}
+    %\vfill
+}
+\makeatother
+% {LOGOTIPO.png}
+\titlegraphic{\includegraphics[width=4.5cm]{LOGOTIPO.png}}
+\titlegraphicii{\includegraphics[width=4.5cm]{ETSI_leyenda.png}}
+
+
+\makeatletter
+
+\setbeamertemplate{footline} % Configura la línea de pie de página
+{
+    \leavevmode%
+    \setbox\beamer@tempbox=\hbox{%
+        % \begin{beamercolorbox}[wd=.2\paperwidth,ht=1.75ex,dp=1ex,center]{author in head/foot}%
+        %     \usebeamerfont{author in head/foot}\insertshortauthor % Inserta la abreviatura de la institución
+        % \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.7\paperwidth,ht=1.75ex,dp=1ex,center]{section in head/foot}%
+            \usebeamerfont{section in head/foot}\textcolor{white}{\insertsectionhead} \hspace*{1em}\hspace*{1em} % Inserta el encabezado de sección
+            % \usebeamerfont{subsection in head/foot}\insertsubsectionhead % Inserta el encabezado de subsección
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.3\paperwidth,ht=1.75ex,dp=1ex,right]{date in head/foot}%
+            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{1em} % Inserta la fecha corta
+            \insertframenumber{}\hspace*{1ex}
+            % / \inserttotalframenumber\hspace*{1ex} % Inserta el número de la diapositiva actual y total
+        \end{beamercolorbox}%
+    }%
+    \beamer@tempdim=\ht\beamer@tempbox% % Almacena la altura del cuadro temporal
+    \advance\beamer@tempdim by 2pt% % Ajusta la altura
+    \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{20pt} % Crea un cuadro para el degradado
+        \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}} % Define la forma rectangular
+        \pgfusepath{clip} % Aplica el recorte
+        % \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}} % Aplica el degradado
+    \end{pgfpicture}
+    \vskip-\beamer@tempdim% % Espacio negativo para ajustar
+    \box\beamer@tempbox% % Inserta el cuadro temporal
+}%
+\makeatother
+
+
+\setbeamercolor{section in sidebar}{fg=colorB} % Color de las secciones en la barra lateral
+\setbeamercolor{section in head/foot}{fg=white,bg=colorA} % Color de las secciones en la cabecera/pie
+\setbeamerfont{section in head/foot}{series=\bfseries} % Optional: Adjust font
+% \setbeamercolor{palette primary}{fg=colorA} % Critical: Override primary text color
+% \setbeamercolor{structure}{fg=colorA} % Optional: Uncomment if needed

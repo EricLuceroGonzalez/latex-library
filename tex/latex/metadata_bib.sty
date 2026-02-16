@@ -1,0 +1,75 @@
+% ================================
+% @author: Eric Lucero
+% @location: /Users/my_name/Library/Texmf/
+% @contact: ericlucerogonzalez@gmail.com
+% @revised: May / 2025
+%
+% Descripción: Este archivo define los metadatos y configuraciones de bibliografía utilizados en los documentos de LaTeX.
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{command_definitions}
+% ================================
+%      METADATOS Y URL'S
+% ================================
+\RequirePackage{hyperref}
+\hypersetup{
+    % --- Visual ---
+    colorlinks=true,       % false: boxed links; true: colorD links,
+    filecolor=colorD,      % color of file links
+    urlcolor=colorA,           % color of external links
+    citecolor=colorA,        % color of links to bibliography
+    breaklinks=true,       % Permite que los enlaces largos se rompan en varias líneas
+    % linkcolor=white,          % color of internal links
+    % colorlinks=true,       % true = texto coloreado (mejor); false = cajas (feo)
+    % linkcolor=myHyperColor,% Color de enlaces internos (índice, figuras)
+    % citecolor=myHyperColor,% Color de citas bibliográficas
+    % urlcolor=myHyperColor, % Color de enlaces web
+    % filecolor=myHyperColor,% Color de enlaces a archivos
+    % --- Metadatos del PDF (Automático) ---
+    pdftitle={\thetitle},  % Usa el título definido en \title{}
+    pdfauthor={\theauthor},% Usa el autor definido en \author{}
+    pdfcreator={pdftex},   % creator of the document
+    pdfsubject={Tesis Doctoral / Proyecto}, % Asunto genérico
+    pdfkeywords={LaTeX, Tesis, UPM, AI,PhD},        % Palabras clave (opcional)
+    pdfdisplaydoctitle=true, % Muestra el título del documento en la barra de ventana
+    pdfproducer={Texmaker, TexLive, MacOS}, % producer of the document
+    % pdftitle={EricLuceroG},    % title
+    % pdfauthor={Eric Lucero Gonzalez},     % author
+    % pdfsubject={Inteligencia Artificial},   % subject of the document
+    % pdfkeywords={AI, MUIA, PhD}, % list of keywords
+    % --- Comportamiento ---
+    bookmarksnumbered=true, % Incluye números en los marcadores del PDF
+    bookmarksopen=true,     % Abre el árbol de marcadores al iniciar
+    bookmarksopenlevel=1,   % Nivel de profundidad al abrir (1 = Capítulos)
+    pdfpagemode=UseOutlines,% Muestra los marcadores al abrir el PDF
+    pdfstartview=FitH,      % Abre el PDF ajustado al ancho de página
+}
+
+% ================================
+%      CITAS Y BIBLIOGRAFIA
+% ================================
+\RequirePackage[
+    backend=bibtex,
+    % style=authoryear,
+    % pluralothers=true,
+    % bibstyle=authoryear,
+    % backref=true,
+    maxcitenames=2,      % Limita a 2 autores en la cita, seguido de "et al." si hay más.
+    % citestyle=authoryear, % Usa el estilo de citas de autor-año.
+    citestyle=numeric, % Usa el estilo de citas de autor-año.
+    sorting=none,         % Evita ordenar la bibliografía (los elementos aparecen en el orden que los citaste).
+]{biblatex}
+
+\DefineBibliographyStrings{spanish}{
+    andothers = {et\addabbrvspace al\adddot}, % Personaliza la abreviación de "et al." en español.
+    and = {y},                                % Traduce "and" a "y" en las listas de autores.
+}
+\renewcommand*{\nameyeardelim}{\addcomma\space} % Coloca una coma entre el nombre del autor y el año en las citas.
+\renewcommand*{\bibpagespunct}{\addcolon\addspace}
+\renewcommand{\postnotedelim}{%
+    \iffieldpages{postnote}
+    {\addcolon\space}
+    {\addspace}}
+% \RequirePackage{biblatex}
+\addbibresource{theBibliography}
+\addbibresource{temp_bibliography} % Archivo de bibliografía

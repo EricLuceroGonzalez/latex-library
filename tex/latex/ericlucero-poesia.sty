@@ -1,0 +1,262 @@
+\ProvidesPackage{ericlucero-poesia}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel} % espanol, ingles
+\usepackage[p,osf]{baskervillef}
+\usepackage[varqu,varl,var0]{inconsolata}
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[baskerville,vvarbb]{newtxmath}
+\usepackage[cal=boondoxo]{mathalfa}
+% \usepackage{subfigure}
+\usepackage{caption}
+\usepackage{subcaption}
+% \usepackage{lmodern}
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage{comment}
+\usepackage{xcolor}
+\ifpdf
+  \usepackage{pdfcolmk}
+\fi
+\usepackage{graphicx}
+%\usepackage[outline]{contour}
+\usepackage{tikz}
+\usepackage{pifont}
+\ifxetex
+  \usepackage{fontspec}
+\fi
+\usepackage{tocloft}
+\usepackage{lipsum}
+
+% \title{Alondras en vuelo} % Book title
+\author{Eric Lucero} % Author
+% \newcommand{\edition}{Second Edition} % Book edition
+
+
+%----------------------------------------------------------------------------------------
+%	GEOMETRY
+%----------------------------------------------------------------------------------------
+% \usepackage{geometry}
+% \usepackage[showframe]{geometry} % to show margins
+% \geometry{portrait,
+% total={\paperHeight,\paperWidth}, 
+% left=44mm,right=32mm, 
+% top=15mm, bottom=19mm
+% }
+
+%----------------------------------------------------------------------------------------
+%	PAPER SIZE
+%----------------------------------------------------------------------------------------
+%% DeBolsillo
+% \def\paperWidth{15.9cm}
+% \def\paperHeight{23.99cm}
+%% Ebook
+\def\paperWidth{8.5in}
+\def\paperHeight{11.0in}
+% \def\paperWidth{11in}
+% \def\paperHeight{8.5in}
+%% Standard
+% \def\paperWidth{6in}
+% \def\paperHeight{9in}
+
+% %% Natural
+% \def\paperWidth{5.5in}
+% \def\paperHeight{8.5in}
+%% DeBolsillo
+% \def\paperWidth{5.0in}
+% \def\paperHeight{8.0in}
+%----------------------------------------------------------------------------------------
+%	PAPER, MARGIN AND HEADER/FOOTER SIZES
+%----------------------------------------------------------------------------------------
+\setstocksize{\paperHeight}{\paperWidth} % Paper size
+\settrimmedsize{\stockheight}{\stockwidth}{*} % No trims
+% \settrimmedsize{0.9\stockheight}{0.9\stockwidth}{*} % No trims
+% Fcciones pagina:{12.3cm}{18.8cm}
+% Fcciones margenees:
+
+\setlrmarginsandblock{33mm}{34mm}{*} % Left/right margins
+\setulmarginsandblock{15mm}{30mm}{*} % Top/bottom margins
+\setheadfoot{15pt}{25pt} % Header/footer height
+\setheaderspaces{*}{5mm}{*} % Extra header space
+\setlength{\voffset}{5mm}
+\setlength{\hoffset}{0mm}
+% \setlength{\setoddsidemargin}{1mm}
+
+
+\graphicspath{{/home/ericlucero/Dropbox/00-academic/UMIP/media/}}
+%----------------------------------------------------------------------------------------
+%	FOOTNOTE CUSTOMIZATION
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\foottextfont}{\itshape\footnotesize} % Font settings for footnotes
+\setlength{\footmarkwidth}{-.1em} % Space between the footnote number and the text
+\setlength{\footmarksep}{.1em} % Space between multiple footnotes on the same page
+\renewcommand*{\footnoterule}{} % Remove the rule above the first footnote
+\setlength{\skip\footins}{1\onelineskip} % Space between the body text and the footnote
+
+%----------------------------------------------------------------------------------------
+%	HEADER AND FOOTER FORMATS
+%----------------------------------------------------------------------------------------
+
+\makepagestyle{mio} % Define a new custom page style
+\setlength{\headwidth}{\textwidth} % Header the same width as the text
+\makeheadrule{mio}{\textwidth}{0.1mm} % Header rule height
+\makeoddhead{mio}{\scriptsize{\theauthor\hskip.2cm\vrule\hskip.2cm\itshape{\thetitle}}}{}{} % Header specification
+% % \makeoddfoot{mio}{}{\scriptsize {\thepage \quad \vrule \quad \thelastpage}}{} % Footer specification
+\makeoddfoot{mio}{}{\scriptsize {\thepage }}{} % Footer specification
+%%\makeoddfoot{plain}{}{\footnotesize {\thepage \quad \vrule \quad \thelastpage}}{} % Pages of chapters
+\makeoddfoot{plain}{}{\footnotesize {\thepage }}{} % Pages of chapters
+\pagestyle{mio} % Set the page style to the custom style defined above
+
+%----------------------------------------------------------------------------------------
+%	PART FORMAT
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\partnamefont}{\centering\sffamily\itshape\Huge} % Part name font specification
+\renewcommand{\partnumfont}{\sffamily\Huge} % Part number font specification
+\renewcommand{\parttitlefont}{\centering\sffamily\scshape} % Part title font specification
+\renewcommand{\beforepartskip}{\null\vskip.618\textheight} % Whitespace above the part heading
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER FORMAT
+%----------------------------------------------------------------------------------------
+
+\makechapterstyle{Tufte}{ % Define a new chapter style
+\renewcommand{\chapterheadstart}{\null \vskip-1.5\onelineskip} % Whitespace before the chapter starts
+\renewcommand{\printchaptername}{\large\itshape\chaptername} % "Chapter" text font specification
+\renewcommand{\printchapternum}{\LARGE\thechapter \\} % Chapter number font specification
+\renewcommand{\afterchapternum}{} % Space between the chapter number and text
+\renewcommand{\printchaptertitle}[1]{ % Chapter title font specification
+\raggedright
+\bfseries \Huge{##1}
+}
+\renewcommand{\afterchaptertitle}{
+\vskip4.5\onelineskip
+}}
+\chapterstyle{Tufte} % Set the chapter style to the custom style defined above
+% \newcommand{\chapterhead}{
+%   \chapterheadstart{0}
+% }
+% \setlength\beforechapskip{-\baselineskip}
+% \renewcommand{\chapterheadstart}{}
+% \chapterheadstart{0}
+%----------------------------------------------------------------------------------------
+%	SECTION FORMAT
+%----------------------------------------------------------------------------------------
+
+\setsecheadstyle{\sethangfrom{\noindent ##1}\raggedright\tiny} % Section title font specification
+\setbeforesecskip{-.6\onelineskip} % Whitespace before the section
+% \setaftersecskip{0.3\onelineskip} % Whitespace after the section
+\setaftersecskip{-2em} 
+%----------------------------------------------------------------------------------------
+%	SUBSECTION FORMAT
+%----------------------------------------------------------------------------------------
+
+\setsubsecheadstyle{\sethangfrom{\noindent  ##1}\raggedright\sffamily\large\itshape} % Subsection title font specification
+\setbeforesubsecskip{-.5\onelineskip} % Whitespace before the subsection
+\setaftersubsecskip{.2\onelineskip} % Whitespace after the subsection
+
+%----------------------------------------------------------------------------------------
+%	SUBSUBSECTION FORMAT
+%----------------------------------------------------------------------------------------
+
+\setsubsubsecheadstyle{\sethangfrom{\noindent ##1}\raggedright\sffamily\itshape} % Subsubsection title font specification
+\setbeforesubsubsecskip{-.5\onelineskip} % Whitespace before the subsubsection
+\setaftersubsubsecskip{.1\onelineskip} % Whitespace after the subsubsection
+
+%----------------------------------------------------------------------------------------
+%	CAPTION FORMAT
+%----------------------------------------------------------------------------------------
+
+\captiontitlefont{\itshape\footnotesize} % Caption font specification
+\captionnamefont{\footnotesize} % "Caption" text font specification
+
+%----------------------------------------------------------------------------------------
+%	QUOTATION ENVIRONMENT FORMAT
+%----------------------------------------------------------------------------------------
+
+\renewenvironment{quotation}
+{\par\leftskip=1em\vskip.5\onelineskip\em}
+{\par\vskip.5\onelineskip}
+
+%----------------------------------------------------------------------------------------
+%	QUOTE ENVIRONMENT FORMAT
+%----------------------------------------------------------------------------------------
+
+\renewenvironment{quote}
+{\list{}{\em\leftmargin=1em}\item[]}{\endlist\relax}
+
+%----------------------------------------------------------------------------------------
+%	MISCELLANEOUS DOCUMENT SPECIFICATIONS
+%----------------------------------------------------------------------------------------
+
+\setlength{\parindent}{1em} % Paragraph indentation
+
+\midsloppy % Fewer overfull lines - used in the memoir class and allows a setting somewhere between \fussy and \sloppy
+
+\checkandfixthelayout % Tell memoir to implement the above
+
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS SPECIFICATIONS
+%----------------------------------------------------------------------------------------
+\usepackage[backref=true]{hyperref}
+\hypersetup{
+    pdftitle={Antologia},    % title
+    pdfauthor={Eric A. Lucero Gonzalez},     % author
+    pdfsubject={Poesia, Literatura, Poemas},   % subject of the document
+    pdfcreator={pdftex},   % creator of the document
+    pdfproducer={Texmaker, TexLive, Ubuntu 16.04}, % producer of the document
+    pdfkeywords={Poesia, Literatura, Poemas, Antologia, poetas panamenos}, % list of keywords
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=black,     % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=blue           % color of external links
+}
+
+%----------------------------------------------------------------------------------------
+%	HEADERS SPECIFICATIONS
+%----------------------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\definecolor{colorA}{RGB}{125, 100, 255}
+\def\theTitle{Entre encierros y letras}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.1pt}
+\fancyhf{}
+\fancyhead[LE]{\fontfamily{pag}\selectfont \bfseries \footnotesize \leftmark}
+\fancyhead[RO]{\textbf{\footnotesize \theTitle}}
+% \fancyhead[RE,LO]{\textbf{ \scshape Entre encierros y letras}}
+\fancyfoot[RO,LE]{ \thepage}
+% \fancyfoot[LE,RO]{ \rightmark}
+% \fancyfoot[LE,RO]{\thepage}
+
+\fancypagestyle{bookstyle}
+{
+\rhead{Rhd - \rightmark}
+\lhead{\leftmark}
+\rfoot{\textsc{\thepage}}
+\fancyfoot[L]{\footnotesize \textsc{Name - Namasd}}
+\fancyfoot[C]{\footnotesize \textsc{Name - Namasd}}
+}
+
+
+\fancypagestyle{tikzChapter}
+{
+\rhead{}
+\lhead{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[LE,RO]{}
+\fancyhead[RE,LO]{}
+\fancyfoot[L]{}
+\fancyfoot[C]{\footnotesize \thepage}
+}
+
+
+
+% \makeatletter
+% \renewcommand{\thesection}{%
+%   \ifnum\c@chapter<1 \@arabic\c@section
+%   \else \thechapter.\@arabic\c@section
+%   \fi
+% }
+% \makeatother

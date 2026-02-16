@@ -1,0 +1,363 @@
+% Boxes_Draws.sty
+% ================================
+%         Eric Lucero Beamer UPM
+% ================================
+% @author: Eric Lucero
+% @location: /Users/my_name/Library/Texmf/
+% @contact: ericlucerogonzalez@gmail.com
+% @revised: Mar / 2025
+%
+% Descripción: Este archivo define los estilos y configuraciones específicas para 
+%              presentaciones en LaTeX utilizando el paquete Beamer. Aquí se encuentran 
+%              los comandos personalizados, configuraciones de fuentes, colores y 
+%              otras macros diseñadas para ser reutilizables.
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Boxes_Draws}[March_2025]
+\RequirePackage{tcolorbox}
+% Multicols widths:
+\newlength{\mywidth}
+\setlength{\mywidth}{\linewidth}
+\addtolength{\mywidth}{-0.5\columnsep}
+\newlength{\mytikzwidth}
+\setlength{\mytikzwidth}{\linewidth}
+\addtolength{\mytikzwidth}{-4ex}
+% \colorbox{colorB}{\makebox[\mywidth][c]{Black text on red background}}
+% \colorbox{colorA}{Black text on UPM blue like background}
+% \colorbox{colorD}{\makebox[\mywidth][c]{Black text on red background}}
+
+
+% % % >>>>>>>>>>>>>>>>>>>>>  TCOLORBOX - OWN Styles  <<<<<<<<<<<<<<<<<<<<<<<<<<
+\newtcbox{\question}{
+    enhanced,
+    nobeforeafter,
+    tcbox raise base,
+    boxrule=0.4pt,
+    arc=1pt,
+    boxsep=1pt,
+    before upper={\vphantom{dlg}},
+    colframe=colorA,
+    fontupper=\fontfamily{ugq}\selectfont \bfseries,
+    coltext=colorA,
+    colback=colorA!10!white,
+    overlay={
+            \begin{tcbclipinterior}
+                \fill[colorA] (frame.south west) rectangle node[text=white,
+                        font=\bfseries\Large] {?} ([xshift=4mm]frame.north west);
+            \end{tcbclipinterior}
+        }
+}
+
+\newcounter{testPart}
+\newtcolorbox[use counter=testPart]{tPart}[2][]{
+    frame code={}
+    center title,
+    left=0pt,
+    right=0pt,
+    top=0pt,
+    bottom=0pt,
+    % width=\dimexpr\textwidth\relax,
+    enlarge left by=0mm,
+    boxsep=5pt,
+    arc=0pt,outer arc=0pt,
+    colframe=colorA,
+    colback=colorA!10!white,
+    coltitle=myDarkPurple,
+    title={{\fontfamily{ugq}\selectfont \thetcbcounter) #2}},
+    % detach title,before upper={\tcbtitle\quad},
+    attach title to upper={ }
+}
+
+\newtcolorbox{instrucciones}[2][]{
+    colframe=colorC,
+    colback=colorD!25!white,
+    coltitle=white,
+    title={#2},
+    fonttitle=\bfseries,#1
+}
+
+\newtcolorbox{alink}{
+    colframe=black,
+    colbacktitle=colorA,
+    colback=myYellow!30!white,
+    coltitle=white,
+    title={\grotesk \colorea{white}{\faAt} Link},
+    sharp corners,
+    tile,flip title={sharp corners},
+    % detach title,
+    % before upper={\tcbtitle \newline},
+    % fonttitle=\grotesk \colorea{colorD}{\faYoutube} Video,
+}
+
+\newtcolorbox{mybox1}[2][]{
+    toptitle=1mm,
+    boxsep=0.5mm,
+    colbacktitle=colorC,
+    coltitle=colorA,
+    colback=colorC!5,
+    colframe=colorC,
+    coltext=colorC,
+    title={\fontfamily{ugq}\selectfont #2},fonttitle=\bfseries, #1}
+
+
+\newtcolorbox[use counter=theocounter]{teorema}[1][]{
+    toptitle=0.6mm,
+    breakable,% 
+    colframe=green!20!black,
+    colback=green!23!white,% 
+    coltitle=white,% 
+    fonttitle={\bfseries \scshape} ,%   
+    sharp corners,
+    title={Teorema \thetcbcounter},
+}
+
+\newtcolorbox[use counter=definitionCounter]{definicion}[1]{
+    toptitle=1.6mm,
+    colframe=colorC,
+    colback=colorC!4!white,
+    coltitle=white,
+    rounded corners,
+    breakable,
+    fonttitle=\bfseries,
+    % title={Definición \thetcbcounter: #1},
+    title={\fontfamily{ugq}\selectfont Definición \thetcbcounter: #1}
+    % valign=center,width=(\linewidth-3em)
+}
+
+\newtcolorbox[use counter=ejemplo]{ejemplo}[1][]{
+    toptitle=1.6mm,
+    colframe=colorC,
+    colback=colorA!4,
+    coltitle=white,
+    sharp corners,
+    breakable,
+    title={\grotesk Ejemplo \thetcbcounter},
+    fonttitle=\bfseries
+}
+
+\newtcolorbox[use counter=ejercicio]{ejercicio}[1][]{
+    colframe=colorE,
+    coltext=colorA,
+    colback=colorE!4!white,
+    title={Ejercicio \thetcbcounter},
+    fonttitle=\bfseries
+}
+
+% TIKZ STYLES
+%! -- Nodes
+\tikzset{
+    redLabel/.style={align=center,fill=GithubRed!20,inner sep=2.3mm, text=GithubRed},
+    greenLabel/.style={align=center,fill=GithubGreen!20,inner sep=2.3mm, text=GithubGreen},
+    primaryLabel/.style={align=center,fill=colorA!20,inner sep=2.3mm, draw=none,text=colorA},
+    primaryLabel_Dark/.style={align=center,fill=colorA,text=white,inner sep=2.3mm, draw=none,text=colorA},
+    secondaryLabel/.style={align=center,fill=colorD!20,inner sep=2.3mm,text=colorD},
+    blackLabel/.style={text=white,align=center,fill=black,inner sep=2.3mm, draw=white},
+    infonode/.style={font=\large,inner sep=10pt,rounded corners=3pt,above right,draw,align=center,fill=colorA!50},
+}
+\tikzset{
+    arrownode/.style={-Triangle,line width=0.7mm, color=colorA},
+    arrowRed/.style={-Triangle,line width=0.7mm, color=colorD},
+    arrowOrange/.style={-Triangle,line width=0.7mm, color=colorC},
+    arrowBlue/.style={-Triangle,line width=0.7mm, color=blue},
+    arrowBlack/.style={-Triangle,line width=0.7mm, color=black},
+    arrowGreen/.style={-Triangle,line width=0.7mm, color=colorA},
+    arrowthin/.style={-Triangle,line width=0.5mm, color=colorC},
+    arrowbet/.style={Triangle-Triangle,line width=0.35mm, color=colorC},
+    arrowFake/.style={-Triangle,line width=0.5mm, color=colorC, opacity=0.3},
+}
+\tikzset{
+    redLabel/.style={align=center,fill=GithubRed!20,inner sep=2.3mm, text=GithubRed},
+    greenLabel/.style={align=center,fill=GithubGreen!20,inner sep=2.3mm, text=GithubGreen},
+    aLabel/.style={align=center,fill=colorA!10,inner sep=1.5mm, draw=none,text=colorA},
+    bLabel/.style={align=center,fill=colorD!10,inner sep=1.5mm,text=colorD},
+    cLabel/.style={align=center,fill=GithubGreen!10,inner sep=1.5mm,text=GithubGreen!70!black},
+    dLabel/.style={align=center,fill=colorH!20,inner sep=1.5mm,text=colorA,draw=none},
+    aLabel_Dark/.style={align=center,fill=colorA,inner sep=1.5mm,text=white,draw=none,font=\bfseries},
+    bLabel_Dark/.style={align=center,fill=colorD,inner sep=1.5mm,text=white,draw=none,font=\bfseries},
+    cLabel_Dark/.style={align=center,fill=GithubGreen,inner sep=1.5mm,text=white,draw=none,font=\bfseries},
+    dLabel_Dark/.style={align=center,fill=colorH,inner sep=1.5mm,text=white,draw=none,font=\bfseries},
+    blackLabel/.style={text=white,align=center,fill=olive,inner sep=2.3mm, draw=white,font=\bfseries},
+}
+
+
+\tikzset{
+    smallLabel/.style={align=center,text width=2.85cm,rounded corners,fill=myYellow!60,inner sep=3mm, right},
+    tinyLabel/.style={align=center,text width=2.25cm,rounded corners,fill=colorA!20,draw=colorA,line width=0.5 mm,inner sep=3mm, right,text=colorA},
+    verySmallLabel/.style={align=center,text width=1.5cm,rounded corners,fill=myYellow!30,inner sep=2mm, right},
+    verySmallLabelB/.style={align=center,text width=1.5cm,rounded corners,fill=myDarkPurple!30,inner sep=2mm, right},
+    mediumLabel/.style={align=center,text width=4.25cm,rounded corners,fill=myYellow!60,inner sep=2mm, right},
+    mediumLabelb/.style={align=center,text width=4.25cm,rounded corners,fill=colorA!60,inner sep=2mm, right, text=white},
+    largeLabel/.style={align=center,text width=7.25cm,rounded corners,fill=myYellow!20,inner sep=3mm, right},
+    purpleLabel/.style={align=center,rounded corners,fill=colorA!20,inner sep=1.8mm,draw=colorA},
+    cyanLabel/.style={align=center,rounded corners,fill=cyan!30,inner sep=2.3mm, draw=cyan},
+}
+\tikzset{
+    bicolor polygon/.pic = {
+            \node[regular polygon, regular polygon sides=#1,
+                minimum size=4cm, draw, fill=blue!50,
+                outer sep=0pt] at (0,0) (-node){};
+            \foreach \i in {1,2,...,#1}
+            \draw[fill=blue!25] (-node.corner \i)
+            --(-node.side \i)--(-node.center)--cycle;
+        }}
+
+
+\newtcolorbox{questionBox}[2][]{
+    toptitle=0.6mm,
+    boxsep=1mm,
+    colbacktitle=colorA,
+    coltitle=white,
+    colback=colorA!4,
+    coltext=colorA,
+    colframe=colorA,
+    title=#2,fonttitle=\bfseries, #1}
+
+
+% \newtcolorbox{boxA}[2][]{
+%     toptitle=0.6mm,
+%     boxsep=1mm,
+%     colbacktitle=colorA,
+%     coltitle=white,
+%     colback=colorA!4,
+%     coltext=colorA,
+%     colframe=colorA,
+%     sharp corners,
+%     title=#2,fonttitle=\bfseries, #1}
+\newtcolorbox{boxA}[2][]{
+    enhanced,              % Permite características avanzadas
+    attach boxed title to top left={xshift=3mm, yshift=-3mm, yshifttext=-1mm},
+    fonttitle=\bfseries\sffamily,
+    colbacktitle=colorA,
+    coltitle=white,
+    colback=colorA!5,      % Fondo ligeramente más suave
+    coltext=black!80,      % Texto oscuro para mejor legibilidad que el color puro
+    colframe=colorA,
+    sharp corners,
+    boxrule=0.8pt,         % Línea más elegante
+    toptitle=1mm,
+    bottomtitle=1mm,
+    left=4mm,              % Margen interno izquierdo
+    right=4mm,             % Margen interno derecho
+    title=#2,
+    #1
+}
+
+% \newtcolorbox{boxB}[2][]{
+%     toptitle=0.6mm,
+%     boxsep=1mm,
+%     colbacktitle=colorE,
+%     coltitle=white,
+%     colback=colorE!4,
+%     coltext=colorE,
+%     colframe=colorE,
+%     sharp corners,
+%     title=#2,fonttitle=\bfseries, #1}
+
+\newtcolorbox{boxB}[2][]{
+    enhanced,              % Permite características avanzadas
+    attach boxed title to top left={xshift=3mm, yshift=-3mm, yshifttext=-1mm},
+    fonttitle=\bfseries\sffamily,
+    colbacktitle=colorD,
+    coltitle=white,
+    colback=colorD!5,      % Fondo ligeramente más suave
+    coltext=black!80,      % Texto oscuro para mejor legibilidad que el color puro
+    colframe=colorD,
+    sharp corners,
+    boxrule=0.8pt,         % Línea más elegante
+    toptitle=1mm,
+    bottomtitle=1mm,
+    left=4mm,              % Margen interno izquierdo
+    right=4mm,             % Margen interno derecho
+    title=#2,
+    #1
+}
+
+\newtcolorbox{boxC}[2][]{
+    toptitle=0.6mm,
+    boxsep=1mm,
+    colbacktitle=GithubGreen,
+    coltitle=white,
+    colback=GithubGreen!4,
+    coltext=GithubGreen,
+    colframe=GithubGreen,
+    sharp corners,
+    title=#2,fonttitle=\bfseries, #1}
+
+% Estilos de los nodos
+\tikzset{
+    boxBase/.style = {
+            rounded corners=3pt,
+            anchor=center,
+            inner sep=1.75ex
+        },
+    concepto/.style = {
+            boxBase,
+            fill=#1,
+            text=white,
+            text width=0.25\mytikzwidth,
+            font=\bfseries,
+            align=center,
+            inner sep=1.75ex,
+            rounded corners=3pt
+        },
+    descripcion/.style = {
+            boxBase,
+            fill=#1!20,
+            inner sep=1.5ex,
+            text width=0.75\mytikzwidth,
+            align=left,
+            rounded corners=3pt
+        }
+}
+
+
+
+% \ConceptBox{Título del Concepto}{Texto de la descripción}
+\newcommand{\ConceptBox}[2]{%
+    \begin{tikzpicture}
+        \node[
+            matrix of nodes,
+            column sep=3mm, % Espacio entre las cajas
+            ampersand replacement=\&,
+            nodes={inner sep=0, outer sep=0, anchor=center} % Reseteamos el padding de las celdas
+        ] (m) {
+            % En lugar de texto simple, colocamos un NODO completo en cada celda.
+            % Esto asegura que el estilo se aplique directamente al nodo.
+            \node[concepto=colorA] {#1}; \& \node[descripcion=colorA] {#2}; \\
+        };
+    \end{tikzpicture}%
+    \vspace{1em} % Añade un espacio vertical después de cada caja
+}
+% --- THE MAGIC COMMAND ---
+\newcommand{\SmartBox}[3][colorA]{%
+    \noindent
+    \begin{tikzpicture}
+        % A. Draw "Ghost" nodes (invisible) to calculate height
+        \node[concepto=#1, opacity=0] (ghostH) {#2};
+        \node[descripcion=#1,   opacity=0, right=2pt of ghostH] (ghostB) {#3};
+
+        % B. Measure the taller of the two
+        \node[fit=(ghostH)(ghostB), inner sep=0pt] (fitBox) {};
+
+        % C. Draw the Real Nodes using the calculated height (\n1)
+        \path let \p1 = (fitBox.north), \p2 = (fitBox.south),
+        \n1 = {\y1-\y2} in
+        node[concepto=#1, minimum height=\n1] at (ghostH.center) {#2}
+        node[descripcion=#1,   minimum height=\n1] at (ghostB.center) {#3};
+    \end{tikzpicture}
+    \vspace{3mm} % Space between rows
+}
+
+% \RequirePackage{tcolorbox}  % Crea cajas de contenido personalizables, ideal para resaltar partes del documento.
+
+% \RequirePackage{pgfplots,pgfplotstable, pgf-pie}  % Librerías de gráficos para TikZ; genera gráficos de funciones, datos tabulados y gráficos de torta.
+% \pgfplotsset{compat=1.18}  % Configura la compatibilidad de pgfplots para asegurar estabilidad.
+% \RequirePackage{forest}  % Facilita la creación de árboles (como diagramas jerárquicos o familiares) usando TikZ.
+% \RequirePackage{smartdiagram}  % Crea diagramas simples (como flujos de trabajo, listas de pasos, etc.).
+% %%!  === === === === === === % TikZ y Diagramas
+% \RequirePackage{tikz}  % Paquete base para creargráficos vectoriales, diagramas, y figuras en LaTeX.
+% \usetikzlibrary{arrows,shadings,angles,quotes,3d}  % Librerías extra de TikZ para diagramas mentales, árboles, y figuras geométricas.
+% \usetikzlibrary{shapes,chains,mindmap,trees,backgrounds,shapes.geometric, arrows,arrows.meta, calc,plotmarks,intersections,shadows.blur,decorations.markings,patterns,decorations.pathmorphing,shapes.arrows,matrix,positioning}  % Librerías avanzadas de TikZ para crear diagramas complejos y figuras detalladas.
+
+% \RequirePackage{tkz-euclide}  % Paquete para geometría euclidiana con TikZ (ideal para diagramas geométricos).
+% % \usepgfplotslibrary{fillbetween}

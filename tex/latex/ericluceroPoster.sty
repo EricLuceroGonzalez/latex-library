@@ -1,0 +1,110 @@
+% ericluceroPoster.sty
+% ================================
+%         Eric Lucero poster UPM
+% ================================
+% @author: Eric Lucero
+% @location: /Users/my_name/Library/Texmf/
+% @contact: ericlucerogonzalez@gmail.com
+% @revised: March / 2025
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ericluceroPoster}
+% ================================
+%      1. PAQUETES UTILIZADOS
+% ================================
+\usepackage{EricLuceroCommands}
+%%!  === === === === === ===
+% Codificación y Lenguaje
+\usepackage[utf8]{inputenc}  % Codificación de caracteres en UTF-8, necesario para el uso de caracteres especiales como acentos.
+\usepackage[spanish,es-nodecimaldot]{babel}  % Configuración del idioma en español, es-nodecimaldot evita el punto decimal en números (usa coma).
+\usepackage[T1]{fontenc}
+
+% ==========================================
+% PAQUETES DE NOTACIONES CIENTIFICAS
+% ==========================================
+\usepackage{amsmath}  % Extiende las capacidades matemáticas básicas de LaTeX, permitiendo fórmulas más complejas.
+\usepackage{amssymb}   % Símbolos adicionales de matemáticas, como conjuntos (\mathbb{R}).
+\usepackage{amsthm}    % Permite definir teoremas, lemas y otras estructuras matemáticas formales.
+\usepackage{mathtools} % Proporciona herramientas adicionales para ajustar y mejorar la presentación de ecuaciones matemáticas. También corrige algunos problemas de 'amsmath' y ofrece más comandos matemáticos, como ajustar la alineación y corregir el espaciado de ecuaciones.
+
+\usepackage{xcolor}  % Permite definir y usar colores personalizados en el documento.
+\usepackage{colortbl}  % Proporciona capacidades de coloreado para texto y tablas.
+% Definir aquí los colores utilizados a lo largo de las presentaciones
+\definecolor{mySuccess}{RGB}{0,123,255}   % Color principal para el ícono de check
+\definecolor{myError}{RGB}{255,69,0}   % Color para íconos de advertencia o error
+\definecolor{colorA}{RGB}{0, 114, 206}    % PANTONE 285   #0072CE
+\definecolor{colorB}{RGB}{135, 101, 47}   % PANTONE 873   #87652F
+\definecolor{colorC}{RGB}{169, 169, 169}  % PANTONE 877   #A9A9A9
+% COLORES SECUNDARIOS
+\definecolor{colorD}{RGB}{239, 51, 64}    % PANTONE 032   #EF3340
+\definecolor{colorE}{RGB}{0, 162, 222}    % PANTONE 2995  #00A2DE
+% COLORES TERCIARIOS
+\definecolor{colorF}{RGB}{0, 0, 0}        % PANTONE BLACK #000000
+\definecolor{GithubGreen}{RGB}{108, 198, 68} % Github Green #6cc644
+\definecolor{GithubRed}{RGB}{189, 44, 0} % Github Milano Red #bd2c00
+\definecolor{GithubPurple}{RGB}{110, 84, 148} % Github Purple #6e5494
+
+
+% ================================
+%      2. DEFINICIÓN DE GRAFICAS, TABLAS Y VISUALES
+% ================================
+
+\usepackage[poster]{tcolorbox}
+\usepackage{graphicx}  % Para incluir gráficos (formatos como .png, .jpg, .pdf, etc.).
+%%!  === === === === === === % TikZ y Diagramas
+\usepackage{tikz}  % Paquete base para crear gráficos vectoriales, diagramas, y figuras en LaTeX.
+\usetikzlibrary{arrows,shadings,angles,quotes,3d}  % Librerías extra de TikZ para diagramas mentales, árboles, y figuras geométricas.
+\usetikzlibrary{shapes,chains,mindmap,trees,backgrounds,shapes.geometric, arrows,arrows.meta, calc,plotmarks,intersections,shadows.blur,decorations.markings,patterns,decorations.pathmorphing,shapes.arrows,matrix,positioning}  % Librerías avanzadas de TikZ para crear diagramas complejos y figuras detalladas.
+\usepackage{tkz-euclide}  % Paquete para geometría euclidiana con TikZ (ideal para diagramas geométricos).
+\tcbuselibrary{skins,breakable}  % Librerías adicionales para ajustar el estilo y el comportamiento de tcolorbox.
+\usepackage{pgfplots,pgfplotstable, pgf-pie}  % Librerías de gráficos para TikZ; genera gráficos de funciones, datos tabulados y gráficos de torta.
+
+\graphicspath{
+    {/Users/ericlucero/Documents/Academic/LaTeX-UPM/media/UPM_graphics/}
+        {/Users/ericlucero/Documents/Academic/LaTeX-UPM/media/}
+        {/Users/ericlucero/Documents/Academic/Python_Fun/Simulation/monty_python/Images/}
+        {/Users/ericlucero/Documents/Academic/LaTeX-UPM/TeXNotes/resources/}
+}
+
+
+
+\newcommand{\boxi}[2][colorA]{
+    \tcbox[% Opciones de tcolorbox
+        colframe=#1, % Color del borde
+        colback=#1  , % Color de fondo
+        boxsep=1.5mm,
+        boxrule=1.5pt, % Grosor del borde
+        coltext=white,
+        on line,
+        fontupper=\ttfamily, % Aplica fuente monoespaciada
+        arc=2pt, % Radio de las esquinas
+        left=0pt, % Margen izquierdo
+        right=0pt, % Margen derecho
+        top=0pt, % Margen superior
+        bottom=0pt % Margen inferior
+    ]{#2}%
+}
+
+
+\usepackage{enumitem}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
+        \node[shape=circle,fill=colorA,text=white,draw,inner sep=2pt] (char) {#1};}}
+
+
+\definecolor{backgroundColor}{rgb}{0.8, 0.8, 0.8} % Color del fondo
+\definecolor{colorTestA}{RGB}{225, 113, 56} % lab(60, 40, 50) rgb(225, 113, 56)
+\definecolor{colorTestB}{RGB}{115, 53, 24} % lab(30, 25, 30) rgb(115, 53, 24)
+\definecolor{colorTestC}{RGB}{112, 72, 177} % lab(40, 40, -50)rgb(112, 72, 177)
+
+
+
+\usepackage{hyperref}
+\hypersetup{
+    pdfauthor={Eric Lucero Gonzalez},     % author
+    pdfsubject={Inteligencia Artificial},   % subject of the document
+    linkcolor=colorD,          % color of internal links
+    linkbordercolor=white,
+    citecolor=colorD,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=colorA,           % color of external links
+    colorlinks=false       % false: boxed links; true: colocolorD links,
+}

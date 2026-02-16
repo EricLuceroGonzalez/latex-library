@@ -1,0 +1,241 @@
+\ProvidesPackage{ericlucero-umip}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel} % espanol, ingles
+% \usepackage[p,osf]{baskervillef}
+\usepackage[varqu,varl,var0]{inconsolata}
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[baskerville,vvarbb]{newtxmath}
+\usepackage[cal=boondoxo]{mathalfa}
+% \usepackage{subfigure}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+% \usepackage{lmodern}
+\usepackage{bm}
+\usepackage{siunitx}   % Sistema internacional
+\usepackage{gensymb}
+
+\usepackage{url}
+\usepackage{csquotes}
+\usepackage{comment}
+
+\usepackage{lastpage}
+\usepackage[svgnames, table]{xcolor}
+\ifpdf
+  \usepackage{pdfcolmk}
+\fi
+\usepackage{graphicx}
+%\usepackage[outline]{contour}
+\usepackage{pgfplots,pgfplotstable}
+\usepackage{tikz}
+\usetikzlibrary{shapes,chains,mindmap,trees,backgrounds,shapes.geometric, arrows,arrows.meta, calc,plotmarks,intersections,shadows.blur,fit}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+
+\usepackage{pifont}
+\ifxetex
+  \usepackage{fontspec}
+\fi
+\usepackage{tocloft}
+\usepackage{lipsum}
+
+% \title{Alondras en vuelo} % Book title
+\author{Eric Lucero} % Author
+% \newcommand{\edition}{Second Edition} % Book edition
+
+\def\LOGO{%
+\begin{picture}(0,0)\unitlength=1cm
+\put (-3.3,-1.10) {\includegraphics[width=\logowidth]{logo}}
+\end{picture}}
+
+\newcommand{\encabezado}{
+		\LOGO \scshape \small UNIVERSIDAD MARÍTIMA INTERNACIONAL DE PANAMÁ 
+		\\[0.5em] \textsc{\materia}
+		% \\[0.5em]
+		% ** \textsc{\colorea{cyan}{\tema}} **
+    \\[-0.5em] \colorea{colorB}{\rule{\textwidth}{1pt}}
+}
+\def\logowidth{7.5em}
+\graphicspath{
+{/Users/ericlucero/Dropbox/00-academic/UMIP/media/}
+{/Users/ericlucero/Dropbox/00-academic/UMIP/media/Logos/}
+{/Users/ericlucero/Dropbox/00-academic/UMIP/latexDraw/}
+{/Users/ericlucero/Dropbox/00-academic/UMIP/latexDraw/tikz/}
+{/Users/ericlucero/Dropbox/00-academic/UMIP/latexDraw/parciales/}
+{/Users/ericlucero/Downloads/}
+}
+
+\def\LOGORHEADER{%
+\begin{picture}(0,0)\unitlength=1cm
+\put (-0.0,-0.35) {\includegraphics[width=\logowidth]{logo2-gris}}
+\end{picture}}
+\def\LOGOLHEADER{%
+\begin{picture}(0,0)\unitlength=1cm
+\put (-3.3,-0.35) {\includegraphics[width=\logowidth]{logo2-gris}}
+\end{picture}}
+
+\newcommand{\colorea}[2]{{\color{#1} #2 }}
+
+%%%%%%%%%%%%%%%%%%%%% BEAMER CUSTOMIZATION %%%%%%%%%%%%%%%%%%%%% 
+\definecolor{colorA}{RGB}{6, 85, 148} % BLUE      #065594 
+\definecolor{colorB}{RGB}{194, 127, 42} % GOLDEN     #C27F2A
+\definecolor{colorC}{RGB}{241, 89, 42} % ORANGE      #F1592A
+\definecolor{colorD}{RGB}{29, 143, 155} % AQUA       #1D8F9B
+\definecolor{colorE}{RGB}{112, 152, 200} % LIGHTBLUE #7098C8
+\definecolor{colorF}{RGB}{167, 169, 172} % GRAY      #A7A9AC
+%----------------------------------------------------------------------------------------
+%	GEOMETRY
+%----------------------------------------------------------------------------------------
+\usepackage{geometry}
+%----------------------------------------------------------------------------------------
+%	QUOTATION ENVIRONMENT FORMAT
+%----------------------------------------------------------------------------------------
+
+\renewenvironment{quotation}
+{\par\leftskip=1em\vskip.5\onelineskip\em}
+{\par\vskip.5\onelineskip}
+
+%----------------------------------------------------------------------------------------
+%	QUOTE ENVIRONMENT FORMAT
+%----------------------------------------------------------------------------------------
+
+\renewenvironment{quote}
+{\list{}{\em\leftmargin=1em}\item[]}{\endlist\relax}
+
+%----------------------------------------------------------------------------------------
+%	MISCELLANEOUS DOCUMENT SPECIFICATIONS
+%----------------------------------------------------------------------------------------
+
+\setlength{\parindent}{0em} % Paragraph indentation
+
+%----------------------------------------------------------------------------------------
+%	HEADERS SPECIFICATIONS
+%----------------------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\definecolor{colorA}{RGB}{125, 100, 255}
+% \def\theTitle{Estudios Generales}
+\def\theTitleHead{}
+\def\theTitle{Comisión de Asuntos Disciplinarios Docente}
+\def\theTitleFoot{Comisión de Asuntos Disciplinarios Docente\\2024}
+% \def\theTitle{Física I}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.6pt}\renewcommand{\headrule}{\hbox to\headwidth{%
+\color{colorB}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}% No footer rule
+\setlength{\headheight}{11pt}%
+\fancyhf{}
+\fancyhead[LO]{ \LOGORHEADER}
+\fancyhead[RE]{ \LOGOLHEADER}
+% \fancyhead[C]{ \theTitleHead}
+\fancyhead[LE,RO]{\textbf{\scshape\theTitleHead}}
+\fancyfoot[RE,LO]{\theTitleFoot}
+\fancyfoot[RO,LE]{ \thepage\ de \pageref{LastPage}}
+% \fancyfoot[LE,RO]{ \rightmark}
+% \fancyfoot[LE,RO]{\thepage}
+
+
+\fancypagestyle{bookstyle}
+{
+
+\fancyhead[C]{\small Cómo graficar en una hoja milimetrada}
+\fancyhead[LO]{ \LOGORHEADER}
+\fancyhead[RE]{ \LOGOLHEADER}
+\fancyhead[LE,RO]{\textbf{\scshape\theTitle}}
+% \rhead{Rhd - \rightmark}
+% \lhead{\leftmark}
+\rfoot{\thepage\ de \pageref{LastPage}} 
+\fancyfoot[L]{\footnotesize \textsc{Eric Lucero G.}}
+\fancyfoot[C]{\footnotesize \textsc{2023}}
+}
+
+
+\fancypagestyle{tikzChapter}
+{
+\rhead{}
+\lhead{}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[LE,RO]{}
+\fancyhead[RE,LO]{}
+\fancyfoot[L]{}
+\fancyfoot[C]{\footnotesize \thepage}
+}
+
+\definecolor{colorA}{RGB}{6, 85, 148} % BLUE      #065594 
+\definecolor{colorB}{RGB}{194, 127, 42} % GOLDEN     #C27F2A
+\definecolor{colorC}{RGB}{241, 89, 42} % ORANGE      #F1592A
+\definecolor{colorD}{RGB}{29, 143, 155} % AQUA       #1D8F9B
+\definecolor{colorE}{RGB}{112, 152, 200} % LIGHTBLUE #7098C8
+\definecolor{colorF}{RGB}{167, 169, 172} % GRAY      #A7A9AC
+\definecolor{colorG}{RGB}{22, 100, 145}
+
+\newtcolorbox{myboxi}[2][]{
+  toptitle=3mm,
+  boxsep=2mm,
+  colbacktitle=colorA,
+  colframe=colorA,
+  colback=colorA!5,
+  coltitle=white,
+  % width=12cm,
+  title={\large \fontfamily{ugq}\selectfont #2},
+  fonttitle=\bfseries,#1
+} 
+
+% \makeatletter
+% \renewcommand{\thesection}{%
+%   \ifnum\c@chapter<1 \@arabic\c@section
+%   \else \thechapter.\@arabic\c@section
+%   \fi
+% }
+% \makeatother
+%----------------------------------------------------------------------------------------
+%	HYPERLINKS SPECIFICATIONS
+%----------------------------------------------------------------------------------------
+\usepackage[backref=true]{hyperref}
+\hypersetup{
+    pdftitle={Eric Lucero - UMIP},    % title
+    pdfauthor={Eric A. Lucero Gonzalez},     % author
+    pdfsubject={Universidad Maritima internacional de Panama},   % subject of the document
+    pdfcreator={pdftex},   % creator of the document
+    pdfproducer={Texmaker, TexLive, Ubuntu 16.04}, % producer of the document
+    pdfkeywords={Fisica, Matematicas}, % list of keywords
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=black,     % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=blue           % color of external links
+}
+
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usepackage{biblatex}
+\addbibresource{theBibliography.bib}
+
+\newcommand{\grotesk}{\fontfamily{ugq}\selectfont}
+\newcommand{\altr}[1]{\textbf{\colorea{colorA}{\grotesk #1}}}
+\newcommand{\bltr}[1]{\textbf{\colorea{colorC}{\grotesk #1}}}
+\newcommand{\pltr}[1]{\textbf{\colorea{colorD}{\grotesk #1}}}
+
+
+
+\usepackage{tgheros}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+
+
+\def\LOGOSOLO{%
+\begin{picture}(0,0)\unitlength=1cm
+\put (-1.3,-1.10) {\includegraphics[width=\logowidth]{logo}}
+\end{picture}}
+
+
+\fancypagestyle{normal}{
+  \renewcommand{\headrulewidth}{0pt}\renewcommand{\headrule}{\hbox to\headwidth{%
+  \color{white}\leaders\hrule height \headrulewidth\hfill}}  
+\fancyhead[LO]{ }
+\fancyhead[RE]{}
+\fancyhead[LE,RO]{}
+\fancyfoot[LO,RE]{ }
+\fancyfoot[RO,LE]{ \thepage\ de \pageref{LastPage}}
+}

@@ -1,0 +1,213 @@
+% \NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{vidadigna}
+%%%%%%%%% ERIC LUCERO G. - Beamer2 MACRO  %%%%%%%%%%%%
+%% 		@author:  Eric Lucero                               %%
+%% 		@contact: ericlucero501@@gmail.com                  %%
+%% 		@revised:    Jan / 2021                 %%
+%%                                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% PREAMBULO: declaración de paquetes a utilizar
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\captionsspanish
+
+% Math
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\usepackage{amssymb}
+\usepackage{setspace} % interline space 
+% Figuras
+\usepackage{graphicx}
+% Lista de carpetas de imágenes con dirección completa
+\graphicspath{
+    {/Users/ericlucero/Dropbox/Latex/vidadigna/media}
+}
+\usepackage{caption}
+\usepackage{multicol}
+\setlength\columnsep{18pt} % This is the default columnsep for all pages
+
+% Gráficas del ambiente Tikz
+\usepackage{pgfplots,pgfplotstable}
+\usepackage{nowidow}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr,tikz,etoolbox}
+\usepackage{blindtext}
+
+% Librerías de Tikz
+\usetikzlibrary{mindmap,trees,backgrounds,shapes.geometric, arrows,shadings,angles, quotes}
+\usetikzlibrary{shapes,chains,mindmap,trees,backgrounds,shapes.geometric, arrows,arrows.meta, calc,plotmarks,intersections,shadows.blur, decorations.markings,patterns,decorations.pathmorphing, shapes.arrows,matrix,positioning}
+\usetikzlibrary{shapes,chains,mindmap,trees,backgrounds,shapes.geometric, arrows,arrows.meta, calc,plotmarks,intersections,shadows.blur,decorations.pathmorphing}
+
+\usepackage[document]{ragged2e}
+
+% tolerance
+\pretolerance=150
+\tolerance=753
+\hbadness=752
+
+% Pagestyle
+\renewcommand{\headrulewidth}{2.85pt}
+\renewcommand{\headrule}{\color{black!30!white}\hrule}% Add colour to \headrule
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,fill=colorA,text=white,inner sep=3pt] (char) {\bfseries #1};}}
+
+\pagestyle{fancy}
+\setlength{\headheight}{18pt}
+\fancyhf{}
+\fancyhead[LE]{\color{black!30!white}\mdseries \rightmark}
+\fancyhead[RO]{\color{black!30!white}\mdseries Plan para la vida digna}
+\cfoot{{\circled\thepage}}
+
+\fancypagestyle{plain}{ 
+    \fancyhf{}
+    \rhead{\leftmark}    
+    \rhead{\color{black!30!white}\mdseries Plan para la vida digna}
+    \cfoot{{\circled\thepage}}
+    }
+
+
+\addto\captionsspanish{% Replace "english" with the language you use
+\renewcommand{\contentsname}{Contenido}}
+\usepackage{parskip}
+\setlength\parindent{0pt} % <---- sin sangria
+\setlength{\parskip}{18pt}
+    
+\usepackage{enumitem,xcolor,eso-pic}
+\setlist{noitemsep} %to leave space around whole list
+\newlist{listado}{itemize}{1}
+\setlist[listado]{label={\Large\textcolor{colorA}{\textbullet}}}
+\newlist{sublistado}{itemize}{1}
+\setlist[sublistado]{label={\textcolor{colorA}{\textbullet}}}
+\setlist[enumerate]{label*={\large \grotesk \color{colorA}\arabic*.}}
+
+\usepackage{tcolorbox}
+\newcommand{\sectionbox}[1] {
+\begin{tcolorbox}
+             [
+              colback=colorA!100,% background
+              colframe=colorA,% frame colour
+              coltext=white, % text color
+              width=0.99\linewidth,%
+            %   height=1.1cm, 
+              halign=center,
+              valign=center,
+              center title,
+              left=0pt,
+              right=0pt,
+              top=10pt,
+              bottom=10pt,
+              fontupper=\grotesk,
+              arc=0mm, auto outer arc,
+             ]
+    {#1}
+\end{tcolorbox} 
+} %
+
+% !TOC
+\usepackage[compact]{titlesec}
+\usepackage{titletoc}
+\titlecontents{section}[6pc]{\addvspace{2pt}\filright}
+{\contentspush{\thecontentslabel\ }}
+{}{\titlerule*[8pt]{.}\contentspage}
+\titleformat{\section}[hang]
+{\bfseries\scshape\color{colorA}\uppercase}
+{}{0em}
+{\hspace{-0.4pt}\Large \thesection\hspace{0.6em}}
+
+\titleformat{name=\section,numberless}[hang]
+{\grotesk\color{colorA}\uppercase}
+{}
+{-10em}
+{\hspace{-0.4pt}\Large }
+
+\titleformat{name=\subsection,numberless}[hang]
+{\bfseries\color{colorA}}
+{}
+{0em}
+{\hspace{-2.4pt}\large }
+
+\renewcommand{\sectionmark}[1]{\markright{#1}} % rightmark without number
+
+% TOC
+\usepackage{tocloft}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{4}
+\renewcommand{\cfttoctitlefont}{\color{colorA}\huge\grotesk}
+\renewcommand{\cftbeforetoctitleskip}{1.6em}
+\renewcommand{\cftsecfont}{\large\grotesk \color{colorA}}
+\renewcommand{\cftsecpagefont}{\large\grotesk \color{colorA}}
+\renewcommand{\cftsubsecpagefont}{ \color{colorC}}
+\renewcommand{\cftbeforesecskip}{14pt}
+\renewcommand{\cftbeforesubsecskip}{2pt}
+\renewcommand{\cftdot}{.}
+\renewcommand{\cftdotsep}{0.85}
+\renewcommand{\cftpnumalign}{l}
+\renewcommand{\cftsubsecindent}{2.3cm}
+
+\titlespacing{\subsection}{0}{-20pt}{-2\parskip}
+
+% ? FONTS AND COLORS
+% FONTS
+\newcommand{\grotesk}{\fontfamily{ugq}\selectfont}
+\usepackage{nunito}
+\usepackage[T1]{fontenc}
+\usepackage{sectsty}
+\usepackage{sourcesanspro}
+% set the default font to SourceSansPro
+% \RenewCommandCopy{\rmdefault}{\sfdefault}
+\usepackage[tabular,lining]{montserrat}
+\allsectionsfont{\color{colorA}\sffamily}
+
+% \newcommand{\grotesk}{\fontfamily{ugq}\selectfont}
+\newcommand{\colorea}[2]{{\color{#1} #2 }}
+\newcommand{\resaltar}[1]{\vspace{0.25em}\textbf{\colorea{colorA}{\bfseries #1}}\vspace{0.5em}}
+\newcommand{\resaltado}[1]{\textbf{\colorea{colorA}{\grotesk #1}}}
+
+\usepackage{pdfpages}
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}} 
+
+\usepackage{dirtytalk}
+
+% HYPERREFERENCE
+\usepackage{hyperref}
+% \hypersetup{pdftex,colorlinks=true,allcolors=blue}
+\usepackage{hypcap}
+\usepackage{bookmark}
+\hypersetup{
+    % bookmarks=true,
+    pdftex,
+    hidelinks,
+    pdftitle={Plan para la vida digna},    % title
+    pdfauthor={Plan para la vida digna},     % author
+    colorlinks=false,       % false: boxed links; true: colored links
+    % linkcolor=colorA,          % color of internal links
+    % citecolor=black,        % color of links to bibliography
+%     filecolor=black,      % color of file links
+    % urlcolor=colorA           % color of external links
+}
+
+\hyphenation{neo-or-to-do-xia bio-ae-ro-sol ora-cu-lo 
+programa
+sexo
+dios
+propuestas
+productivo
+soberano    
+nacional
+pyme
+necesitados
+violatorias
+violar
+productivos
+neoliberalismo
+progresivo
+Democracia
+verdadera
+gana
+Estado
+Penonome
+Poner
+higiene} 
+

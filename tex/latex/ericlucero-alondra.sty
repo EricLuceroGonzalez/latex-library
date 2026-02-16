@@ -1,0 +1,110 @@
+\ProvidesPackage{ericlucero-alondra}
+%%%%%%%%% MIKHAIL KLASSEN - RESEARCH DIARY HEADER %%%%%%%%%%%%
+%% @author:  Mikhail Klassen                                %%
+%% @contact: mikhail.klassen@gmail.com                      %%
+%% @revised:    12 / January / 2011                         %%
+%% @license: Creative Commons Share Alike 3.0               %%
+%%           http://creativecommons.org/licenses/by-sa/3.0/ %%
+%%                                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{fancyhdr}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{standalone}  % Incluir archivo .tex ignorando preambulo
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+%\usepackage{mathexam}%%
+%\usepackage[spanish,USenglish]{babel} % espanol, ingles
+\usepackage[spanish]{babel} % espanol, ingles
+\decimalpoint
+%\usepackage[spanish]{babel}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{caption}
+% \usepackage[cmyk]{xcolor}
+% \usepackage{tabu}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{siunitx}   % Sistema internacional
+\usepackage{gensymb}
+\usepackage[version=4]{mhchem}
+\usepackage{chemformula}
+\usepackage{elements}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+%\usepackage{mcode}
+\graphicspath{
+{/home/ericlucero/Dropbox/00-Academic/UMIP/media/}
+{/home/ericlucero/Downloads/}
+}
+
+\usepackage[para,online,flushleft]{threeparttable}
+% \usepackage{geometry}
+\usepackage{geometry} % to show margins
+\geometry{portrait, 
+left=22mm,right=21mm, 
+top=18mm, bottom=18mm
+}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{epsfig}
+\usepackage{framed}
+\usepackage{textcomp}
+\usepackage{color}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage[framed,numbered]{mcode}
+\usepackage{tabu}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+\usepackage{tocloft}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{colortbl}
+\usepackage{xcolor}% http://ctan.org/pkg/xcolor
+	\usepackage{color, colortbl}
+
+\usepackage[usenames,dvipsnames]{pstricks}
+
+% *************************  TiKz  *************************
+% *************************  TiKz  *************************
+\usepackage{pgfplots,pgfplotstable}
+
+\usepackage{booktabs}
+% *************************  TiKz  *************************
+\usepackage{tikz}
+\usetikzlibrary{shapes,chains,mindmap,trees,backgrounds,shapes.geometric, arrows,arrows.meta, calc,plotmarks,intersections,shadows.blur, decorations.markings,patterns,decorations.pathmorphing,fit, decorations.text}
+
+\tcbuselibrary{breakable}
+\usepackage{bm}
+\usepackage{pstricks-add}
+\usepackage{subcaption}
+\usepgfplotslibrary{fillbetween}
+
+
+
+\newcommand\DrawControl[3]{
+  node[#2,
+  circle,fill=#2,
+  inner sep=2pt,
+  label={above:$#1$},
+  label={[black]below:{\footnotesize#3}}] at #1 {}
+}
+\newcommand{\colorea}[2]{{\color{#1} #2 }}
+\newcommand\cita[1]{(P\'agina #1)}
+
+\usepackage{lipsum}
+% \usepackage{verse}
+% \newcommand\poemlines[1]{#1}
+% \newcommand{\attrib}[1]{%
+%   \nopagebreak{\vspace{2ex}\raggedleft #1\par}}
+\newcommand{\spa}[1]{\hspace{#1em}}

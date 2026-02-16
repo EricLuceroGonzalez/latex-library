@@ -1,0 +1,30 @@
+% ================================
+% @author: Eric Lucero
+% @location: /Users/my_name/Library/Texmf/
+% @contact: ericlucerogonzalez@gmail.com
+% @revised: Oct / 2024
+%
+% Descripción: Este archivo define las librerías y formatos tikz-tcolorbox-pgfplots utilizados en los documentos de LaTeX.
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{TikZ_Draws}
+
+% Gráficos y diseño
+\RequirePackage{tikz, pgfplots, xcolor, adjustbox}
+\usetikzlibrary{shadings, angles, quotes, shapes, chains, mindmap, trees,
+    backgrounds, shapes.geometric, arrows, arrows.meta, calc,
+    plotmarks, intersections, shadows.blur, decorations.markings,
+    patterns, decorations.pathmorphing, matrix, positioning}
+
+\RequirePackage{pgfplots,pgfplotstable, pgf-pie}  % Librerías de gráficos para TikZ; genera gráficos de funciones, datos tabulados y gráficos de torta.
+\pgfplotsset{compat=1.18}  % Configura la compatibilidad de pgfplots para asegurar estabilidad.
+\RequirePackage{forest}  % Facilita la creación de árboles (como diagramas jerárquicos o familiares) usando TikZ.
+\RequirePackage{smartdiagram}  % Crea diagramas simples (como flujos de trabajo, listas de pasos, etc.).
+\RequirePackage{tcolorbox}  % Crea cajas de contenido personalizables, ideal para resaltar partes del documento.
+\tcbuselibrary{skins,breakable}  % Librerías adicionales para ajustar el estilo y el comportamiento de tcolorbox.
+
+
+
+
+
+

@@ -1,0 +1,104 @@
+% ================================
+%         Eric Lucero Beamer UPM
+% ================================
+% @author: Eric Lucero
+% @location: /Users/my_name/Library/Texmf/
+% @contact: ericlucerogonzalez@gmail.com
+% @revised: Oct / 2024
+%
+% Descripción: Este archivo define los estilos y configuraciones específicas para 
+%              presentaciones en LaTeX utilizando el paquete Beamer. Aquí se encuentran 
+%              los comandos personalizados, configuraciones de fuentes, colores y 
+%              otras macros diseñadas para ser reutilizables.
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ericluceroBeamerUPM}[October_2024]
+
+% ================================
+%      1. PAQUETES UTILIZADOS
+% ================================
+%%!  === === === === === ===
+% Codificación y Lenguaje
+\RequirePackage[utf8]{inputenc}  % Codificación de caracteres en UTF-8, necesario para el uso de caracteres especiales como acentos.
+\RequirePackage[spanish,es-nodecimaldot]{babel}  % Configuración del idioma en español, es-nodecimaldot evita el punto decimal en números (usa coma).
+\RequirePackage[T1]{fontenc}
+% ==========================================
+% PAQUETES DE NOTACIONES CIENTIFICAS
+% ==========================================
+\RequirePackage{amsmath}  % Extiende las capacidades matemáticas básicas de LaTeX, permitiendo fórmulas más complejas.
+\RequirePackage{amssymb}   % Símbolos adicionales de matemáticas, como conjuntos (\mathbb{R}).
+\RequirePackage{amsthm}    % Permite definir teoremas, lemas y otras estructuras matemáticas formales.
+\RequirePackage{mathtools} % Proporciona herramientas adicionales para ajustar y mejorar la presentación de ecuaciones matemáticas. También corrige algunos problemas de 'amsmath' y ofrece más comandos matemáticos, como ajustar la alineación y corregir el espaciado de ecuaciones.
+\RequirePackage{textcomp, gensymb} % 'gensymb' proporciona símbolos adicionales, como el símbolo de grados (°).
+\RequirePackage[version=3]{mhchem} % facilita la escritura de fórmulas químicas y ecuaciones.
+\RequirePackage{bm}  % Facilita el uso de letras en negrita dentro de expresiones matemáticas (\bm{}).
+\RequirePackage{siunitx}  % Facilita la escritura de unidades en formato SI (Sistema Internacional), con formatos claros y consistentes.
+% \RequirePackage{amsfonts}  % Proporciona acceso a fuentes matemáticas adicionales, como \mathbb.
+% \RequirePackage{fontspec}  % Permite el uso de fuentes del sistema (para XeLaTeX o LuaLaTeX).
+
+% ================================
+%      ?. POR CLASIIFICAR
+% ================================
+%%!  === === === === === ===
+% \RequirePackage[final]{pdfpages}
+% \RequirePackage[perpage]{footmisc}
+\RequirePackage{parskip} % Esto aplica saltos de párrafo sin sangría
+\setlength{\parskip}{\baselineskip}
+% \setlength\itemsep{3em}
+\RequirePackage{textpos}
+\RequirePackage{fancyhdr}
+% \RequirePackage{lastpage}
+% Codigo
+\RequirePackage{algorithm}
+\floatname{algorithm}{Algoritmo}
+\RequirePackage{algpseudocode}
+\RequirePackage{listings} % entorno para incluir y formatear código fuente dentro de documentos LaTeX. 
+\RequirePackage{ifthen}            % Evaluación de condiciones
+\RequirePackage{csquotes}  % Proporciona comandos avanzados para la gestión de citas y referencias, ideal para estilos como APA, MLA, etc.
+
+% ================================
+%      2. DEFINICIÓN DE GRAFICAS, TABLAS Y VISUALES
+% ================================
+\RequirePackage{caption, enumitem}
+
+\setlist[itemize]{font=\color{colorA}}
+\setlist{noitemsep}
+\setlist[enumerate]{font=\grotesk\color{colorA}}
+
+\RequirePackage{subcaption}
+\RequirePackage{multicol} % permite la creación de múltiples columnas en una página.
+\RequirePackage{graphicx}  % Para incluir gráficos (formatos como .png, .jpg, .pdf, etc.).
+\RequirePackage{booktabs}  % Añade reglas y comandos para hacer tablas más presentables, con líneas horizontales finas.
+\RequirePackage{threeparttable}  % Permite añadir notas y leyendas a las tablas, organizadas en tres partes (tabla, notas, leyenda).
+\RequirePackage{multirow} % Es útil para presentar tablas más complejas, donde algunas celdas abarcan varias filas, lo que ayuda a organizar mejor la información.
+\RequirePackage{wrapfig} % Esto ayuda a crear documentos más dinámicos visualmente, permitiendo que las imágenes fluyan junto con el texto, evitando la interrupción del flujo de lectura.
+\RequirePackage{fontawesome5}      % Íconos de FontAwesome
+\RequirePackage{array} % Este paquete mejora el entorno de tablas en LaTeX, permitiendo más opciones para la definición
+\RequirePackage{colortbl} % permite el uso de color en tabla
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\RequirePackage{bookmark}
+
+% %%!  === === === === === ===
+% % Cajas y Diseño de Contenidos
+% ================================
+%          3. ESTILO
+% ================================
+% Este apartado define las fuentes, tamaños, y otros elementos estilísticos
+% utilizados en la presentación, así como comandos que modifican la apariencia
+% visual de las diapositivas.
+
+% ================================
+%     4. CONTADORES
+% ================================
+\newcounter{explicacion}
+\newcounter{ejemplo}
+\newcounter{definitionCounter}
+\newcounter{ejercicio}
+
+\graphicspath{
+      {/Users/ericlucero/Documents/Academic/LaTeX-UPM/media/UPM_graphics/}
+            {/Users/ericlucero/Documents/Academic/LaTeX-UPM/media/}
+            {/Users/ericlucero/Documents/Academic/LaTeX-UPM/media/eric}
+            {/Users/ericlucero/Documents/Academic/Python_Fun/Simulation/monty_python/Images/}
+            {/Users/ericlucero/Documents/Academic/LaTeX-UPM/TeXNotes/resources/}
+}

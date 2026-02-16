@@ -1,0 +1,52 @@
+\ProvidesPackage{UPM-Beamer-Style}
+%%%%%%%%% ERIC LUCERO G. - Beamer2 MACRO  %%%%%%%%%%%%
+%% 		@author:  Eric Lucero                               %%
+%% 		@contact: ericlucero501@@gmail.com                  %%
+%% 		@revised:    Jan / 2021                 %%
+%%                                                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\useinnertheme{circles}
+\useoutertheme{shadow}
+\usefonttheme{structurebold}  %\usefonttheme{serif}
+
+	\setbeamertemplate{headline}{}
+	% \useoutertheme[left]{sidebar}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{caption}[numbered]
+  \setbeamerfont{footnote}{size=\tiny}
+  \setbeamerfont{frametitle}{size=\small}
+  \setbeamerfont{framesubtitle}{size=\scriptsize}
+  % \setbeamerfont{frametitle}{series=\bfseries}
+	\setbeamercolor{footnote mark}{fg=colorA}
+	% ----------- ---  Colors  --- ----------- 
+  \setbeamercolor{structure}{fg=colorC}
+  \setbeamercolor{frametitle}{fg=colorB}
+  % \setbeamercolor{date in head/foot}{bg=red,fg=green}
+	% \setbeamercolor{author in head/foot}{bg=red,fg=colorB}
+	% \setbeamercolor{date in head/foot}{bg=colorA!80,fg=colorC}
+  % _________________ BEAMER HORIZONTAL COLORS
+\colorlet{titleleft}{colorA}
+\colorlet{titlemiddle}{colorA}
+\colorlet{titleright}{colorA}
+
+% HEADER GRADIENT
+\pgfdeclarehorizontalshading[titleleft,titlemiddle,titleright]
+      {beamer@frametitleshade}{\paperheight}{
+    color(0pt)=(titleleft);
+    color(0.55\paperwidth)=(titlemiddle);
+    color(\paperwidth)=(titleright)
+  }
+  \setbeamertemplate{frametitle}[default][colsep=-4bp,rounded=false,shadow=false]
+
+
+  % ITEMS AND ENUMERATE
+\setbeamercolor{enumerate item}{bg=colorA}
+\setbeamercolor{item}{fg=colorA}
+\setbeamercolor{enumitem}{fg=colorA}
+\setbeamercolor{itemize}{fg=colorA}
+\setbeamercolor{enumerate item}{ fg=colorA}
+\setbeamercolor{item projected}{bg=colorA}
+\usesubitemizeitemtemplate{%
+    \tiny\raise1.5pt\hbox{\color{colorA}$\blacktriangleright$}%
+}
+
