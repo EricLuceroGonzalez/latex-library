@@ -84,14 +84,27 @@
 \makeatother
 
 \RequirePackage{titleps}
-\newpagestyle{main}[\large]{
-    \setheadrule{.55pt}%
-    \sethead[\huge\colorbox{colorA}{\color{white}{\thepage}}]
-    [\titulo]
-    [\colorbox{colorA}{\fecha}]
-    {\color{colorA}\fecha}
-    {}
-    {\colorbox{colorA}{\color{white}{\thepage}}}
+% \newpagestyle{main}[\large]{
+%     \setheadrule{.55pt}%
+%     \sethead[\huge\colorbox{colorA}{\color{white}{\thepage}}]
+%     [some \rightmark]
+%     [\colorbox{colorA}{\fecha}]
+%     {\color{colorA}\fecha}
+%     {AA ya}
+%     {\colorbox{colorA}{\color{white}{\thepage}}}
+% }
+% \pagestyle{main}
+% Configuración del estilo de página para titlesec
+% Sintaxis: \sethead[par_izq][par_centro][par_der]{imp_izq}{imp_centro}{imp_der}
+\newpagestyle{main}{
+    \setheadrule{.55pt}
+    \sethead[%
+        \colorbox{colorA}{\makebox[1.5em]{\color{white}\thepage}}][%
+        \fecha][%
+        \itshape\sectiontitle]%
+    {\itshape\sectiontitle}%
+    {\fecha}%
+    {\colorbox{colorA}{\makebox[1.5em]{\color{white}\thepage}}}
 }
 \pagestyle{main}
 
@@ -109,6 +122,7 @@
 ]{biblatex}
 \addbibresource{theBibliography.bib}
 \addbibresource{metaheuristics.bib} % Archivo de bibliografía
+\addbibresource{ATCO.bib} % Archivo de bibliografía
 % \addbibresource{../bibliography.bib} % Archivo de bibliografía
 
 % Traducción de etiquetas
