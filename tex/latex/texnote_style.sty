@@ -1,0 +1,77 @@
+% ================================================================
+% @author: Eric Lucero
+% @description: Estilos de página, encabezados, títulos y alineación para texnote_article
+% ================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texnote_style}[2026/02/24 Estilos visuales nativos de Memoir]
+
+% ================================================================
+%  FORMATO DE TÍTULOS DE SECCIÓN Y SUBSECCIÓN (Nativo de Memoir)
+% ================================================================
+% Romper la dependencia del capítulo
+\counterwithout{section}{chapter}
+% Formato del número (aplica a todos los niveles): añade 0.25em de espacio
+\setsecnumformat{\csname the#1\endcsname\hspace{0.25em}}
+
+% Estilo para \section
+\setsecheadstyle{\large\bfseries\color{colorA}}
+\setbeforesecskip{-1ex plus -0.5ex minus -0.2ex} % Negativo evita sangría en el párrafo siguiente
+\setaftersecskip{0.5ex plus 0.1ex}
+
+% Estilo para \subsection
+\setsubsecheadstyle{\bfseries\color{gray!50!black}}
+\setbeforesubsecskip{-1.2ex plus -0.1ex minus -0.2ex}
+\setaftersubsecskip{0.5ex plus 0.1ex}
+
+% ================================================================
+%  DEFINICIONES DE SEGURIDAD PARA EL ENCABEZADO
+% ================================================================
+\providecommand{\fecha}{}
+
+\makeatletter
+\providecommand{\titulo}{\@title}
+\makeatother
+
+% ================================================================
+%  CONFIGURACIÓN DEL ENCABEZADO Y PIE DE PÁGINA
+% ================================================================
+% 1. Crear el nuevo estilo de página
+\makepagestyle{main}
+
+% 2. Configurar el grosor de la línea separadora del encabezado
+\makeheadrule{main}{\textwidth}{0.55pt}
+
+% 3. Configurar las marcas para que capturen el nombre de la sección
+\makepsmarks{main}{
+    \nouppercaseheads
+    \createmark{section}{right}{nonumber}{}{}
+}
+
+% 4. Comando robusto para evaluar si la sección está vacía
+\newcommand{\masectiontitle}{%
+    \sbox0{\rightmark}%
+    \ifdim\wd0=0pt Texto\else\rightmark\fi
+}
+
+% 5. Asignar encabezados PARES (\makeevenhead{estilo}{Izq}{Cen}{Der})
+\makeevenhead{main}%
+{\colorbox{colorA}{\makebox[2.5em]{\color{white}\bfseries\large\thepage}}}%
+{\fecha}%
+{\itshape\masectiontitle}
+
+% 6. Asignar encabezados IMPARES (\makeoddhead{estilo}{Izq}{Cen}{Der})
+\makeoddhead{main}%
+{\itshape\masectiontitle}%
+{\fecha}%
+{\colorbox{colorA}{\makebox[2.5em]{\color{white}\bfseries\large\thepage}}}
+
+% 7. Activar el estilo de página
+\pagestyle{main}
+
+% ================================================================
+%  ALINEACIÓN GLOBAL
+% ================================================================
+% Alinear a la izquierda sin perder la separación silábica por guiones
+\AtBeginDocument{\RaggedRight}
+
+\endinput

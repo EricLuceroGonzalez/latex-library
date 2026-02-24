@@ -124,8 +124,10 @@
 \newcommand{\alerta}[1]{{\color{colorA}\bfseries #1}}
 
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% Definimos L como una columna X que no justifica (alinea a la izquierda)
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
 
 
 
@@ -142,3 +144,10 @@
 \newcommand{\comentario}[1]{{\color{GithubGreen}\large \faIcon{info-circle}\small\hspace{0.5em} #1}}
 \newcommand{\info}[1]{{\color{colorA}\large \faIcon{info-circle}}\small \hspace{0.5em} #1}
 \newcommand{\downprice}{{\color{colorD}\faCaretDown\hspace{0.5cm}}}
+\newcommand{\scheduling}{\textit{scheduling}}
+\newcommand{\rostering}{\textit{rostering}}
+\newcommand{\atco}{controladores de tráfico aéreo}
+\newcommand{\ATCO}{ATCOs}
+\newcommand{\slot}{\textit{slot} }
+\newcommand{\slots}{\textit{slots} }
+\newcommand{\showwidth}{textwidth: \printinunitsof{cm}\prntlen{\textwidth}}
