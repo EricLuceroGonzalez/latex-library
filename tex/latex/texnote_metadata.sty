@@ -1,0 +1,31 @@
+% ================================================================
+% @author: Eric Lucero
+% @description: Configuración de metadatos y comportamiento del visor PDF
+% ================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texnote_metadata}
+
+% Asegurarnos de que hyperref esté cargado antes de inyectar metadatos
+% \RequirePackage{hyperref}
+\makeatletter
+\AtBeginDocument{
+    \hypersetup{
+        % --- Metadatos del PDF (Automático) ---
+        pdftitle={\@title},                     % Usa el título definido en \title{}
+        pdfauthor={Eric Lucero Gonzalez},       % Usa el autor definido en \author{}
+        pdfcreator={pdftex},                    % Creador del documento
+        pdfsubject={Tesis Doctoral}, % Asunto genérico
+        pdfkeywords={LaTeX, Tesis, UPM, AI, PhD},% Palabras clave
+        pdfdisplaydoctitle=true,                % Muestra el título en la barra de ventana
+        pdfproducer={Texmaker, TexLive, MacOS}, % Productor del documento
+        % --- Comportamiento de Apertura ---
+        bookmarksnumbered=true, % Incluye números en los marcadores del PDF
+        bookmarksopen=true,     % Abre el árbol de marcadores al iniciar
+        bookmarksopenlevel=1,   % Nivel de profundidad al abrir (1 = Capítulos)
+        pdfpagemode=UseOutlines,% Muestra los marcadores al abrir el PDF
+        pdfstartview=FitH       % Abre el PDF ajustado al ancho de página
+    }
+}
+\makeatother
+
+\endinput

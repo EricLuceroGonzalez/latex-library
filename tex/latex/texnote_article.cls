@@ -89,6 +89,8 @@
     backend=biber,       % Motor de procesamiento
     mincitenames=1,
     maxcitenames=1,      % Muestra hasta 2 autores antes de poner "et al."
+    minbibnames=1,
+    maxbibnames=10,
     style=authoryear,
     uniquelist=false,    % Omite ambigüedades (mismo apellido)
     sorting=none,
@@ -114,10 +116,13 @@
 \RequirePackage{xr-hyper}
 \RequirePackage{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=colorA,
-    urlcolor=colorA,
-    citecolor=colorA
+    % --- Visual ---
+    colorlinks=true,       % true: colorea los textos y oculta los recuadros
+    filecolor=colorD,      % color de enlaces a archivos locales
+    urlcolor=colorA,       % color de enlaces web (URLs y DOIs)
+    breaklinks=true,       % Permite que los enlaces largos se rompan en varias líneas
+    linkcolor=colorA,      % color de enlaces internos (índice, figuras)
+    citecolor=colorA       % color de citas a la bibliografía
 }
 
 % Cleveref SIEMPRE después de hyperref
@@ -125,4 +130,4 @@
 \RequirePackage{fnpct}
 % \makepagenote % <-- para silenciar la advertencia de fnpct
 \RequirePackage{lipsum}
-\RequirePackage{titleps}
+% \RequirePackage{titleps} % No compatible con memoir class

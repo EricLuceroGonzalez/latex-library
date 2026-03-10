@@ -50,7 +50,7 @@
 % 4. Comando robusto para evaluar si la sección está vacía
 \newcommand{\masectiontitle}{%
     \sbox0{\rightmark}%
-    \ifdim\wd0=0pt Texto\else\rightmark\fi
+    \ifdim\wd0=0pt \thetitle\else\rightmark\fi
 }
 
 % 5. Asignar encabezados PARES (\makeevenhead{estilo}{Izq}{Cen}{Der})
