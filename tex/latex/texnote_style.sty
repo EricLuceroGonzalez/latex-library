@@ -73,5 +73,17 @@
 % ================================================================
 % Alinear a la izquierda sin perder la separación silábica por guiones
 \AtBeginDocument{\RaggedRight}
+% \endinput
 
-\endinput
+% ================================================================
+%  FORMATO DE TÍTULOS Y PROFUNDIDAD
+% ================================================================
+% Romper la dependencia del capítulo
+\counterwithout{section}{chapter}
+
+% Profundidad estricta de numeración e índice (Solución nativa)
+\setcounter{secnumdepth}{2} % 1=section, 2=subsection, 3=subsubsection
+\setcounter{tocdepth}{2}    % Profundidad en el Índice (TOC)
+
+% Formato del número (aplica a todos los niveles): añade 0.25em de espacio
+\setsecnumformat{\csname the#1\endcsname\hspace{0.25em}}

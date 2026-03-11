@@ -32,7 +32,8 @@
 \RequirePackage{Boxes_Draws}[March_2025]
 \RequirePackage{TikZ_Draws}
 \RequirePackage{command_definitions}
-\RequirePackage{texnote_style}
+% \RequirePackage{texnote_style}
+\RequirePackage{texnote_acronyms}
 
 \hyphenpenalty=1000
 \exhyphenpenalty=1000
