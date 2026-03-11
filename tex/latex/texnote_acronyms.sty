@@ -1,0 +1,163 @@
+% ================================================================
+% @author: Eric Lucero
+% @description: Libreria de manejo y definicion de acronimos
+% ================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texnote_acronyms}[2026/02/24 Estilos visuales nativos de Memoir]
+
+% Cargamos el paquete acro
+\RequirePackage{acro}
+
+% ================================================================
+% DEFINICIÓN DE ACRÓNIMOS
+% ================================================================
+
+% --- Aéreos y Navegación ---
+\DeclareAcronym{atm}{
+    short = ATM,
+    long  = Air Traffic Management,
+    foreign = Gestión del Tráfico Aéreo
+}
+
+\DeclareAcronym{atco}{
+    short = ATCO,
+    short-plural-form = ATCOs,
+    long  = Air Traffic Controller,
+    long-plural-form = Air Traffic Controllers,
+    foreign = Controlador de Tráfico Aéreo
+}
+
+\DeclareAcronym{ansp}{
+    short = ANSP,
+    short-plural-form = ANSPs,
+    long  = Air Navigation Service Provider,
+    long-plural-form = Air Navigation Service Providers,
+    foreign = Proveedor de Servicios de Navegación Aérea
+}
+
+\DeclareAcronym{uav}{
+    short = UAV,
+    short-plural-form = UAVs,
+    long  = Unmanned Aerial Vehicle,
+    long-plural-form = Unmanned Aerial Vehicles,
+    foreign = Vehículo Aéreo No Tripulado
+}
+
+\DeclareAcronym{tbo}{
+    short = TBO,
+    long  = Trajectory Based Operations,
+    foreign = Operaciones Basadas en Trayectoria
+}
+
+\DeclareAcronym{rtc}{
+    short = RTC,
+    short-plural-form = RTCs,
+    long  = Remote Tower Center,
+    long-plural-form = Remote Tower Centers,
+    foreign = Centro de Torres Remotas
+}
+
+\DeclareAcronym{sesar}{
+    short = SESAR,
+    long  = Single European Sky ATM Research
+}
+
+\DeclareAcronym{pans-atm}{
+    short = PANS-ATM,
+    long  = Procedures for Air Navigation Services - Air Traffic Management
+}
+
+\DeclareAcronym{urats}{
+    short = URATS,
+    long  = User Requirements for Air Traffic Services
+}
+
+% --- Organizaciones e Instituciones ---
+\DeclareAcronym{faa}{
+    short = FAA,
+    long  = Federal Aviation Administration,
+    foreign = Administración Federal de Aviación
+}
+
+\DeclareAcronym{icao}{
+    short = ICAO,
+    long  = International Civil Aviation Organization,
+    foreign = Organización de Aviación Civil Internacional (OACI)
+}
+
+\DeclareAcronym{iata}{
+    short = IATA,
+    long  = International Air Transport Association,
+    foreign = Asociación Internacional de Transporte Aéreo
+}
+
+\DeclareAcronym{canso}{
+    short = CANSO,
+    long  = Civil Air Navigation Services Organization
+}
+
+\DeclareAcronym{ifatca}{
+    short = IFATCA,
+    long  = International Federation of Air Traffic Controllers' Associations
+}
+
+% --- Fatiga y Desempeño ---
+\DeclareAcronym{frms}{
+    short = FRMS,
+    long  = Fatigue Risk Management System,
+    foreign = Sistema de Gestión del Riesgo de Fatiga
+}
+
+% --- Algoritmos y Optimización (Investigación Operativa / IA) ---
+\DeclareAcronym{ia}{
+    short = IA,
+    long  = Inteligencia Artificial
+}
+
+\DeclareAcronym{milp}{
+    short = MILP,
+    long  = Mixed Integer Linear Programming,
+    foreign = Programación Lineal Entera Mixta
+}
+
+\DeclareAcronym{sa}{
+    short = SA,
+    long  = Simulated Annealing,
+    foreign = Recocido Simulado
+}
+
+\DeclareAcronym{vns}{
+    short = VNS,
+    long  = Variable Neighborhood Search,
+    foreign = Búsqueda en Entornos Variables
+}
+
+\DeclareAcronym{dfs}{
+    short = DFS,
+    long  = Depth First Search,
+    foreign = Búsqueda en Profundidad
+}
+
+\DeclareAcronym{regex}{
+    short = Regex,
+    long  = Regular Expressions,
+    foreign = Expresiones Regulares
+}
+
+\endinput
+
+% ================================================================
+%  GUÍA RÁPIDA DE USO EN EL TEXTO:
+% ================================================================
+% \ac{atm}  -> Uso estándar: Imprime "Nombre Completo (SIGLA)" la primera vez, 
+%              y solo "SIGLA" todas las veces posteriores.
+% \acp{atm} -> Uso plural: Igual que el anterior, pero aplica automáticamente 
+%              las terminaciones en plural (ej. ATCOs).
+% \acf{atm} -> Forzar completo (Full): Imprime SIEMPRE "Nombre Completo (SIGLA)", 
+%              sin importar si ya se ha mencionado antes en el texto.
+% \acs{atm} -> Forzar corto (Short): Imprime SIEMPRE únicamente la "SIGLA", 
+%              ideal para títulos, tablas o figuras donde no hay espacio.
+%
+% Comando para imprimir la lista (poner después del índice):
+% \printacronyms[name=Lista de Acrónimos]
+% ================================================================
