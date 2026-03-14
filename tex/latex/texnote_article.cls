@@ -17,7 +17,7 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 % Soporte multilingüe: Inglés y Español
-\RequirePackage[english, spanish, es-nodecimaldot, es-tabla]{babel}
+\RequirePackage[english, spanish, es-nodecimaldot, es-tabla,es-noquoting]{babel}
 
 \RequirePackage{kpfonts}
 \RequirePackage{microtype} % Optimiza el espaciado y evita cortes feos
@@ -49,8 +49,8 @@
 % ================================================================
 \RequirePackage{geometry}
 \geometry{
-    left=1.75cm,   % Reducido desde 2.54cm
-    right=1.75cm,  % Reducido desde 2.54cm
+    left=2.4cm,   % Reducido desde 2.54cm
+    right=2.4cm,  % Reducido desde 2.54cm
     top=2.25cm,
     bottom=2.05cm,
     headheight=18pt % A

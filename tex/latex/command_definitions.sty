@@ -139,15 +139,23 @@
 %     \end{tikzpicture}%
 % }
 
-\newcommand{\Title}[1]{\color{colorA}\textbf{#1}}
+\newcommand{\Title}[1]{\color{colorA}\Large\textbf{#1}}
+\newcommand{\enfasis}[1]{{\normalsize\textbf{\textcolor{colorA}{#1}}}}
 \newcommand{\preguntar}[1]{{\color{colorD}\large \faIcon{question-circle}}\small\hspace{0.5em} #1}
 \newcommand{\comentario}[1]{{\color{GithubGreen}\large \faIcon{info-circle}\small\hspace{0.5em} #1}}
 \newcommand{\info}[1]{{\color{colorA}\large \faIcon{info-circle}}\small \hspace{0.5em} #1}
 \newcommand{\downprice}{{\color{colorD}\faCaretDown\hspace{0.5cm}}}
 \newcommand{\scheduling}{\textit{scheduling}}
 \newcommand{\rostering}{\textit{rostering}}
+\newcommand{\mt}{metaheurística}
+\newcommand{\mts}{metaheurísticas}
 \newcommand{\atco}{controladores de tráfico aéreo}
 \newcommand{\ATCO}{ATCOs}
 \newcommand{\slot}{\textit{slot} }
 \newcommand{\slots}{\textit{slots} }
 \newcommand{\showwidth}{textwidth: \printinunitsof{cm}\prntlen{\textwidth}}
+% Columna "W" (Left/Izquierda) proporcional
+\newcolumntype{W}[1]{>{\hsize=#1\hsize}L}
+
+% % Columna "C" (Center/Centrada) proporcional
+% \newcolumntype{WC}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}
