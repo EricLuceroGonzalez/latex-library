@@ -1,0 +1,81 @@
+% ================================================================
+% @author: Eric Lucero
+% @description: Configuración de Glosario y Acrónimos.
+% @use: 
+% - \gls{ } To print the term, lowercase. For example, \gls{maths} prints mathematics when used.
+% \Gls{ } The same as \gls but the first letter will be printed in uppercase. Example: \Gls{maths} prints Mathematics
+% \glspl{ } The same as \gls but the term is put in its plural form. For instance, \glspl{formula} will write formulas in your final document.
+% \Glspl{ } The same as \Gls but the term is put in its plural form. For example, \Glspl{formula} renders as Formulas.
+% Finally, to print the glossary use the command
+% \printglossary
+% ================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texnote_glossaries}[2026/02/24 Estilos visuales nativos de Memoir]
+% Cargamos glossaries. 
+% Opciones:
+% - acronym: Crea una lista separada para siglas.
+% - toc: Añade los glosarios al índice general (Table of Contents).
+% - automake: Intenta compilar el glosario automáticamente (muy útil).
+\RequirePackage[acronym,toc,automake]{glossaries}
+% ================================================================
+% CONFIGURACIÓN VISUAL DEL GLOSARIO
+% ================================================================
+
+% 1. Definir el estilo general de la lista
+% 'altlistgroup' pone el término arriba, la descripción abajo, 
+% y separa las letras alfabéticas con un espacio vertical.
+\setglossarystyle{altlistgroup}
+
+% 2. Personalizar la fuente de la palabra (Término)
+% Aquí le decimos que use negrita y tu color corporativo "colorA"
+\renewcommand{\glsnamefont}[1]{\textbf{\textcolor{colorA}{#1}}}
+
+% 3. (Opcional) Eliminar el punto final automático que a veces se pone
+\renewcommand{\glspostdescription}{}
+% Inicializamos el motor de glosarios
+\makeglossaries
+
+% ================================================================
+% 1. DEFINICIÓN DE ACRÓNIMOS
+% Sintaxis: \newacronym{id}{SIGLA}{Nombre completo}
+% ================================================================
+\newacronym{atm}{ATM}{Air Traffic Management}
+\newacronym{atco}{ATCO}{Air Traffic Controller}
+\newacronym{milp}{MILP}{Mixed Integer Linear Programming}
+
+% ================================================================
+% 2. DEFINICIÓN DE TÉRMINOS DEL GLOSARIO
+% Sintaxis: \newglossaryentry{id}{name={término}, description={significado}}
+% ================================================================
+\newglossaryentry{sector}{
+    name={sector de control},
+    description={Volumen específico de espacio aéreo en el cual un controlador aéreo (ATCO) o un equipo de controladores es responsable de gestionar el tráfico.}
+}
+\newglossaryentry{controlador}{
+    name={controlador de tráfico aéreo},
+    plural={controladores de tráfico aéreo},
+    description={Volumen específico de espacio aéreo en el cual un controlador aéreo (ATCO) o un equipo de controladores es responsable de gestionar el tráfico.}
+}
+
+\newglossaryentry{heuristica}{
+    name={heurística},
+    description={Método de resolución de problemas de optimización que sacrifica la garantía de encontrar la solución matemática perfecta a cambio de encontrar una solución "suficientemente buena" en un tiempo computacional razonable.}
+}
+\newglossaryentry{metaheuristica}{
+    name={metaheurística},
+    plural={metaheurísticas},
+    description={Método de resolución de problemas de optimización que sacrifica la garantía de encontrar la solución matemática perfecta a cambio de encontrar una solución "suficientemente buena" en un tiempo computacional razonable.}
+}
+\newglossaryentry{slot}{
+    name={\em{slot}},
+    plural={\em{slots}},
+    sort={slot},
+    description={Rama de la inteligencia artificial que permite a los sistemas aprender patrones a partir de datos sin ser programados explícitamente.}
+}
+\newglossaryentry{ml}{
+    name={\em{machine learning}},
+    sort={machine learning}, % Si inicia con símbolos, el ordenamiento alfabético falla. Por eso usar Sort
+    description={Rama de la inteligencia artificial que permite a los sistemas aprender patrones a partir de datos sin ser programados explícitamente.}
+}
+
+\endinput
