@@ -5,25 +5,26 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{texnote_metadata}
 
-% Asegurarnos de que hyperref esté cargado antes de inyectar metadatos
-% \RequirePackage{hyperref}
+% Es recomendable asegurar que hyperref esté cargado antes de configurarlo
+\RequirePackage{hyperref}
+
 \makeatletter
-\AtBeginDocument{
+% Hook moderno que se ejecuta ANTES de que hyperref cierre el diccionario
+\AddToHook{begindocument/before}{
     \hypersetup{
         % --- Metadatos del PDF (Automático) ---
-        pdftitle={\@title},                     % Usa el título definido en \title{}
-        pdfauthor={Eric Lucero Gonzalez},       % Usa el autor definido en \author{}
-        pdfcreator={pdftex},                    % Creador del documento
-        pdfsubject={Tesis Doctoral}, % Asunto genérico
-        pdfkeywords={LaTeX, Tesis, UPM, AI, PhD},% Palabras clave
-        pdfdisplaydoctitle=true,                % Muestra el título en la barra de ventana
-        pdfproducer={Texmaker, TexLive, MacOS}, % Productor del documento
+        pdftitle={\@title},
+        pdfauthor={\@author},                   % Toma el autor definido en \author{}
+        pdfsubject={Tesis Doctoral},
+        pdfdisplaydoctitle=true,
+        pdfproducer={pdftex, TexLive, MacOS},
+        pdfcreator={\@author},                  % Sobrescribe "LaTeX with hyperref"
         % --- Comportamiento de Apertura ---
-        bookmarksnumbered=true, % Incluye números en los marcadores del PDF
-        bookmarksopen=true,     % Abre el árbol de marcadores al iniciar
-        bookmarksopenlevel=1,   % Nivel de profundidad al abrir (1 = Capítulos)
-        pdfpagemode=UseOutlines,% Muestra los marcadores al abrir el PDF
-        pdfstartview=FitH       % Abre el PDF ajustado al ancho de página
+        bookmarksnumbered=true,
+        bookmarksopen=true,
+        bookmarksopenlevel=1,
+        pdfpagemode=UseOutlines,
+        pdfstartview=FitH
     }
 }
 \makeatother

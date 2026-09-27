@@ -18,15 +18,14 @@
 \RequirePackage[T1]{fontenc}
 % Soporte multilingüe: Inglés y Español
 \RequirePackage[english, spanish, es-nodecimaldot, es-tabla,es-noquoting]{babel}
-
 \RequirePackage{kpfonts}
 \RequirePackage{microtype} % Optimiza el espaciado y evita cortes feos
 \RequirePackage{csquotes}
 \RequirePackage{fontawesome5}
 \RequirePackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
 \RequirePackage{parskip}
 \RequirePackage{ragged2e}
-\usesmartdiagramlibrary{additions}
 
 \RequirePackage{color_definitions}
 \RequirePackage{Boxes_Draws}[March_2025]
@@ -36,6 +35,7 @@
 % \RequirePackage{texnote_style}
 \RequirePackage{texnote_acronyms}
 \RequirePackage{texnote_glossaries}
+\RequirePackage{texnote_algorithms}
 
 \hyphenpenalty=1000
 \exhyphenpenalty=1000
@@ -90,27 +90,48 @@
 % ================================================================
 \RequirePackage[
     backend=biber,       % Motor de procesamiento
-    mincitenames=1,
-    maxcitenames=1,      % Muestra hasta 2 autores antes de poner "et al."
-    minbibnames=1,
+    maxcitenames=2,      % Muestra hasta 2 autores antes de poner "et al."
+    mincitenames=2,
     maxbibnames=10,
-    style=authoryear,
+    minbibnames=1,
+    % style=ieee,
+    % style=authoryear,
     uniquelist=false,    % Omite ambigüedades (mismo apellido)
-    sorting=none,
+    sortcites=false,    % Mantiene las citas en el orden que las escribes en el comando
+    % sorting=none,
     url=false,
-    date=year
+    date=year,
+    % UPM config
+    % backend=biber,% UPM config
+    style=apa,% UPM config
+    sorting=nyt,% UPM config
+    doi=true,% UPM config
+    % url=false,% UPM config
+    isbn=false,% UPM config
+    backref=false % UPM config
 ]{biblatex}
 \addbibresource{theBibliography.bib}
 \addbibresource{metaheuristics.bib} % Archivo de bibliografía
 \addbibresource{ATCO.bib} % Archivo de bibliografía
 % \addbibresource{../bibliography.bib} % Archivo de bibliografía
 
-% Traducción de etiquetas
+% 1. FORZAR LA "Y" EN TODOS LOS CONTEXTOS (Cita, Paréntesis y Bibliografía)
+\AtBeginDocument{%
+    % Cambia el separador en modo texto
+    \DeclareDelimFormat{finalnamedelim}{\addspace y\addspace}%
+    % Cambia el separador específicamente dentro de paréntesis (parencite)
+    \DeclareDelimFormat[parencite]{finalnamedelim}{\addspace y\addspace}%
+    % Cambia el separador en la lista de referencias final
+    \DeclareDelimFormat[bib]{finalnamedelim}{\addspace y\addspace}%
+}
+
 \DefineBibliographyStrings{spanish}{
     andothers = {\textit{et\addabbrvspace al\adddot}},
     and = {y},
 }
-
+\AtBeginBibliography{%
+    \renewcommand*{\finalnamedelim}{\addspace y\addspace}%
+}
 % Espaciado entre entradas de la bibliografía
 \setlength{\bibitemsep}{0.6em}
 % ================================================================
@@ -133,4 +154,7 @@
 \RequirePackage{fnpct}
 % \makepagenote % <-- para silenciar la advertencia de fnpct
 \RequirePackage{lipsum}
+\RequirePackage{bm}
 % \RequirePackage{titleps} % No compatible con memoir class
+
+

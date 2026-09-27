@@ -1,0 +1,58 @@
+% ================================
+% @author: Eric Lucero
+% @location: /Users/my_name/Library/Texmf/texnote_algorithms.sty
+% @contact: ericlucerogonzalez@gmail.com
+% @revised: Jul / 2026
+% ================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texnote_algorithms}[2026/06/25 v1.1 Estilos y macros de algoritmos]
+
+% ----- Dependencias ----------------------------------------------------------
+\RequirePackage{xcolor}      % \definecolor, \textcolor  (antes se asumia cargado)
+\RequirePackage[linesnumbered,ruled,vlined,spanish,onelanguage]{algorithm2e}
+\RequirePackage{listings}    % en un .sty: RequirePackage, no usepackage
+
+% ----- Paleta ----------------------------------------------------------------
+\definecolor{kwBlue}   {RGB}{ 31,119,180}
+\definecolor{commGray} {RGB}{100,100,100}
+\definecolor{raiseRed} {RGB}{180, 39, 40}
+
+% ----- Estilos de algorithm2e (un macro de un argumento) ---------------------
+\newcommand{\KwColorSty}[1]{\textcolor{kwBlue}{\textbf{#1}}}
+\newcommand{\CommColorSty}[1]{\textcolor{commGray}{\textit{#1}}}
+\SetKwSty{KwColorSty}
+\SetCommentSty{CommColorSty}
+
+% ----- Etiquetas de entrada / salida -----------------------------------------
+% Con la opcion `spanish`, \KwIn/\KwOut/\KwData/\KwResult ya salen como
+% Entrada/Salida/Datos/Resultado. Mantenemos alias en espanol propios
+% (\KwDatos/\KwResultado) y una etiqueta que NO es estandar (\KwEstado).
+\SetKwInput{KwIn}{Entrada}        % redundante con `spanish`, se deja por robustez
+\SetKwInput{KwOut}{Salida}        % idem
+\SetKwInput{KwDatos}{Datos}
+\SetKwInput{KwResultado}{Resultado}
+\SetKwInput{KwEstado}{Estado interno}
+
+% ----- Palabras clave de control ---------------------------------------------
+\SetKw{Continue}{continue}
+\SetKw{Break}{break}
+\SetKw{KwY}{y}
+\SetKw{KwO}{o}
+
+% ----- Excepciones (una sola macro; antes habia \Raise y \KWraise) -----------
+\newcommand{\Raise}[1]{\textcolor{raiseRed}{\textbf{raise}}~#1}
+
+% ----- Programa y funciones del dominio ---------------------------------------
+\SetKwProg{Fn}{Función}{:}{fin}
+\SetKwFunction{ConstruirSemilla}{ConstruirSolucionHeuristica}
+\SetKwFunction{Decodificar}{Decodificar}
+\SetKwFunction{SortearTarget}{SortearTargetPosicion}
+
+% ----- Azucar sintactico y tokens del dominio --------------------------------
+\newcommand{\Let}[2]{#1 \ensuremath{\gets} #2}   % math-safe (antes $\gets$)
+\newcommand{\TOK}[1]{\texttt{\small #1}}
+\newcommand{\STRDESC}{\TOK{STRING\_DESCANSO}}
+\newcommand{\STRNT}{\TOK{STRING\_NO\_TURNO}}
+\newcommand{\LCAD}{\ensuremath{L}}
+
+\endinput

@@ -153,6 +153,17 @@
     secondaryLabel/.style={align=center,fill=colorD!20,inner sep=2.3mm,text=colorD},
     blackLabel/.style={text=white,align=center,fill=black,inner sep=2.3mm, draw=white},
     infonode/.style={font=\large,inner sep=10pt,rounded corners=3pt,above right,draw,align=center,fill=colorA!50},
+    baseBox/.style={
+            text=white, font=\sffamily, align=left, anchor=north west, inner sep=10pt
+        },
+    titleBox/.style={font=\sffamily\bfseries\Large, align=left},
+    % Flechas inferiores
+    botArrow/.style={
+            single arrow, single arrow head extend=3mm,
+            text=white, font=\sffamily\bfseries, align=center,
+            minimum height=#1, inner sep=4pt, anchor=west
+        }
+
 }
 \tikzset{
     arrownode/.style={-Triangle,line width=0.7mm, color=colorA},
@@ -202,6 +213,49 @@
         }}
 
 
+\tikzset{
+  font=\sffamily\small,
+%   >={Stealth[length=2mm,width=2mm]},
+  every node/.style={align=center, inner sep=4pt},
+  module/.style={
+    rectangle, rounded corners=2pt, draw=colorC, very thick,
+    fill=white, drop shadow={shadow xshift=0.6pt, shadow yshift=-0.6pt, opacity=0.25},
+    minimum height=8mm, minimum width=24mm
+  },
+  store/.style={
+    cylinder, shape border rotate=90, draw=colorC, thick,
+    fill=softGray, aspect=0.3, minimum height=10mm, minimum width=18mm
+  },
+  data/.style={
+    trapezium, trapezium left angle=70, trapezium right angle=110,
+    draw=colorC, fill=bgPanel, thick, minimum height=7mm
+  },
+  decision/.style={
+    diamond, aspect=2, draw=colorC, fill=colorH!15, very thick,
+    minimum height=8mm, minimum width=22mm
+  },
+  start/.style={
+    rectangle, rounded corners=4mm, draw=accentGreen!80!black,
+    fill=accentGreen!18, very thick, minimum height=8mm, minimum width=24mm
+  },
+  endnode/.style={
+    rectangle, rounded corners=4mm, draw=accentRed!85!black,
+    fill=accentRed!15, very thick, minimum height=8mm, minimum width=24mm
+  },
+  bigbox/.style={
+    rectangle, rounded corners=3pt, draw=#1, very thick, fill=#1!8,
+    inner sep=10pt
+  },
+  cell/.style={draw=darkGray, minimum size=9mm, font=\sffamily\footnotesize,
+               inner sep=1pt, anchor=center},
+  arrow/.style ={-{Stealth[length=2.4mm]}, semithick, colorC},
+  thinarrow/.style={-{Stealth[length=2mm]}, thin, colorC!80},
+  dasharr/.style={-{Stealth[length=2.4mm]}, semithick, dashed, colorC},
+  Triangle/.style={-{Stealth[length=2.4mm]}, semithick, darkGray},
+  lbl/.style={font=\footnotesize\itshape, fill=white, inner sep=1pt},
+  gene/.style={draw=colorC, minimum size=7mm, anchor=center,
+               font=\sffamily\footnotesize, inner sep=2pt},
+}
 \newtcolorbox{questionBox}[2][]{
     toptitle=0.6mm,
     boxsep=1mm,
@@ -310,6 +364,15 @@
         }
 }
 
+\newtcolorbox{seminote}{
+    width=0.7\textwidth, % Ancho del 60%
+    center,              % Centra la caja en la página
+    colback=gray!5,       % Fondo blanco (o ponle gray!5)
+    colframe=GithubGreen,      % Borde negro
+    boxrule=0.75pt,       % Grosor del borde (simulando \fbox)
+    sharp corners,       % Esquinas rectas (simulando \fbox)
+    halign=left          % Alineación del texto interior
+}
 
 
 % \ConceptBox{Título del Concepto}{Texto de la descripción}
@@ -361,3 +424,22 @@
 
 % \RequirePackage{tkz-euclide}  % Paquete para geometría euclidiana con TikZ (ideal para diagramas geométricos).
 % % \usepgfplotslibrary{fillbetween}
+
+\tcbuselibrary{breakable, skins}
+\newtcolorbox{regla}[1][]{%
+  enhanced, breakable,
+  colback=accentTeal!8, colframe=accentTeal!70!black, boxrule=0.4pt,
+  arc=2pt, left=6pt, right=6pt, top=4pt, bottom=4pt,
+  fonttitle=\bfseries\sffamily, title={Regla mnemotécnica}, #1}
+
+\newtcolorbox{pitch}[1][]{%
+  enhanced, breakable,
+  colback=accentPurple!8, colframe=accentPurple!70!black, boxrule=0.4pt,
+  arc=2pt, left=6pt, right=6pt, top=4pt, bottom=4pt,
+  fonttitle=\bfseries\sffamily, title={Pitch de cinco minutos}, #1}
+
+\newtcolorbox{aviso}[1][]{%
+  enhanced, breakable,
+  colback=accentOrange!10, colframe=accentOrange!70!black, boxrule=0.4pt,
+  arc=2pt, left=6pt, right=6pt, top=4pt, bottom=4pt,
+  fonttitle=\bfseries\sffamily, title={Trampa que conviene conocer}, #1}

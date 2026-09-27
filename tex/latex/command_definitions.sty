@@ -122,11 +122,15 @@
 \newcommand{\red}[1]{{\color{GithubRed} #1}}
 \newcommand{\alerta}[1]{{\color{colorA}\bfseries #1}}
 
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 % \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 % Definimos L como una columna X que no justifica (alinea a la izquierda)
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+% \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+% \newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
 % Definir comando para el bloque
 % \newcommand{\ConceptBox}[2]{%
@@ -138,7 +142,7 @@
 
 \newcommand{\Title}[1]{\color{colorA}\Large\textbf{#1}}
 \newcommand{\enfasis}[1]{{\normalsize\textbf{\textcolor{colorA}{#1}}}}
-\newcommand{\preguntar}[1]{{\color{colorD}\large \faIcon{question-circle}}\small\hspace{0.5em} #1}
+\newcommand{\preguntar}[1]{{\color{colorD}\large \faIcon{question-circle}}\small\hspace{0.25em} #1}
 \newcommand{\comentario}[1]{{\color{GithubGreen}\large \faIcon{info-circle}\small\hspace{0.5em} #1}}
 \newcommand{\info}[1]{{\color{colorA}\large \faIcon{info-circle}}\small \hspace{0.5em} #1}
 \newcommand{\downprice}{{\color{colorD}\faCaretDown\hspace{0.5cm}}}
@@ -156,3 +160,34 @@
 
 % % Columna "C" (Center/Centrada) proporcional
 % \newcolumntype{WC}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}
+% \newenvironment{seminote}[1]{
+%     \par
+%     \noindent
+%     \fbox{%
+%         \parbox{0.6\textwidth}{
+%             #1
+%         }{}}}
+
+% ==========================================
+% LISTAS PERSONALIZADAS ATM
+% ==========================================
+\RequirePackage{enumitem} % Asegúrate de cargar el paquete enumitem para personalizar listas
+\newlist{planelist}{itemize}{1} % Crea un entorno llamado 'planelist' de 1 nivel
+\setlist[planelist]{
+    label=\textcolor{colorA}{\faPlane}, % El icono de avión
+    topsep=0.5em,                       % Margen superior e inferior de la lista
+    itemsep=0.3em,                      % Espacio entre los aviones
+    parsep=0pt,                         % Espacio entre párrafos internos
+    leftmargin=* % Alineación automática al margen
+}
+
+% Lista 2: Viñetas de Controladores (ATCOs)
+% Usamos \faHeadset (auriculares con micrófono), que es el estándar visual para un controlador
+\newlist{atcolist}{itemize}{1}
+\setlist[atcolist]{
+    label=\textcolor{colorA}{\faHeadset}, % El icono de ATCO
+    topsep=0.5em,
+    itemsep=0.3em,
+    parsep=0pt,
+    leftmargin=*
+}

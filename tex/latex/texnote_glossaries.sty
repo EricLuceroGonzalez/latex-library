@@ -1,3 +1,54 @@
+% ==============================================================================
+% PAQUETE: texnote_glossaries.sty
+% AUTOR: Eric Lucero
+% DESCRIPCIÓN: Configuración centralizada de Acrónimos y Glosario de Términos, 
+%              con enfoque especial en definiciones ATM/ATC y OACI.
+%
+% ARQUITECTURA:
+% - Los acrónimos puros usan su ID normal (ej. 'atm').
+% - Las definiciones largas usan el prefijo 'def-' (ej. 'def-atm') para evitar 
+%   redundancias en las listas impresas y conflictos de etiquetas.
+%
+% ------------------------------------------------------------------------------
+% COMANDOS (Cheat Sheet)
+% ------------------------------------------------------------------------------
+% 1. USO GENERAL (Inteligente - Automático)
+%    \gls{atm}       -> 1ª vez: "gestión del tránsito aéreo (ATM)" | Resto: "ATM"
+%    \glspl{fir}     -> Plural: "regiones de información de vuelo (FIR)"
+%    \Gls{atm}       -> Igual, pero con la primera letra en Mayúscula.
+%
+% 2. CONTROL MANUAL (Ignoran la memoria de LaTeX)
+%    \acrshort{atm}  -> Fuerza solo la sigla: "ATM"
+%    \acrlong{atm}   -> Fuerza solo el texto: "gestión del tránsito aéreo"
+%    \acrfull{atm}   -> Fuerza texto + sigla: "gestión del... (ATM)"
+%    *Añade 'pl' al final de estos comandos para los plurales (ej. \acrshortpl)
+%
+% 3. CONTROL DE GLOSARIO (Invocaciones invisibles)
+%    \glsadd{def-atm}-> No imprime nada en el texto, pero añade silenciosamente 
+%                       la definición larga al Glosario final.
+%    \glsaddall      -> (Usar al final del doc) Añade TODOS los términos definidos.
+%
+% 4. IMPRESIÓN DE LISTAS (Usar en el documento principal)
+%    \printglossary[type=\acronymtype, title=Lista de Acrónimos]
+%    \printglossary[title=Glosario de Términos]
+% ==============================================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{texnote_glossaries}[2026/03/30 Configuración de Acrónimos y Glosario ATM]
+
+% Cargamos el paquete con las opciones necesarias
+\RequirePackage[acronym,toc,automake]{glossaries}
+
+% Configuración visual
+\setglossarystyle{altlistgroup}
+\renewcommand{\glsnamefont}[1]{\textbf{\textcolor{colorA}{#1}}}
+\renewcommand{\glspostdescription}{}
+
+% Inicializamos el motor
+\makeglossaries
+
+% (A partir de aquí empiezan tus \newacronym y \newglossaryentry...)
+
 % ================================================================
 % @author: Eric Lucero
 % @description: Configuración de Glosario y Acrónimos.
@@ -39,43 +90,375 @@
 % 1. DEFINICIÓN DE ACRÓNIMOS
 % Sintaxis: \newacronym{id}{SIGLA}{Nombre completo}
 % ================================================================
-\newacronym{atm}{ATM}{Air Traffic Management}
-\newacronym{atco}{ATCO}{Air Traffic Controller}
-\newacronym{milp}{MILP}{Mixed Integer Linear Programming}
+% \newacronym{atm}{ATM}{Air Traffic Management}
+\newacronym{acc}{ACC}{\textit{Area Control Centre}}
+% ================================================================
+\newacronym[
+    longplural={Proveedores de Servicios de Navegación Aérea (del inglés \textit{Air Navigation Service Providers})},
+    shortplural={ANSPs},
+]{ansp}{ANSP}{Proveedor de Servicios de Navegación Aérea (del inglés \textit{Air Navigation Service Provider})}
+% ================================================================
+\newacronym{asm}{ASM}{gestión del espacio aéreo}
+\newacronym{atc}{ATC}{control de tráfico aéreo}
+\newacronym[
+    longplural={controladores de tráfico aéreo},
+    shortplural={ATCOs}
+]{atco}{ATCO}{controlador de tráfico aéreo}
+\newacronym{atfcm}{ATFCM}{gestión de afluencia y capacidad del tránsito aéreo}
+\newacronym{atfm}{ATFM}{gestión de afluencia del tránsito aéreo}
+\newacronym{atm}{ATM}{gestión del tránsito aéreo}
+\newacronym{ats}{ATS}{servicios de tránsito aéreo}
+\newacronym{cdm}{CDM}{toma de decisiones colaborativas}
+\newacronym[
+    longplural={regiones de información de vuelo},
+    shortplural={FIR}
+]{fir}{FIR}{región de información de vuelo}
+\newacronym[
+    longplural={regiones superiores de información de vuelo},
+    shortplural={UIR}
+]{uir}{UIR}{Región superior de información de vuelo}
+\newacronym{fmp}{FMP}{\textit{Flow Management Position}}
+\newacronym{icao}{ICAO}{Internacional civil aeronautics organization}
+\newacronym{milp}{MILP}{\textit{Mixed Integer Linear Programming}}
+\newacronym{nmoc}{NMOC}{\textit{Network Manager Operations Centre}}
+\newacronym{nm}{NM}{\textit{Network Manager}}
+\newacronym{oaci}{OACI}{Organización Internacional de Aviación Civil}
+% \newacronym{tma}{TMA}{área de control terminal}
 
+% TODO: ORDENAR ABC...
+\newacronym{nop}{NOP}{\textit{Network Operations Plan}}
+\newacronym{adp}{ADP}{\textit{ATFCM Daily Plan}}
+\newacronym{anm}{ANM}{\textit{ATFCM Notification Message}}
+\newacronym{inp}{INP}{\textit{Initial Network Plan}}
+\newacronym{dsna}{DSNA}{Direction des Services de la Navigation Aérienne}
+\newacronym{faa}{FAA}{Federal Aviation Administration}
+\newacronym{nats}{NATS}{National Air Traffic Services}
+\newacronym[
+    longplural={Áreas de Control (del inglés \textit{Control Areas})},
+    shortplural={CTAs},
+    description={Área de Control. Espacio aéreo controlado que se extiende hacia arriba desde un límite especificado sobre el terreno o el agua (su límite inferior nunca es la superficie terrestre). Está diseñado para englobar y proteger las rutas ATS, garantizando la provisión del servicio de control de área a los vuelos que operan bajo reglas de vuelo por instrumentos (IFR) durante sus fases de crucero, ascenso y descenso.}
+]{cta}{CTA}{Área de Control (del inglés \textit{Control Area})}
+\newacronym[
+    longplural={Áreas de Control Terminal (del inglés \textit{Terminal Manoeuvring Areas})},
+    shortplural={TMAs},
+    description={Área de Control Terminal. Es un tipo específico e intensivo de Área de Control (CTA) establecida normalmente en la confluencia de rutas ATS en las inmediaciones de uno o más aeródromos principales de gran afluencia. Suele diseñarse geométricamente en forma de terraza escalonada o embudo invertido. Su objetivo táctico es absorber y gestionar de manera segura la compleja transición entre los vuelos en ruta y las secuencias de aproximación y salida, concentrando habitualmente la mayor densidad de tráfico y la mayor carga cognitiva para los controladores de tránsito aéreo (ATCOs) de aproximación.}
+]{tma}{TMA}{Área de Control Terminal (del inglés \textit{Terminal Control Area})}
+
+\newacronym[
+    longplural={Controladores (Ruta)},
+    shortplural={CON},
+]{con}{CON}{Controlador (Ruta)}
+
+% ==========================================
+% PTD: Puesto de Trabajo Diferenciado
+% ==========================================
+\newacronym[
+    longplural={Puestos de Trabajo Diferenciado},
+    shortplural={PTDs},
+]{ptd}{PTD}{Puesto de Trabajo Diferenciado}
 % ================================================================
 % 2. DEFINICIÓN DE TÉRMINOS DEL GLOSARIO
 % Sintaxis: \newglossaryentry{id}{name={término}, description={significado}}
 % ================================================================
-\newglossaryentry{sector}{
-    name={sector de control},
-    description={Volumen específico de espacio aéreo en el cual un controlador aéreo (ATCO) o un equipo de controladores es responsable de gestionar el tráfico.}
+\newglossaryentry{def-amc}{
+    name={célula de gestión del espacio aéreo},
+    sort={celula de gestion del espacio aereo},
+    description={Es una célula o unidad conjunta (mixta civil y militar) encargada de llevar a cabo la gestión diaria (en fases estratégica y pretáctica) y la asignación o reserva temporal del espacio aéreo nacional. Su función es organizar este recurso en función de los requerimientos de los usuarios y las peticiones realizadas por las agencias civiles y militares aprobadas.}
 }
-\newglossaryentry{controlador}{
-    name={controlador de tráfico aéreo},
-    plural={controladores de tráfico aéreo},
-    description={Volumen específico de espacio aéreo en el cual un controlador aéreo (ATCO) o un equipo de controladores es responsable de gestionar el tráfico.}
+
+\newglossaryentry{def-capacidad}{
+    name={capacidad},
+    sort={capacidad},
+    description={Es el número máximo de aeronaves al que puede dar cabida el sistema, o uno de sus componentes (rendimiento o throughput), en un período de tiempo dado.}
+}
+
+\newglossaryentry{def-capacidad-acc}{
+    name={capacidad del ACC},
+    sort={capacidad del ACC},
+    description={El número máximo teórico de vuelos que pueden entrar en un ACC o en un grupo de sectores por hora, durante un período de tiempo (ej. 3 horas), sin causar una carga de trabajo excesiva en ninguno de los sectores. Este indicador de capacidad se utiliza para fines de planificación y monitorización y carece de valor operativo directo. El indicador se calcula matemáticamente utilizando una metodología validada.}
+}
+
+\newglossaryentry{def-capacidad-declarada}{
+    name={capacidad declarada del sector},
+    sort={capacidad declarada del sector},
+    description={El valor que el ANSP declara al NMOC como el número máximo de vuelos por hora que pueden entrar en un sector antes de que sea necesaria la aplicación de una regulación ATFM. Pueden existir varios valores, dependiendo del entorno ATC en ese momento (espacio aéreo, equipamiento, patrón de tráfico, dotación de personal, meteorología, etc.). La posición FMP define esta información y asesora al NMOC para que pueda proporcionar el servicio ATFM. El valor puede cambiar según la situación en el ACC.}
+}
+
+\newglossaryentry{def-capacidad-sector}{
+    name={capacidad de sector},
+    sort={capacidad de sector},
+    description={El número máximo de vuelos que pueden entrar en un sector por hora, promediado a lo largo de un período de tiempo sostenible (ej. 3 horas), para garantizar un flujo de tráfico seguro, ordenado y eficiente. Algunos ANSP gestionan tácticamente las capacidades de los sectores en períodos más cortos (ej. 15 minutos). Sin embargo, para fines de evaluación global, se utiliza la cifra por hora como estándar.}
+}
+
+\newglossaryentry{def-capacidad-volumen}{
+    name={capacidad declarada del volumen de tránsito},
+    sort={capacidad declarada del volumen de transito},
+    description={La capacidad para un período de tiempo determinado para un volumen de tránsito dado, según lo notificado por el ANSP al NMOC para que este pueda proveer el servicio ATFM. Al igual que con la capacidad de sector, el valor puede cambiar dependiendo de las condiciones del entorno ATC en ese momento en el ACC.}
+}
+
+\newglossaryentry{def-control-afluencia}{
+    name={control de afluencia},
+    sort={control de afluencia},
+    description={Medidas encaminadas a regular el tránsito dentro de un espacio aéreo determinado, a lo largo de una ruta determinada, o con destino a un determinado aeródromo, a fin de aprovechar al máximo el espacio aéreo.}
+}
+
+\newglossaryentry{def-demanda}{
+    name={demanda},
+    sort={demanda},
+    description={Es el número de aeronaves que solicitan utilizar el sistema de gestión del tránsito aéreo (ATM) en un período de tiempo dado.}
+}
+
+\newglossaryentry{def-asm}{
+    name={gestión del espacio aéreo},
+    sort={gestion del espacio aereo},
+    description={Se refiere a una función de planificación cuyo objetivo principal es maximizar la utilización del espacio aéreo disponible mediante la asignación dinámica del tiempo y, en ocasiones, la segregación del espacio aéreo entre diversas categorías de usuarios en función de sus necesidades a corto plazo.}
+}
+
+\newglossaryentry{def-atfm}{
+    name={gestión de la afluencia del tránsito aéreo},
+    sort={gestion de la afluencia del transito aereo},
+    description={Servicio establecido con el objetivo de contribuir a una circulación segura, ordenada y expedita del tránsito aéreo asegurando que se utiliza al máximo posible la capacidad ATC, y que el volumen de tránsito es compatible con las capacidades declaradas por la autoridad ATS competente.}
+}
+
+\newglossaryentry{def-atfcm}{
+    name={gestión de la afluencia y capacidad del tránsito aéreo},
+    sort={gestion de la afluencia y capacidad del transito aereo},
+    description={Servicio que tiene como objetivo mejorar la seguridad, la eficiencia y la sostenibilidad ambiental del sistema ATM optimizando los flujos de tráfico de acuerdo con la capacidad disponible del control de tráfico aéreo (ATC), al mismo tiempo que se optimiza dicha capacidad para que coincida con la demanda esperada.}
+}
+
+\newglossaryentry{def-atm}{
+    name={gestión del tránsito aéreo},
+    sort={gestion del transito aereo},
+    description={Administración dinámica e integrada — segura, económica y eficiente — del tránsito aéreo y del espacio aéreo, que incluye los servicios de tránsito aéreo, la gestión del espacio aéreo y la gestión de la afluencia del tránsito aéreo, mediante el suministro de instalaciones y servicios sin discontinuidades en colaboración con todos los interesados y funciones de a bordo y basadas en tierra.}
 }
 
 \newglossaryentry{heuristica}{
     name={heurística},
+    sort={heuristica},
     description={Método de resolución de problemas de optimización que sacrifica la garantía de encontrar la solución matemática perfecta a cambio de encontrar una solución "suficientemente buena" en un tiempo computacional razonable.}
 }
+
 \newglossaryentry{metaheuristica}{
     name={metaheurística},
+    sort={metaheuristica},
     plural={metaheurísticas},
     description={Método de resolución de problemas de optimización que sacrifica la garantía de encontrar la solución matemática perfecta a cambio de encontrar una solución "suficientemente buena" en un tiempo computacional razonable.}
 }
-\newglossaryentry{slot}{
-    name={\em{slot}},
-    plural={\em{slots}},
+
+\newglossaryentry{def-saturacion}{
+    name={saturación},
+    sort={saturacion},
+    description={Franjas de tiempo en las que la demanda de tráfico aéreo es mayor a la capacidad declarada en un sector determinado.}
+}
+
+\newglossaryentry{def-sector-afin}{
+    name={sector afín},
+    sort={sector afin},
+    plural={sectores afines},
+    description={Dos sectores se denominan afines si poseen algún volumen espacial en común.}
+}
+
+\newglossaryentry{sector}{
+    name={sector de control},
+    sort={sector de control},
+    description={Volumen específico de espacio aéreo en el cual un controlador aéreo (ATCO) o un equipo de controladores es responsable de gestionar el tráfico.}
+}
+
+\newglossaryentry{def-sector-elemental}{
+    name={sector elemental},
+    sort={sector elemental},
+    plural={sectores elementales},
+    description={Componente primario de la estructura del espacio aéreo. Se pueden combinar uno o más de ellos para formar un sector operativo. En algunos casos, el sector elemental puede coincidir con el sector operativo; en otros, un sector elemental nunca se abre operativamente sin combinarse con uno o más sectores elementales adicionales.}
+}
+
+\newglossaryentry{def-atco}{
+    name={controlador de tráfico aéreo (ATCO)},
+    plural={controladores de tráfico aéreo},
+    sort={controlador de trafico aereo},
+    description={personal que suministra el servicio de control de tráfico con el fin de prevenir colisiones y  acelerar y mantener ordenadamente el movimiento del tránsito aéreo.}
+}
+\newglossaryentry{def-atcs}{
+    name={servicio de control del tráfico aéreo},
+    sort={servicio de control del trafico aereo},
+    description={Servicio a las naves en vuelo o los aeródromos con la finalidad de prevenir colisiones y agilizar la afluencia del tránsito aéreo de forma ordenada y segura.}
+}
+
+\newglossaryentry{def-ats}{
+    name={servicio de tránsito aéreo},
+    sort={servicio de transito aereo},
+    plural={servicios de tránsito aéreo},
+    description={Expresión genérica que se aplica, según el caso, a los servicios de información de vuelo, alerta, asesoramiento de tránsito aéreo, control de tránsito aéreo (servicios de control de área, control de aproximación o control de aeródromo).}
+}
+
+\newglossaryentry{def-slot-atfm}{
+    name={\textit{slot}},
+    plural={\textit{slots}},
     sort={slot},
-    description={Rama de la inteligencia artificial que permite a los sistemas aprender patrones a partir de datos sin ser programados explícitamente.}
+    description={Hora calculada de despegue (CTOT) asignada centralmente por el Gestor de la Red (ej. Eurocontrol) para regular el flujo de tráfico cuando la demanda excede la capacidad. Otorga a la aeronave una ventana de tolerancia específica (estándar de -5 a +10 minutos respecto al CTOT) dentro de la cual debe despegar obligatoriamente para garantizar la seguridad y fluidez del sistema ATM.}
 }
-\newglossaryentry{ml}{
-    name={\em{machine learning}},
-    sort={machine learning}, % Si inicia con símbolos, el ordenamiento alfabético falla. Por eso usar Sort
-    description={Rama de la inteligencia artificial que permite a los sistemas aprender patrones a partir de datos sin ser programados explícitamente.}
+
+\newglossaryentry{def-gat}{
+    name={tránsito aéreo general},
+    sort={transito aereo general},
+    description={Se refiere a los vuelos (generalmente civiles) que operan bajo las reglas y procedimientos estándar de tránsito aéreo.}
 }
+
+\newglossaryentry{def-oat}{
+    name={tránsito aéreo operativo},
+    sort={transito aereo operativo},
+    description={Hace referencia a las operaciones de vuelo (generalmente militares o de estado) que interactúan en el espacio aéreo compartido.}
+}
+
+\newglossaryentry{def-volumen-transito}{
+    name={volumen de tránsito},
+    sort={volumen de transito},
+    description={Componente del espacio aéreo basado en los flujos de tráfico, el cual sirve como referencia para el diseño de los sectores ATC.}
+}
+
+% \newglossaryentry{def-tma}{
+%     name={área de control terminal},
+%     sort={area de control terminal},
+%     description={Área de control establecida generalmente en la confluencia de rutas ATS en las inmediaciones de uno o más aeródromos principales.}
+% }
+% TODO: ordenar ABC...
+\newglossaryentry{def-nop}{
+    name={\textit{Network Operations Plan} (NOP)},
+    sort={Network Operations Plan (NOP)},
+    description={Principal instrumento operativo continuo elaborado por el Gestor de la Red (Eurocontrol) en colaboración con los ANSP y aerolíneas. Proporciona una visión global de la evolución prevista del tráfico aéreo y de la capacidad del espacio aéreo en Europa, abarcando desde la planificación estratégica hasta la ejecución táctica, con el fin de equilibrar la demanda y proteger a los controladores de sobrecargas de trabajo}
+}
+
+\newglossaryentry{def-adp}{
+    name={\textit{ATFCM Daily Plan} (ADP)},
+    sort={ATFCM Daily Plan (ADP)},
+    description={Plan táctico emitido diariamente por el Gestor de la Red que detalla la capacidad disponible del espacio aéreo, la demanda prevista y las medidas específicas de Gestión de Afluencia y Capacidad (como regulaciones y escenarios de desvío) que se ejecutarán el día de las operaciones para mantener la fluidez y seguridad en la red europea}
+}
+
+\newglossaryentry{def-anm}{
+    name={\textit{ATFCM Notification Message} (ANM)},
+    sort={ATFCM Notification Message (ANM)},
+    description={Mensaje oficial de notificación emitido por Eurocontrol el día anterior a las operaciones (fase pre-táctica o D-1). Informa a las aerolíneas, aeropuertos y centros de control sobre todas las regulaciones ATFM que estarán vigentes (por ejemplo, restricciones de capacidad en un sector específico que generarán asignación de \textit{slots} de despegue) para el día siguiente}
+}
+
+\newglossaryentry{def-inp}{
+    name={\textit{Initial Network Plan} (INP)},
+    sort={Initial Network Plan (INP)},
+    description={Fase inicial de planificación dentro del proceso del NOP, publicada el día antes de las operaciones (D-1). Establece las expectativas preliminares de la demanda de tráfico y la capacidad disponible de los sectores antes de que se apliquen las medidas pre-tácticas finales, sirviendo como base para la toma de decisiones colaborativa (CDM) entre los actores de la aviación}
+}
+
+% TODO: Espacio aéreo
+\newglossaryentry{def-cdm}{
+    name={Collaborative Decision Making},
+    sort={collaborative decision making},
+    description={Proceso que permite que las decisiones sean tomadas por los actores que estén mejor posicionados para hacerlo, basándose en la información más completa, precisa y actualizada disponible. Se conoce por sus siglas en inglés como CDM.}
+}
+\newglossaryentry{def-acc}{
+    name={Area Control Centre (ACC)},
+    sort={Area Control Centre (ACC)},
+    description={Instalación aeronáutica operativa encargada de proporcionar servicios de control de tránsito aéreo (ATC) a los vuelos en ruta dentro de una Región de Información de Vuelo (FIR) o de un Espacio Aéreo Superior (UIR). Es el entorno físico donde los controladores (ATCOs) gestionan tácticamente la separación y seguridad de las aeronaves a través de los diferentes sectores de control}
+}
+
+\newglossaryentry{def-fmp}{
+    name={Posición de Gestión de Afluencia (FMP)},
+    sort={Posición de Gestión de Afluencia (FP)},
+    description={Unidad especializada ubicada dentro de un Centro de Control de Área (ACC) que actúa como enlace directo entre los supervisores locales y el Gestor de la Red (NM). Su misión es monitorizar continuamente la carga de tráfico de los sectores, evaluar la capacidad disponible de los ATCOs y coordinar con el NM la aplicación de medidas tácticas o pre-tácticas (regulaciones ATFM, asignación de \textit{slots}) para evitar la sobrecarga del personal de control. Conocida generalmente como \textit{Flow Management Position (FMP)}.}
+}
+
+\newglossaryentry{def-nm}{
+    name={\textit{Network Manager (NM)}},
+    sort={Network Manager (NM)},
+    description={Entidad centralizada (función desempeñada por Eurocontrol por mandato de la Comisión Europea) responsable de gestionar el rendimiento global de la red de aviación europea. Coordina la Gestión de Afluencia del Tránsito Aéreo (ATFM) a nivel continental, elabora el Plan de Operaciones de la Red (NOP) y colabora ininterrumpidamente con las FMP locales para optimizar rutas, mitigar cuellos de botella y asegurar que la demanda global no exceda la capacidad del sistema}
+}
+\newglossaryentry{def-enaire}{
+    name={ENAIRE},
+    sort={ENAIRE},
+    description={Principal Proveedor de Servicios de Navegación Aérea (ANSP) de España y entidad pública estatal encargada de la Gestión del Tránsito Aéreo (ATM) en las tres Regiones de Información de Vuelo (FIR) españolas: Madrid, Barcelona y Canarias. Como gestor directo de los recursos humanos tácticos, es el responsable de la capacitación, distribución sectorial y gestión de la carga de trabajo de los controladores de tránsito aéreo (ATCOs). A nivel operativo, sus Centros de Control (ACC) colaboran ininterrumpidamente con el Gestor de la Red (Eurocontrol) para coordinar medidas de capacidad y afluencia, garantizando un flujo seguro y equilibrado del tráfico aéreo}
+}
+
+\newglossaryentry{def-ansp}{
+    name={ANSP (Air Navigation Service Provider)},
+    sort={ANSP},
+    description={Proveedor de Servicios de Navegación Aérea. Se refiere a las organizaciones y al personal (como controladores, ingenieros y técnicos) que se dedican a proporcionar servicios de gestión del tránsito aéreo (ATM) a los usuarios del espacio aéreo. Sus responsabilidades abarcan la planificación, inversión, implementación, operación y mantenimiento continuo de las instalaciones y sistemas CNS/ATM (Comunicaciones, Navegación, Vigilancia y Gestión del Tránsito Aéreo), así como el desarrollo de procedimientos y la capacitación. Estas organizaciones pueden adoptar diversas formas, incluyendo agencias estatales, corporaciones públicas autofinanciadas, proveedores ATM privatizados, entidades regionales o empresas independientes del sector privado.}
+}
+\newglossaryentry{def-fir}{
+    name={región de información de vuelo (FIR)},
+    sort={region de informacion de vuelo},
+    description={Espacio aéreo de dimensiones definidas, dentro del cual se facilitan los servicios de información de vuelo (FIS) y de alerta (ALRS). Es la división regular de espacio aéreo más grande del mundo, y la OACI delega qué país es responsable del control operativo de una FIR determinada.}
+}
+
+\newglossaryentry{def-uir}{
+    name={región superior de información de vuelo (UIR)},
+    sort={region superior de informacion de vuelo},
+    description={Espacio aéreo de dimensiones definidas situado por encima de una Región de Información de Vuelo (FIR). Se utiliza generalmente para gestionar el tráfico de gran altitud o en fase de crucero (como aerolíneas comerciales). El límite vertical que separa una FIR de una UIR varía según la jurisdicción de cada Estado; por ejemplo, en España la división se realiza en el nivel de vuelo FL195 (19.500 pies), mientras que en otros países europeos suele estar en el FL245.}
+}
+\newglossaryentry{def-cta}{
+    name={\textit{Terminal Control Areas}},
+    sort={\textit{Terminal Control Areas}},
+    description={Área de Control. Espacio aéreo controlado que se extiende hacia arriba desde un límite especificado sobre el terreno o el agua (su límite inferior nunca es la superficie terrestre). Está diseñado para englobar y proteger las rutas ATS, garantizando la provisión del servicio de control de área a los vuelos que operan bajo reglas de vuelo por instrumentos (IFR) durante sus fases de crucero, ascenso y descenso.}
+}
+\newglossaryentry{def-tma}{
+    name={Terminal Manoeuvring Area},
+    sort={Terminal Manoeuvring Area},
+    description={Área de Control Terminal. Es un tipo específico e intensivo de Área de Control (CTA) establecida normalmente en la confluencia de rutas ATS en las inmediaciones de uno o más aeródromos principales de gran afluencia. Suele diseñarse geométricamente en forma de terraza escalonada o embudo invertido. Su objetivo táctico es absorber y gestionar de manera segura la compleja transición entre los vuelos en ruta y las secuencias de aproximación y salida, concentrando habitualmente la mayor densidad de tráfico y la mayor carga cognitiva para los controladores de tránsito aéreo (ATCOs) de aproximación.}
+}
+
+\newglossaryentry{def-ruta-ats}{
+    name={ruta ATS},
+    sort={ruta ATS},
+    plural={rutas ATS},
+    description={Ruta especificada que se ha designado para canalizar la afluencia del tránsito según sea necesario para proporcionar los Servicios de Tránsito Aéreo (ATS). Es un término genérico que engloba aerovías, rutas con asesoramiento, rutas controladas o no controladas, y trayectorias estándar de llegada o salida (STAR/SID). En el contexto de la Gestión del Espacio Aéreo (ASM), el diseño de la red de rutas ATS es crítico: las intersecciones, los puntos de convergencia y los ángulos de cruce entre estas rutas determinan la complejidad de un sector y tienen un impacto directo y cuantificable en la carga cognitiva y de trabajo de los controladores de tránsito aéreo (ATCOs).}
+}
+
+\newglossaryentry{def-volumen}{
+    name={volumen},
+    sort={volumen},
+    plural={volúmenes},
+    description={Porción tridimensional del espacio aéreo definida de forma estricta por coordenadas geográficas (latitud y longitud) y límites verticales (niveles de vuelo o altitudes). En el diseño del espacio aéreo, los volúmenes son las piezas geométricas elementales o "bloques de construcción" que, agrupados de diferentes maneras, conforman los sectores de control y permiten su reconfiguración dinámica.}
+}
+\newglossaryentry{def-sector}{
+    name={sector},
+    sort={sector},
+    plural={sectores},
+    description={Unidad operativa básica en la que se divide un Área de Control (CTA) o un Centro de Control de Área (ACC) para facilitar la gestión táctica del tráfico aéreo. Un sector está conformado por uno o varios volúmenes de espacio aéreo y se asigna a un equipo específico de controladores (habitualmente un controlador ejecutivo y un planificador). La dimensión geométrica del sector está limitada directamente por la capacidad humana y la carga cognitiva máxima que ese equipo puede asumir con seguridad.}
+}
+\newglossaryentry{def-core-area}{
+    name={Área Central de Europa (\textit{European Core Area})},
+    sort={Area Central de Europa},
+    description={Región o "núcleo" del espacio aéreo europeo que concentra la mayor densidad, complejidad e interdependencia de tráfico aéreo del continente. Geográficamente engloba el espacio aéreo del Benelux, Alemania, norte de Francia y sur del Reino Unido. Debido a su constante saturación, las restricciones de capacidad y demoras ATFM generadas en este núcleo propagan un fuerte efecto dominó hacia las regiones periféricas de la red europea.}
+}
+\newglossaryentry{def-sectorizacion}{
+    name={sectorización},
+    sort={sectorizacion},
+    description={Proceso de diseño y configuración del espacio aéreo mediante el cual una Región de Información de Vuelo (FIR) o un Centro de Control de Área (ACC) se divide en porciones operativas más pequeñas denominadas sectores. El objetivo principal de la sectorización es distribuir el tráfico aéreo de manera equilibrada para garantizar que la carga de trabajo y la demanda cognitiva impuesta a los controladores de tránsito aéreo (ATCOs) se mantengan dentro de límites seguros. Este proceso puede ser estático (diseño estructural a largo plazo basado en rutas) o dinámico (reconfiguración táctica de los volúmenes en tiempo real para adaptarse a los picos de demanda diaria)}
+}
+
+\newglossaryentry{def-ejecutivo}{
+    name={ejecutivo},
+    sort={ejecutivo},
+    plural={ejecutivos},
+    description={Controlador de tránsito aéreo (ATCo) responsable de las comunicaciones tácticas directas por radio con las aeronaves dentro de un sector de control. Su función principal es emitir autorizaciones e instrucciones de rumbo (vectores radar), velocidad y altitud para mantener la separación reglamentaria y resolver conflictos a corto plazo. Soporta la carga cognitiva más exigente en tiempo real, por lo que su capacidad de procesamiento de información determina el límite de capacidad de un sector}
+}
+\newglossaryentry{def-planificador}{
+    name={planificador},
+    sort={planificador},
+    plural={Controladores Planificadores},
+    description={Controlador de tránsito aéreo (ATCo) que opera en tándem con el Controlador Ejecutivo dentro del mismo sector. Su labor es estratégica y a medio plazo: no se comunica rutinariamente por radio con las aeronaves, sino que analiza el tráfico entrante, coordina las transferencias con los sectores o Centros de Control (ACC) adyacentes y previene conflictos antes de que requieran una intervención táctica. Su propósito fundamental es "filtrar" el tráfico para reducir y gestionar la carga de trabajo del Controlador Ejecutivo}
+}
+\newglossaryentry{def-con}{
+    name={acreditación CON},
+    sort={acreditación CON},
+    description={Controlador. En el contexto operativo y laboral español (ENAIRE), designa a los controladores de tránsito aéreo que poseen la habilitación y acreditación operativa para gestionar exclusivamente sectores de control de Área o Ruta (\textit{En-Route}). Operan habitualmente en los espacios aéreos de crucero superior (UIR) o inferior, fuera de las complejas zonas de aproximación terminal}
+}
+\newglossaryentry{def-ptd}{
+    name={acreditación PTD},
+    sort={acreditación PTD},
+    description={Puesto de Trabajo Diferenciado. Categoría o acreditación operativa en el sistema de navegación aérea español (ENAIRE) que designa a los controladores capacitados y habilitados para operar tanto en sectores de ruta estándar como en sectores de Aproximación Radar (APP) y Áreas de Control Terminal (TMA). Debido a la alta densidad de tráfico, los continuos cambios de nivel (ascensos/descensos) y las convergencias de rutas en los TMA, el PTD implica un mayor nivel de exigencia técnica y carga de trabajo en comparación con un puesto CON estándar}
+}
+
+
+% \newglossaryentry{def-}{
+%     name={},
+%     sort={},
+%     description={}
+% }
 
 \endinput

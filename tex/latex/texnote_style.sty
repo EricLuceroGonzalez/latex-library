@@ -22,6 +22,10 @@
 \setsubsecheadstyle{\bfseries\color{gray!50!black}}
 \setbeforesubsecskip{-1.2ex plus -0.1ex minus -0.2ex}
 \setaftersubsecskip{0.5ex plus 0.1ex}
+% Estilo para \subsubsection
+\setsubsubsecheadstyle{\itshape} % \itshape cambia la fuente a itálica/cursiva
+\setbeforesubsubsecskip{-1.0ex plus -0.1ex minus -0.2ex} % Ligeramente menor que la subsection
+\setaftersubsubsecskip{0.3ex plus 0.1ex}
 
 % ================================================================
 %  DEFINICIONES DE SEGURIDAD PARA EL ENCABEZADO
@@ -87,3 +91,11 @@
 
 % Formato del número (aplica a todos los niveles): añade 0.25em de espacio
 \setsecnumformat{\csname the#1\endcsname\hspace{0.25em}}
+
+% Fuerza el espacio vacío entre párrafos
+\setlength{\parskip}{1em}
+
+% Cargamos Plex, pero le decimos que NO sea la fuente de todo el documento.
+% El texto seguirá siendo el clásico con remates (Serif).
+\usepackage[sfdefault=false]{plex-sans}
+\renewcommand{\familydefault}{\rmdefault}

@@ -50,8 +50,8 @@
 % \def\paperWidth{15.9cm}
 % \def\paperHeight{23.99cm}
 %% Ebook
-\def\paperWidth{8.5in}
-\def\paperHeight{11.0in}
+% \def\paperWidth{8.5in}
+% \def\paperHeight{11.0in}
 % \def\paperWidth{11in}
 % \def\paperHeight{8.5in}
 %% Standard
@@ -62,8 +62,8 @@
 % \def\paperWidth{5.5in}
 % \def\paperHeight{8.5in}
 %% DeBolsillo
-% \def\paperWidth{5.0in}
-% \def\paperHeight{8.0in}
+\def\paperWidth{5.0in}
+\def\paperHeight{8.0in}
 %----------------------------------------------------------------------------------------
 %	PAPER, MARGIN AND HEADER/FOOTER SIZES
 %----------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@
 % Fcciones pagina:{12.3cm}{18.8cm}
 % Fcciones margenees:
 
-\setlrmarginsandblock{33mm}{34mm}{*} % Left/right margins
+\setlrmarginsandblock{31mm}{32mm}{*} % Left/right margins
 \setulmarginsandblock{15mm}{30mm}{*} % Top/bottom margins
 \setheadfoot{15pt}{25pt} % Header/footer height
 \setheaderspaces{*}{5mm}{*} % Extra header space
@@ -260,3 +260,10 @@
 %   \fi
 % }
 % \makeatother
+
+\newcommand{\cita}[3]{
+  \begin{flushright}{\footnotesize
+	\textit{``#1''}\\
+	#2, #3.}
+\end{flushright}
+}
