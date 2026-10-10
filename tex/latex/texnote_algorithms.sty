@@ -7,11 +7,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{texnote_algorithms}[2026/06/25 v1.1 Estilos y macros de algoritmos]
 
-% ----- Dependencias ----------------------------------------------------------
-\RequirePackage{xcolor}      % \definecolor, \textcolor  (antes se asumia cargado)
-\RequirePackage[linesnumbered,ruled,vlined,spanish,onelanguage]{algorithm2e}
-\RequirePackage{listings}    % en un .sty: RequirePackage, no usepackage
+% ----- Dependencias con carga temprana obligatoria --------------------------
+\RequirePackage{xcolor}
 
+% Cargar listings e INMEDIATAMENTE precargar el dialecto de Python en el preámbulo
+\RequirePackage{listings}
+
+% algorithm2e sin opciones de idioma para evitar hooks conflictivos en \begin{document}
+\RequirePackage[linesnumbered,ruled,vlined]{algorithm2e}
 % ----- Paleta ----------------------------------------------------------------
 \definecolor{kwBlue}   {RGB}{ 31,119,180}
 \definecolor{commGray} {RGB}{100,100,100}
@@ -19,7 +22,7 @@
 
 % ----- Estilos de algorithm2e (un macro de un argumento) ---------------------
 \newcommand{\KwColorSty}[1]{\textcolor{kwBlue}{\textbf{#1}}}
-\newcommand{\CommColorSty}[1]{\textcolor{commGray}{\textit{#1}}}
+\newcommand{\CommColorSty}[1]{\textcolor{GithubRed}{\textit{#1}}}
 \SetKwSty{KwColorSty}
 \SetCommentSty{CommColorSty}
 
@@ -47,6 +50,28 @@
 \SetKwFunction{ConstruirSemilla}{ConstruirSolucionHeuristica}
 \SetKwFunction{Decodificar}{Decodificar}
 \SetKwFunction{SortearTarget}{SortearTargetPosicion}
+\SetKwInOut{Input}{Entrada}
+\SetKwInOut{Output}{Salida}
+\SetKwFunction{Heuristica}{construirSolucionHeuristica}
+\SetKwFunction{Validar}{validar}
+\SetKwFunction{Sectores}{sectoresGlobales}
+
+\SetKwFunction{InTurno}{enTurno}
+\SetKwFunction{TieneLicencia}{tieneLicencia}
+\SetKwFunction{Argsort}{argsort}
+\SetKwFunction{EsAfin}{esAfin}
+\SetKwData{Mat}{M}
+\SetKwData{Cargas}{cargas}
+\SetKwFunction{Comprobar}{comprobar}
+\SetKwFunction{Estado}{estado}
+\SetKwFunction{Ventana}{enVentana}
+\SetKwFunction{Lic}{tieneLicencia}
+\SetKwFunction{PrevTok}{atcoEnSlotAnterior}
+% =============================================================================
+\SetKwFunction{FaseContinuidad}{FaseContinuidad}
+\SetKwFunction{FaseRelleno}{FaseRelleno}
+\SetKwFunction{BuscarRelevo}{BuscarRelevo}
+
 
 % ----- Azucar sintactico y tokens del dominio --------------------------------
 \newcommand{\Let}[2]{#1 \ensuremath{\gets} #2}   % math-safe (antes $\gets$)
@@ -54,5 +79,60 @@
 \newcommand{\STRDESC}{\TOK{STRING\_DESCANSO}}
 \newcommand{\STRNT}{\TOK{STRING\_NO\_TURNO}}
 \newcommand{\LCAD}{\ensuremath{L}}
+
+
+
+
+\SetKwFunction{DecPerm}{DecodificarPermutacion}
+\SetKwFunction{DecInt}{DecodificarIntervalos}
+\SetKwFunction{Codif}{Codificar}
+\SetKwFunction{ConsEsc}{ConstruirSolucionEscalonado}
+\SetKwInOut{Datos}{Datos}
+\SetKwInOut{Result}{Resultado}
+\SetAlgorithmName{Algoritmo}{algoritmo}{Lista de algoritmos}
+\SetKwFunction{GenSemilla}{GenerarSemilla}
+\SetKwFunction{BRKGA}{BRKGA}
+\SetKwFunction{SelElite}{SeleccionarElite}
+\SetKwFunction{Mutante}{GenerarMutante}
+\SetKwFunction{Cruce}{CruceSesgado}
+\SetKwFunction{Evaluar}{Evaluar}
+
+% Nombres de funcion para los pseudocodigos (anade si no existen):
+
+\SetKwFunction{DecBin}{DecodificarBinMidpoint}
+\SetKwFunction{DecTester}{DecodificarTester}
+
+\SetKwFunction{DecBin}{DecodificarDirecto}
+% -----------------------------------------------------------------------------
+\SetKwFunction{CruceFranjas}{CruceFranjas}
+\SetKwFunction{IntercambioBloque}{IntercambioBloque}
+\SetKwFunction{MoverRelevo}{MoverRelevo}
+\SetKwFunction{ReconstruirVentana}{ReconstruirVentana}
+
+\SetKwFunction{CruceFilas}{CruceFilas}
+\SetKwFunction{AlinearFilas}{AlinearFilas}
+\SetKwFunction{CruceFilasAlineadas}{CruceFilasAlineadas}
+
+
+\SetKwFunction{PreEsc}{PreEscalonarGrupos}
+\SetKwFunction{HayRelevo}{HayRelevo}
+\SetKwFunction{TieneLic}{TieneLicencia}
+\SetKwFunction{AbreGrupo}{AbreGrupo}
+
+% Forzar la carga de la librería de Python en tiempo de PREÁMBULO
+\lstloadlanguages{Python}
+
+% Definición del lenguaje personalizado
+\lstdefinelanguage{MyPython}[]{Python}{
+  morekeywords={self, yield, async, await, PyMuPDF, pdf},
+  sensitive=true,
+  keywordstyle=\bfseries\color{colorD},
+  basicstyle=\ttfamily,
+  commentstyle=\itshape,
+  stringstyle=\ttfamily,
+  showstringspaces=false
+}
+
+\lstset{language=MyPython}
 
 \endinput

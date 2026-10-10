@@ -70,8 +70,6 @@
 % 'pdfNormal': Define la función de densidad de probabilidad (PDF) de la distribución normal, con media #1 y desviación estándar #2.
 % Ejemplo: \pdfNormal{\mu}{\sigma}
 \newcommand{\pdfHalfNormal}{f(x) = \frac{2}{\sqrt{2\pi}} \exp\left(-\frac{x^2}{2}\right)}
-% 'pdfNormal': Define la función de densidad de probabilidad (PDF) de la distribución normal, con media #1 y desviación estándar #2.
-% Ejemplo: \pdfNormal{\mu}{\sigma}
 
 \newcommand{\distribBinomial}[3]{\mathcal{B}(#1, #2) \quad \text{donde } X \sim \mathcal{B}(#1, #2)}
 % 'distribBinomial': Define la notación de una variable aleatoria X que sigue una distribución binomial con n = #1 (número de pruebas) y p = #2 (probabilidad de éxito).
@@ -104,7 +102,6 @@
 % Selecciona la fuente "Grotesk" (verifica que 'ugq' esté disponible en tu sistema LaTeX)
 \newcommand{\grotesk}{\fontfamily{ugq}\selectfont}
 % Inserta un ícono de check (paloma) en color 'colorA' con un tamaño opcional
-% #1: Tamaño del ícono (opcional, por defecto es \normalsize)
 \newcommand{\chekeYes}[1][\normalsize]{\colorea{GithubGreen}{#1\faCheckCircle}}
 \newcommand{\chekeNot}[1][\normalsize]{\colorea{colorD}{#1\faTimesCircle}}
 \newcommand{\QuestionCircle}[1][\normalsize]{\colorea{Yellow}{#1\faQuestionCircle}}
@@ -131,7 +128,8 @@
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
-
+% Columna "W" (Left/Izquierda) proporcional
+\newcolumntype{W}[1]{>{\hsize=#1\hsize}L}
 % Definir comando para el bloque
 % \newcommand{\ConceptBox}[2]{%
 %     \begin{tikzpicture}
@@ -155,11 +153,8 @@
 \newcommand{\slot}{\textit{slot} }
 \newcommand{\slots}{\textit{slots} }
 \newcommand{\showwidth}{textwidth: \printinunitsof{cm}\prntlen{\textwidth}}
-% Columna "W" (Left/Izquierda) proporcional
-\newcolumntype{W}[1]{>{\hsize=#1\hsize}L}
 
-% % Columna "C" (Center/Centrada) proporcional
-% \newcolumntype{WC}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}
+
 % \newenvironment{seminote}[1]{
 %     \par
 %     \noindent
@@ -191,3 +186,30 @@
     parsep=0pt,
     leftmargin=*
 }
+
+% BRKGA
+% ----------- Macros propias -----------
+\newcommand{\fcob}{f_{\text{cob}}}
+\newcommand{\fpos}{f_{\text{pos}}}
+\newcommand{\ftrab}{f_{\text{trab}}}
+\newcommand{\feje}{f_{\text{eje}}}
+\newcommand{\ffrag}{f_{\text{frag}}}
+\newcommand{\fdesc}{f_{\text{desc}}}
+\newcommand{\facred}{f_{\text{acred}}}
+\newcommand{\fbal}{f_{\text{bal}}}
+\newcommand{\posopt}{\text{pos}_{\text{opt}}}
+\newcommand{\posmin}{\text{pos}_{\min}}
+\newcommand{\trabopt}{\text{trab}_{\text{opt}}}
+\newcommand{\trabmin}{\text{trab}_{\min}}
+\newcommand{\Nact}{N_{\text{act}}}
+\newcommand{\code}[1]{\texttt{#1}}
+
+% Comandos de notación unificada
+\newcommand{\Topt}{T_{\mathrm{opt}}}
+\newcommand{\Tmax}{T_{\mathrm{max}}}
+\newcommand{\Ttrabmin}{T_{\mathrm{min}}}
+\newcommand{\Nctrl}{N}
+\newcommand{\Nslot}{T}
+\newcommand{\Alf}{\mathcal{A}}
+\newcommand{\fn}[1]{\textsc{#1}}
+\newcommand{\Dmin}{D_{\mathrm{min}}}

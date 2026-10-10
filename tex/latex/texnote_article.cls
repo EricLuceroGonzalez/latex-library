@@ -31,7 +31,7 @@
 \RequirePackage{Boxes_Draws}[March_2025]
 \RequirePackage{TikZ_Draws}
 \RequirePackage{command_definitions}
-\usepackage{texnote_metadata}
+\RequirePackage{texnote_metadata}
 % \RequirePackage{texnote_style}
 \RequirePackage{texnote_acronyms}
 \RequirePackage{texnote_glossaries}

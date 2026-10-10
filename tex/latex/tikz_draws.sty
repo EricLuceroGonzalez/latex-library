@@ -31,11 +31,218 @@ patterns, decorations.pathmorphing, matrix, positioning, babel,scopes
 % Configuración global para TikZ para usar la sans-serif en los diagramas, manteniendo el texto principal con serifas.
 \tikzset{
     % El lienzo general usará la familia sin remates (Plex)
-    every picture/.append style={
-            font=\sffamily
-        },
+    every picture/.append style={font=\sffamily},
     % Forzamos a que CADA nodo (incluso los que van en \draw) respete esta regla
-    every node/.append style={
-            font=\sffamily
+    every node/.append style={font=\sffamily}
+}
+
+
+% Estilos locales de los diagramas de ilustracion.
+\tikzset{
+  cell/.style   = {draw, minimum width=12mm, minimum height=7mm, inner sep=1pt,
+                   align=center, font=\sffamily\footnotesize},
+  tok/.style    = {cell, font=\ttfamily\footnotesize},
+  flecha/.style = {-{Latex[length=2.4mm]}, thick, darkGray},
+  panel/.style  = {draw=darkGray, fill=bgPanel, rounded corners=2pt, inner sep=5pt,
+                   align=left, font=\sffamily\footnotesize},
+  etiq/.style   = {font=\sffamily\bfseries},
+}
+
+% Estilos compartidos por los dos DIAGRAMAS DE ALGORITMO COMPLETO (exp 13 y 14).
+\tikzset{
+  fbase/.style   = {draw, rounded corners=2pt, align=center, inner sep=4pt,
+                    minimum height=8mm, text width=110mm, font=\footnotesize},
+  fterm/.style   = {fbase, ellipse, fill=blue!12, text width=82mm},
+  fproc/.style   = {fbase, fill=gray!8},
+  fpopInicial/.style   = {fbase, fill=colorA!5,draw=colorA!80},
+  fdecode/.style = {fbase, fill=orange!18, very thick, draw=orange!70!black, text width=50mm},
+  ffit/.style    = {fbase, fill=green!12, draw=green!55!black},
+  fstop/.style   = {draw, diamond, aspect=2, align=center, inner sep=1pt,
+                    fill=yellow!18, text width=44mm, font=\footnotesize},
+  flbl/.style    = {font=\scriptsize\itshape, fill=white, inner sep=1pt},
+}
+
+
+
+% TIKZ STYLES
+%! -- Nodes
+\tikzset{
+    redLabel/.style={align=center,fill=GithubRed!20,inner sep=2.3mm, text=GithubRed},
+    greenLabel/.style={align=center,fill=GithubGreen!20,inner sep=2.3mm, text=GithubGreen},
+    primaryLabel/.style={align=center,fill=colorA!20,inner sep=2.3mm, draw=none,text=colorA},
+    primaryLabel_Dark/.style={align=center,fill=colorA,text=white,inner sep=2.3mm, draw=none,text=colorA},
+    secondaryLabel/.style={align=center,fill=colorD!20,inner sep=2.3mm,text=colorD},
+    blackLabel/.style={text=white,align=center,fill=black,inner sep=2.3mm, draw=white},
+    infonode/.style={font=\large,inner sep=10pt,rounded corners=3pt,above right,draw,align=center,fill=colorA!50},
+    baseBox/.style={
+            text=white, font=\sffamily, align=left, anchor=north west, inner sep=10pt
+        },
+    titleBox/.style={font=\sffamily\bfseries\Large, align=left},
+    % Flechas inferiores
+    botArrow/.style={
+            single arrow, single arrow head extend=3mm,
+            text=white, font=\sffamily\bfseries, align=center,
+            minimum height=#1, inner sep=4pt, anchor=west
         }
+
+}
+\tikzset{
+    arrownode/.style={-Triangle,line width=0.7mm, color=colorA},
+    arrowRed/.style={-Triangle,line width=0.7mm, color=colorD},
+    arrowOrange/.style={-Triangle,line width=0.7mm, color=colorC},
+    arrowBlue/.style={-Triangle,line width=0.7mm, color=blue},
+    arrowBlack/.style={-Triangle,line width=0.7mm, color=black},
+    arrowGreen/.style={-Triangle,line width=0.7mm, color=colorA},
+    arrowthin/.style={-Triangle,line width=0.5mm, color=colorC},
+    arrowbet/.style={Triangle-Triangle,line width=0.35mm, color=colorC},
+    arrowFake/.style={-Triangle,line width=0.5mm, color=colorC, opacity=0.3},
+}
+\tikzset{
+    aLabel/.style={align=center,fill=colorA!10,inner sep=1.5mm, draw=none,text=colorA},
+    bLabel/.style={align=center,fill=colorD!10,inner sep=1.5mm,text=colorD},
+    cLabel/.style={align=center,fill=GithubGreen!10,inner sep=1.5mm,text=GithubGreen!70!black},
+    dLabel/.style={align=center,fill=colorH!20,inner sep=1.5mm,text=colorA,draw=none},
+    aLabel_Dark/.style={align=center,fill=colorA,inner sep=1.5mm,text=white,draw=none,font=\bfseries},
+    bLabel_Dark/.style={align=center,fill=colorD,inner sep=1.5mm,text=white,draw=none,font=\bfseries},
+    cLabel_Dark/.style={align=center,fill=GithubGreen,inner sep=1.5mm,text=white,draw=none,font=\bfseries},
+    dLabel_Dark/.style={align=center,fill=colorH,inner sep=1.5mm,text=white,draw=none,font=\bfseries},
+    blackLabel/.style={text=white,align=center,fill=olive,inner sep=2.3mm, draw=white,font=\bfseries},
+}
+
+
+\tikzset{
+    smallLabel/.style={align=center,text width=2.85cm,rounded corners,fill=myYellow!60,inner sep=3mm, right},
+    tinyLabel/.style={align=center,text width=2.25cm,rounded corners,fill=colorA!20,draw=colorA,line width=0.5 mm,inner sep=3mm, right,text=colorA},
+    verySmallLabel/.style={align=center,text width=1.5cm,rounded corners,fill=myYellow!30,inner sep=2mm, right},
+    verySmallLabelB/.style={align=center,text width=1.5cm,rounded corners,fill=myDarkPurple!30,inner sep=2mm, right},
+    mediumLabel/.style={align=center,text width=4.25cm,rounded corners,fill=myYellow!60,inner sep=2mm, right},
+    mediumLabelb/.style={align=center,text width=4.25cm,rounded corners,fill=colorA!60,inner sep=2mm, right, text=white},
+    largeLabel/.style={align=center,text width=7.25cm,rounded corners,fill=myYellow!20,inner sep=3mm, right},
+    purpleLabel/.style={align=center,rounded corners,fill=colorA!20,inner sep=1.8mm,draw=colorA},
+    cyanLabel/.style={align=center,rounded corners,fill=cyan!30,inner sep=2.3mm, draw=cyan},
+}
+\tikzset{
+    bicolor polygon/.pic = {
+            \node[regular polygon, regular polygon sides=#1,
+                minimum size=4cm, draw, fill=blue!50,
+                outer sep=0pt] at (0,0) (-node){};
+            \foreach \i in {1,2,...,#1}
+            \draw[fill=blue!25] (-node.corner \i)
+            --(-node.side \i)--(-node.center)--cycle;
+        }}
+
+
+\tikzset{
+  font=\sffamily\small,
+%   >={Stealth[length=2mm,width=2mm]},
+  every node/.style={align=center, inner sep=4pt},
+  module/.style={
+    rectangle, rounded corners=2pt, draw=colorC, very thick,
+    fill=white, drop shadow={shadow xshift=0.6pt, shadow yshift=-0.6pt, opacity=0.25},
+    minimum height=8mm, minimum width=24mm
+  },
+  store/.style={
+    cylinder, shape border rotate=90, draw=colorC, thick,
+    fill=softGray, aspect=0.3, minimum height=10mm, minimum width=18mm
+  },
+  data/.style={
+    trapezium, trapezium left angle=70, trapezium right angle=110,
+    draw=colorC, fill=bgPanel, thick, minimum height=7mm
+  },
+  decision/.style={
+    diamond, aspect=2, draw=colorC, fill=colorH!15, very thick,
+    minimum height=8mm, minimum width=22mm
+  },
+  start/.style={
+    rectangle, rounded corners=4mm, draw=accentGreen!80!black,
+    fill=accentGreen!18, very thick, minimum height=8mm, minimum width=24mm
+  },
+  endnode/.style={
+    rectangle, rounded corners=4mm, draw=accentRed!85!black,
+    fill=accentRed!15, very thick, minimum height=8mm, minimum width=24mm
+  },
+  bigbox/.style={
+    rectangle, rounded corners=3pt, draw=#1, very thick, fill=#1!8,
+    inner sep=10pt
+  },
+  cell/.style={draw=darkGray, minimum size=9mm, font=\sffamily\footnotesize,
+               inner sep=1pt, anchor=center},
+  arrow/.style ={-{Stealth[length=2.4mm]}, semithick, colorC},
+  thinarrow/.style={-{Stealth[length=2mm]}, thin, colorC!80},
+  dasharr/.style={-{Stealth[length=2.4mm]}, semithick, dashed, colorC},
+  Triangle/.style={-{Stealth[length=2.4mm]}, semithick, darkGray},
+  lbl/.style={font=\footnotesize\itshape, fill=white, inner sep=1pt},
+  gene/.style={draw=colorC, minimum size=7mm, anchor=center,
+               font=\sffamily\footnotesize, inner sep=2pt},
+}
+% Estilos de los nodos
+\tikzset{
+    boxBase/.style = {
+            rounded corners=3pt,
+            anchor=center,
+            inner sep=1.75ex
+        },
+    concepto/.style = {
+            boxBase,
+            fill=#1,
+            text=white,
+            text width=0.3\mytikzwidth,
+            font=\bfseries\Centering\hspace{0pt},
+            % align=center,
+            inner sep=1.75ex,
+            rounded corners=3pt
+        },
+    descripcion/.style = {
+            boxBase,
+            fill=#1!20,
+            inner sep=1.5ex,
+            text width=0.7\mytikzwidth,
+            align=left,
+            rounded corners=3pt
+        }
+}
+
+
+% BRKGA: Estilos de los nodos y flechas para diagramas de flujo del algoritmo BRKGA.
+\tikzset{
+  basic box/.style={
+    shape=rectangle, rounded corners, align=center, draw=#1, fill=#1!25},
+  header node/.style={
+    node family/width=header nodes,
+    font=\strut\Large\ttfamily,
+    text depth=+.3ex, fill=white, draw},
+  header/.style={%
+    inner ysep=+1.5em,
+    append after command={
+      \pgfextra{\let\TikZlastnode\tikzlastnode}
+      node [header node] (header-\TikZlastnode) at (\TikZlastnode.north) {#1}
+      % the next node contains both \tikzlastnode and its header
+      % this is needed so that h- can be used to connect lines
+      node [span=(\TikZlastnode)(header-\TikZlastnode)]
+           at (fit bounding box) (h-\TikZlastnode) {}
+    }
+  },
+  fat blue line/.style={ultra thick, blue}
+}
+
+% Biblio_daemon
+
+\tikzset{
+  base/.style={draw=#1!80!black, fill=#1!12, very thick, rounded corners=3pt,
+               align=center, font=\small, text=ink, inner sep=5pt},
+  box/.style={base=proc, minimum width=58mm, minimum height=10mm},
+  folder/.style={base=fs, tape, tape bend top=none, minimum width=34mm, minimum height=9mm},
+  api/.style={base=net, cloud, cloud puffs=11, aspect=2.4, inner sep=1pt, font=\footnotesize},
+  dec/.style={base=proc, diamond, aspect=2.6, inner sep=1pt, font=\footnotesize},
+  quar/.style={base=bad, minimum width=34mm, minimum height=9mm, font=\footnotesize},
+  syn/.style={base=sync, minimum width=36mm, minimum height=12mm},
+  db/.style={base=fs, cylinder, shape border rotate=90, aspect=0.25,
+             minimum width=24mm, minimum height=14mm, font=\footnotesize},
+  flow/.style={-{Stealth[length=3mm]}, very thick, ink},
+  side/.style={-{Stealth[length=2.5mm]}, thick, #1!80!black},
+  side/.default=ink,
+  lbl/.style={font=\scriptsize\itshape, text=ink, fill=white, inner sep=1.5pt},
+  num/.style={circle, fill=ink, text=white, font=\scriptsize\bfseries,
+              inner sep=1.2pt, minimum size=4.5mm},
+  note/.style={align=left, font=\footnotesize, text=ink, text width=78mm},
 }
