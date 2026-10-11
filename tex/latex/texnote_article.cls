@@ -62,8 +62,13 @@
 
 % RECOMENDACIÓN: Usa rutas relativas para evitar errores en otros PCs
 \graphicspath{{../resources}
+        {/Users/ericlucero/Documents/Academic/media-latex/}
+        {/Users/ericlucero/Documents/Academic/media-latex/canal}
+        {/Users/ericlucero/Documents/Academic/media-latex/monalisa}
+        {/Users/ericlucero/Documents/Academic/media-latex/personal}
+        {/Users/ericlucero/Documents/Academic/media-latex/resources}
+        {/Users/ericlucero/Documents/Academic/media-latex/UPM_graphics}
         {/Users/ericlucero/Documents/Academic/LaTeX-UPM/TeXNotes/resources}
-        {/Users/ericlucero/Documents/Academic/LaTeX-UPM/media/}
 }
 
 \RequirePackage{subcaption}
