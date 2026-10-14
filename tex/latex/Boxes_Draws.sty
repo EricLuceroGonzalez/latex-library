@@ -5,7 +5,7 @@
 % @author: Eric Lucero
 % @location: /Users/my_name/Library/Texmf/
 % @contact: ericlucerogonzalez@gmail.com
-% @revised: Mar / 2025
+% @revised: Oct / 2026
 %
 % Descripción: Este archivo define los estilos y configuraciones específicas para 
 %              presentaciones en LaTeX utilizando el paquete Beamer. Aquí se encuentran 
@@ -13,7 +13,7 @@
 %              otras macros diseñadas para ser reutilizables.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{Boxes_Draws}[March_2025]
+\ProvidesPackage{Boxes_Draws}[Oct_2026]
 \RequirePackage{tcolorbox}
 % Multicols widths:
 \newlength{\mywidth}
@@ -285,7 +285,7 @@
 % \RequirePackage{tkz-euclide}  % Paquete para geometría euclidiana con TikZ (ideal para diagramas geométricos).
 % % \usepgfplotslibrary{fillbetween}
 
-\tcbuselibrary{breakable, skins}
+\tcbuselibrary{breakable, skins, listingsutf8}
 \newtcolorbox{regla}[1][]{%
   enhanced, breakable,
   colback=accentTeal!8, colframe=accentTeal!70!black, boxrule=0.4pt,
@@ -303,3 +303,33 @@
   colback=accentOrange!10, colframe=accentOrange!70!black, boxrule=0.4pt,
   arc=2pt, left=6pt, right=6pt, top=4pt, bottom=4pt,
   fonttitle=\bfseries\sffamily, title={Trampa que conviene conocer}, #1}
+
+\newtcblisting{promptbox}[2][]{
+enhanced,    
+attach boxed title to top left={xshift=3mm, yshift=-3mm, yshifttext=-1mm},
+    fonttitle=\bfseries\sffamily,
+    colbacktitle=colorA,
+    coltitle=white,  
+    colback=gray!6,
+    colframe=gray!40,
+    arc=2mm,
+    boxrule=0.8pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt,
+    breakable,
+    listing only,
+    listing utf8=utf8,
+    listing options={
+        basicstyle=\small\ttfamily,
+        breaklines=true,
+        breakatwhitespace=true,
+        tabsize=2,
+        showstringspaces=false,
+        extendedchars=true,
+        literate=
+        {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+        {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+        {ñ}{{\~n}}1 {Ñ}{{\~N}}1
+        {“}{{``}}1  {”}{{''}}1  {¿}{{?`}}1  {¡}{{!`}}1
+    },
+    title=#2, #1
+}
