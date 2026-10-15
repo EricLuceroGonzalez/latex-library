@@ -129,7 +129,8 @@
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 % Columna "W" (Left/Izquierda) proporcional
-\newcolumntype{W}[1]{>{\hsize=#1\hsize}L}
+% \newcolumntype{W}[1]{>{\hsize=#1\hsize}L}
+\newcolumntype{W}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}
 % Definir comando para el bloque
 % \newcommand{\ConceptBox}[2]{%
 %     \begin{tikzpicture}
