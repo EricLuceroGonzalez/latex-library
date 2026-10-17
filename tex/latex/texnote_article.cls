@@ -30,6 +30,7 @@
 \RequirePackage{color_definitions}
 \RequirePackage{Boxes_Draws}[March_2025]
 \RequirePackage{TikZ_Draws}
+\RequirePackage{icons_definitions}
 \RequirePackage{command_definitions}
 \RequirePackage{texnote_metadata}
 % \RequirePackage{texnote_style}

@@ -101,13 +101,6 @@
 \newcommand{\bfb}[1]{{\color{colorA} \textbf{#1} }}
 % Selecciona la fuente "Grotesk" (verifica que 'ugq' esté disponible en tu sistema LaTeX)
 \newcommand{\grotesk}{\fontfamily{ugq}\selectfont}
-% Inserta un ícono de check (paloma) en color 'colorA' con un tamaño opcional
-\newcommand{\chekeYes}[1][\normalsize]{\colorea{GithubGreen}{#1\faCheckCircle}}
-\newcommand{\chekeNot}[1][\normalsize]{\colorea{colorD}{#1\faTimesCircle}}
-\newcommand{\QuestionCircle}[1][\normalsize]{\colorea{Yellow}{#1\faQuestionCircle}}
-% Inserta un ícono de advertencia (círculo con exclamación) en color 'myError' con un tamaño opcional
-% #1: Tamaño del ícono (opcional, por defecto es \normalsize)
-\newcommand{\err}[1][\normalsize]{\colorea{myError}{#1\faIcon{exclamation-circle}}}
 
 % 'altr': Este comando resalta el texto en negrita usando el color principal, y con la fuente grotesk.
 \newcommand{\emphA}[2][\normalsize]{\textbf{\colorea{colorA}{#1 \grotesk #2}}}
@@ -141,10 +134,9 @@
 
 \newcommand{\Title}[1]{\color{colorA}\Large\textbf{#1}}
 \newcommand{\enfasis}[1]{{\normalsize\textbf{\textcolor{colorA}{#1}}}}
-\newcommand{\preguntar}[1]{{\color{colorD}\large \faIcon{question-circle}}\small\hspace{0.25em} #1}
-\newcommand{\comentario}[1]{{\color{GithubGreen}\large \faIcon{info-circle}\small\hspace{0.5em} #1}}
-\newcommand{\info}[1]{{\color{colorA}\large \faIcon{info-circle}}\small \hspace{0.5em} #1}
-\newcommand{\downprice}{{\color{colorD}\faCaretDown\hspace{0.5cm}}}
+
+
+
 \newcommand{\scheduling}{\textit{scheduling}}
 \newcommand{\rostering}{\textit{rostering}}
 \newcommand{\mt}{metaheurística}

@@ -1,0 +1,26 @@
+% ================================
+% @author: Eric Lucero
+% @location: /Users/my_name/Library/Texmf/
+% @contact: ericlucerogonzalez@gmail.com
+% @revised: Oct / 2026
+%
+% Descripción: Este archivo define nuevos comandos utilizados en los documentos de LaTeX.
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{icons_definitions}
+% ==========================================
+% MACROS PARA ICONOS USANDO FONTAWESOME_5
+% ==========================================
+\RequirePackage{fontawesome5}
+% Inserta un ícono de check (paloma) en color 'colorA' con un tamaño opcional
+\newcommand{\checkYes}[1][\normalsize]{\colorea{GithubGreen}{#1\faCheckCircle}}
+\newcommand{\checkNot}[1][\normalsize]{\colorea{colorD}{#1\faTimesCircle}}
+\newcommand{\QuestionCircle}[1][\normalsize]{\colorea{Yellow}{#1\faQuestionCircle}}
+% Inserta un ícono de advertencia (círculo con exclamación) en color 'myError' con un tamaño opcional
+% #1: Tamaño del ícono (opcional, por defecto es \normalsize)
+\newcommand{\err}[1][\normalsize]{\colorea{myError}{#1\faIcon{exclamation-circle}}}
+
+\newcommand{\preguntar}[1]{{\color{colorD}\large \faIcon{question-circle}}\small\hspace{0.25em} #1}
+\newcommand{\comentario}[1]{{\color{GithubGreen}\large \faIcon{info-circle}\small\hspace{0.5em} #1}}
+\newcommand{\info}[1]{{\color{colorA}\large \faIcon{info-circle}}\small \hspace{0.5em} #1}
+\newcommand{\downprice}{{\color{colorD}\faCaretDown\hspace{0.5cm}}}
