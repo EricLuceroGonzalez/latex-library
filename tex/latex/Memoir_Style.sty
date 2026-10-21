@@ -79,6 +79,41 @@
 
 \pagestyle{UPM_memoir}
 
+
+% ================================================================
+%  ESTILO DE PÁGINA PARA LANDSCAPE (Memoir)
+% ================================================================
+\makepagestyle{UPM_memoir_landscape}
+
+% Encabezados:
+% Página impar: Título a la izquierda | Logo a la derecha
+\makeoddhead{UPM_memoir_landscape}%
+  {\large\sffamily\color{colorA}\thetitle}%
+  {}%
+  {\includegraphics[width=0.18\linewidth]{LOGOTIPO.png}}
+
+% Página par: Logo a la izquierda | Título a la derecha
+\makeevenhead{UPM_memoir_landscape}%
+  {\includegraphics[width=0.18\linewidth]{LOGOTIPO.png}}%
+  {}%
+  {\large\sffamily\color{colorA}\thetitle}
+
+% Pies de página (ambos lados iguales o simétricos):
+% Izquierda: Autor | Centro: Título | Derecha: Pág / Total
+\makeoddfoot{UPM_memoir_landscape}%
+  {\small\sffamily\theauthor}%
+  {\small\sffamily\thetitle}%
+  {\small\thepage\ / \pageref*{LastPage}}
+
+\makeevenfoot{UPM_memoir_landscape}%
+  {\small\sffamily\theauthor}%
+  {\small\sffamily\thetitle}%
+  {\small\thepage\ / \pageref*{LastPage}}
+
+% Líneas separadoras adaptadas al ancho completo horizontal
+\makeheadrule{UPM_memoir_landscape}{\textwidth}{0.3pt}
+\makefootrule{UPM_memoir_landscape}{\textwidth}{0.3pt}{0.3pt}
+
 % ================================
 % 3. Formato de Partes y Capítulos
 % ================================
