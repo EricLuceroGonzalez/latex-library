@@ -484,13 +484,13 @@ overlay last={\draw[red,line width=9pt] ([xshift=-0.5pt]frame.north east)
 	title={Lecturas},
 	fonttitle=\Huge\bfseries,#1
 	}
-\newtcolorbox{instrucciones}[2][]{
-	colframe=colorC,
-	colback=colorD!25!white,
-	coltitle=white,
-	title={#2},
-	fonttitle=\bfseries,#1
-  }
+% \newtcolorbox{instrucciones}[2][]{
+% 	colframe=colorC,
+% 	colback=colorD!25!white,
+% 	coltitle=white,
+% 	title={#2},
+% 	fonttitle=\bfseries,#1
+%   }
   
 \newtcolorbox{mybox}[2][]{
 colbacktitle=primary!50!white,
@@ -538,38 +538,38 @@ title={\large #2},fonttitle=\bfseries, #1}
 \newcounter{ejercicio}
 \newcounter{theocounter}
 
-\newtcolorbox[use counter=theocounter]{teorema}[1][]{
-  toptitle=0.6mm,
-  breakable,% 
-  colframe=green!20!black,
-  colback=green!23!white,% 
-  coltitle=white,% 
-  fonttitle={\bfseries \scshape} ,%   
-  sharp corners,
-  title={Teorema \thetcbcounter},
-}
+% \newtcolorbox[use counter=theocounter]{teorema}[1][]{
+%   toptitle=0.6mm,
+%   breakable,% 
+%   colframe=green!20!black,
+%   colback=green!23!white,% 
+%   coltitle=white,% 
+%   fonttitle={\bfseries \scshape} ,%   
+%   sharp corners,
+%   title={Teorema \thetcbcounter},
+% }
  
-\newtcolorbox[use counter=definitionCounter]{definicion}[1]{
-  toptitle=1.6mm,
-	colframe=colorC,
-	colback=colorC!10!white,
-  coltitle=white,
-  sharp corners,
-  breakable,
-	fonttitle=\bfseries,
-	title={Definición \thetcbcounter: #1},
-	valign=center,width=(\linewidth-3em)
-  }
+% \newtcolorbox[use counter=definitionCounter]{definicion}[1]{
+%   toptitle=1.6mm,
+% 	colframe=colorC,
+% 	colback=colorC!10!white,
+%   coltitle=white,
+%   sharp corners,
+%   breakable,
+% 	fonttitle=\bfseries,
+% 	title={Definición \thetcbcounter: #1},
+% 	valign=center,width=(\linewidth-3em)
+%   }
 
-\newtcolorbox[use counter=ejemplo]{ejemplo}[1][]{
-	colframe=purpleD,
-	colback=purpleA!20!white,
-  coltitle=purpleE,
-  sharp corners,
-    breakable,
-	title={Ejemplo \thetcbcounter},
-	fonttitle=\bfseries
-  }
+% \newtcolorbox[use counter=ejemplo]{ejemplo}[1][]{
+% 	colframe=purpleD,
+% 	colback=purpleA!20!white,
+%   coltitle=purpleE,
+%   sharp corners,
+%     breakable,
+% 	title={Ejemplo \thetcbcounter},
+% 	fonttitle=\bfseries
+%   }
   
   \newtcolorbox{ejemploB}[1][]{
 	colframe=yellowC!30!white,
@@ -581,13 +581,13 @@ title={\large #2},fonttitle=\bfseries, #1}
 	fonttitle=\bfseries
 	}
 
-\newtcolorbox[use counter=ejercicio]{ejercicio}[1][]{
-	colframe=colorE,
-	coltext=colorA,
-	colback=colorE!10!white,
-	title={Ejercicio \thetcbcounter},
-	fonttitle=\bfseries
-}	
+% \newtcolorbox[use counter=ejercicio]{ejercicio}[1][]{
+% 	colframe=colorE,
+% 	coltext=colorA,
+% 	colback=colorE!10!white,
+% 	title={Ejercicio \thetcbcounter},
+% 	fonttitle=\bfseries
+% }	
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%				definition				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
